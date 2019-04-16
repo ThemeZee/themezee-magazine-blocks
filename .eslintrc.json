@@ -24,6 +24,7 @@
 		"wp": true,
 		"wpApiSettings": true,
 		"window": true,
+		"lodash": true,
 		"document": true
 	},
 	"plugins": ["react", "jsx-a11y", "jest"],
