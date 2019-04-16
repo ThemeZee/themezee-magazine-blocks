@@ -1,0 +1,35 @@
+/*
+ * ThemeZee Blocks Settings CSS
+ *
+ * @package ThemeZee Blocks
+ */
+
+.themezee-blocks-settings-form {
+	margin-top: 24px;
+}
+
+.themezee-blocks-settings .license-status {
+	display: inline-block;
+	margin: 0 12px 0 0;
+	padding: 4px 8px;
+	background: #444;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.themezee-blocks-settings .license-active {
+	background: green;
+}
+
+.themezee-blocks-settings .license-invalid,
+.themezee-blocks-settings .license-expired {
+	background: red;
+}
+
+.themezee-blocks-settings .license-description {
+	margin: 16px 0 0;
+}
+
+.themezee-blocks-settings .license-renewal {
+	margin: 16px 0 0;
+}
