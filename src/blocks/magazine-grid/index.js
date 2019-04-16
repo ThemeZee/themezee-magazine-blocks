@@ -27,7 +27,7 @@ import edit from './edit';
 registerBlockType(
 	'themezee-blocks/magazine-grid',
 	{
-		title: __( 'TZ Magazine Grid', 'themezee-blocks' ),
+		title: __( 'Magazine Grid', 'themezee-blocks' ),
 
 		description: __( 'Add a headline and style it.', 'themezee-blocks' ),
 

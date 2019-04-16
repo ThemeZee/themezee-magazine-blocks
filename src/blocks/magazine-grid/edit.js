@@ -1,9 +1,7 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
-const { range } = lodash;
-const { getComputedStyle } = window;
+const { isUndefined, pickBy } = lodash;
 
 /**
  * WordPress dependencies
@@ -11,166 +9,151 @@ const { getComputedStyle } = window;
 const {
 	Component,
 	Fragment,
+	RawHTML,
 } = wp.element;
 
-const {
-	__,
-	sprintf,
-} = wp.i18n;
-
+const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { addQueryArgs } = wp.url;
+const { withSelect } = wp.data;
 
 const {
-	AlignmentToolbar,
-	BlockControls,
-	ContrastChecker,
-	FontSizePicker,
 	InspectorControls,
-	PanelColorSettings,
-	RichText,
-	withColors,
-	withFontSizes,
 } = wp.editor;
 
 const {
-	BaseControl,
 	PanelBody,
-	Toolbar,
-	withFallbackStyles,
+	Placeholder,
+	Spinner,
+	QueryControls,
 } = wp.components;
+
+/**
+ * Module Constants
+ */
+const CATEGORIES_LIST_QUERY = {
+	per_page: -1,
+};
 
 /**
  * Block Edit Component
  */
-class gtHeadingEdit extends Component {
+class MagazineGridEdit extends Component {
+	constructor() {
+		super( ...arguments );
+		this.state = {
+			categoriesList: [],
+		};
+	}
+
+	componentDidMount() {
+		this.isStillMounted = true;
+		this.fetchRequest = wp.apiFetch( {
+			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
+		} ).then(
+			( categoriesList ) => {
+				if ( this.isStillMounted ) {
+					this.setState( { categoriesList } );
+				}
+			}
+		).catch(
+			() => {
+				if ( this.isStillMounted ) {
+					this.setState( { categoriesList: [] } );
+				}
+			}
+		);
+	}
+
+	componentWillUnmount() {
+		this.isStillMounted = false;
+	}
+
 	render() {
+		const { categoriesList } = this.state;
+
 		const {
 			attributes,
-			backgroundColor,
-			setBackgroundColor,
-			fallbackBackgroundColor,
-			textColor,
-			setTextColor,
-			fallbackTextColor,
-			fontSize,
-			setFontSize,
-			fallbackFontSize,
 			setAttributes,
-			className,
+			latestPosts,
 		} = this.props;
 
 		const {
-			title,
-			titleTag,
-			placeholder,
-			textAlignment,
+			order,
+			orderBy,
+			categories,
+			postsToShow,
 		} = attributes;
 
-		const headingClasses = classnames( className, 'gt-heading', {
-			'has-background': backgroundColor.color,
-			[ backgroundColor.class ]: backgroundColor.class,
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
-			[ fontSize.class ]: fontSize.class,
-		} );
+		const inspectorControls = (
+			<InspectorControls>
 
-		const headingStyles = {
-			textAlign: textAlignment,
-			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-			color: textColor.class ? undefined : textColor.color,
-			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-		};
+				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) }>
+
+					<QueryControls
+						{ ...{ order, orderBy } }
+						numberOfItems={ postsToShow }
+						categoriesList={ categoriesList }
+						selectedCategoryId={ categories }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+
+				</PanelBody>
+
+			</InspectorControls>
+		);
+
+		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+		if ( ! hasPosts ) {
+			return (
+				<Fragment>
+					{ inspectorControls }
+					<Placeholder
+						icon="admin-post"
+						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
+					>
+						{ ! Array.isArray( latestPosts ) ?
+							<Spinner /> :
+							__( 'No posts found.', 'themezee-blocks' )
+						}
+					</Placeholder>
+				</Fragment>
+			);
+		}
+
+		// Removing posts from display should be instant.
+		const displayPosts = latestPosts.length > postsToShow ?
+			latestPosts.slice( 0, postsToShow ) :
+			latestPosts;
 
 		return (
 			<Fragment>
-				<BlockControls>
 
-					<Toolbar
-						controls={
-							range( 2, 5 ).map( ( level ) => ( {
-								icon: 'heading',
-								title: sprintf( __( 'Heading %s', 'themezee-blocks' ), level ),
-								isActive: level === titleTag,
-								onClick: () => setAttributes( { titleTag: level } ),
-								subscript: level,
-							} ) )
-						}
-					/>
+				{ inspectorControls }
 
-				</BlockControls>
+				<ul className={ this.props.className }>
 
-				<InspectorControls>
+					{ displayPosts.map( ( post, i ) => {
+						const titleTrimmed = post.title.rendered.trim();
+						return (
+							<li key={ i }>
+								<a href={ post.link } target="_blank" rel="noreferrer noopener">
+									{ titleTrimmed ? (
+										<RawHTML>
+											{ titleTrimmed }
+										</RawHTML>
+									) :
+										__( '(Untitled)', 'themezee-blocks' )
+									}
+								</a>
+							</li>
+						);
+					} ) }
 
-					<PanelBody title={ __( 'Heading Settings', 'themezee-blocks' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
-
-						<BaseControl id="gt-title-tag" label={ __( 'Level', 'themezee-blocks' ) }>
-							<Toolbar
-								controls={
-									range( 1, 7 ).map( ( level ) => ( {
-										icon: 'heading',
-										title: sprintf( __( 'Heading %s', 'themezee-blocks' ), level ),
-										isActive: level === titleTag,
-										onClick: () => setAttributes( { titleTag: level } ),
-										subscript: level,
-									} ) )
-								}
-							/>
-						</BaseControl>
-
-						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment', 'themezee-blocks' ) }>
-							<AlignmentToolbar
-								value={ textAlignment }
-								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
-							/>
-						</BaseControl>
-
-						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
-
-					</PanelBody>
-
-					<PanelColorSettings
-						title={ __( 'Color Settings', 'themezee-blocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'themezee-blocks' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text Color', 'themezee-blocks' ),
-							},
-						] }
-					>
-
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-							fontSize={ fontSize.size }
-						/>
-					</PanelColorSettings>
-
-				</InspectorControls>
-
-				<RichText
-					tagName={ 'h' + titleTag }
-					value={ title }
-					className={ headingClasses }
-					style={ headingStyles }
-					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-					placeholder={ placeholder || __( 'Write heading…', 'themezee-blocks' ) }
-					keepPlaceholderOnFocus
-				/>
+				</ul>
 
 			</Fragment>
 		);
@@ -178,17 +161,18 @@ class gtHeadingEdit extends Component {
 }
 
 export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-	withFontSizes( 'fontSize' ),
-	withFallbackStyles( ( node, ownProps ) => {
-		const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
-		const editableNode = node.querySelector( '[contenteditable="true"]' );
-		//verify if editableNode is available, before using getComputedStyle.
-		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	withSelect( ( select, props ) => {
+		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { getEntityRecords } = select( 'core' );
+		const latestPostsQuery = pickBy( {
+			categories,
+			order,
+			orderby: orderBy,
+			per_page: postsToShow,
+		}, ( value ) => ! isUndefined( value ) );
+
 		return {
-			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-			fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+			latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
 		};
 	} ),
-] )( gtHeadingEdit );
+] )( MagazineGridEdit );
