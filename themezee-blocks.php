@@ -99,6 +99,9 @@ class ThemeZee_Blocks {
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/admin/class-themezee-blocks-settings.php';
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/admin/class-themezee-blocks-settings-page.php';
 
+		// Include functions.
+		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/template-functions.php';
+
 		// Include Blocks for server-side.
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-grid.php';
 	}
