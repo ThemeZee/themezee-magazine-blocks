@@ -110,7 +110,9 @@ class MagazineGridEdit extends Component {
 		if ( ! hasPosts ) {
 			return (
 				<Fragment>
+
 					{ inspectorControls }
+
 					<Placeholder
 						icon="admin-post"
 						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
@@ -120,14 +122,13 @@ class MagazineGridEdit extends Component {
 							__( 'No posts found.', 'themezee-blocks' )
 						}
 					</Placeholder>
+
 				</Fragment>
 			);
 		}
 
 		// Removing posts from display should be instant.
-		const displayPosts = latestPosts.length > postsToShow ?
-			latestPosts.slice( 0, postsToShow ) :
-			latestPosts;
+		const displayPosts = latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 		return (
 			<Fragment>
