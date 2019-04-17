@@ -43,7 +43,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 					),
 					'postsToShow' => array(
 						'type'    => 'number',
-						'default' => 5,
+						'default' => 6,
 					),
 					'displayPostDate' => array(
 						'type'    => 'boolean',
@@ -71,37 +71,40 @@ class ThemeZee_Blocks_Magazine_Grid {
 	 * @return string Returns the block content.
 	 */
 	static function render_magazine_grid_block( $attributes ) {
-		$args = array(
-			'posts_per_page'   => $attributes['postsToShow'],
-			'post_status'      => 'publish',
-			'order'            => $attributes['order'],
-			'orderby'          => $attributes['orderBy'],
-			'suppress_filters' => false,
+		$query_arguments = array(
+			'posts_per_page'      => $attributes['postsToShow'],
+			'post_status'         => 'publish',
+			'order'               => $attributes['order'],
+			'orderby'             => $attributes['orderBy'],
+			'suppress_filters'    => false,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
-			$args['category'] = $attributes['categories'];
+			$query_arguments['category'] = $attributes['categories'];
 		}
 
-		$recent_posts = get_posts( $args );
+		// Fetch posts from database.
+		$posts_query = new WP_Query( $query_arguments );
 
-		$list_items_markup = '';
+		$posts_markup = '';
 
-		foreach ( $recent_posts as $post ) {
-			$title = get_the_title( $post );
+		// Check if there are posts.
+		if ( $posts_query->have_posts() ) :
 
-			if ( ! $title ) {
-				$title = __( '(Untitled)' );
-			}
+			// Get Posts Markup.
+			while ( $posts_query->have_posts() ) :
+				$posts_query->the_post();
 
-			$list_items_markup .= sprintf(
-				'<li><a href="%1$s">%2$s</a>',
-				esc_url( get_permalink( $post ) ),
-				$title
-			);
+				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_post( $attributes );
 
-			$list_items_markup .= "</li>\n";
-		}
+			endwhile;
+
+		endif;
+
+		// Reset Postdata.
+		wp_reset_postdata();
 
 		$class = 'wp-block-themezee-blocks-magazine-grid';
 
@@ -110,9 +113,9 @@ class ThemeZee_Blocks_Magazine_Grid {
 		}
 
 		$block_content = sprintf(
-			'<ul class="%1$s">test %2$s</ul>',
+			'<div class="%1$s">%2$s</div>',
 			esc_attr( $class ),
-			$list_items_markup
+			$posts_markup
 		);
 
 		return $block_content;
