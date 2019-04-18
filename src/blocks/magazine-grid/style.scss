@@ -1,0 +1,55 @@
+
+/* Magazine Columns */
+@media only screen and (min-width: 480px) {
+	.tz-magazine-columns-2,
+	.tz-magazine-columns-4,
+	.tz-magazine-columns-5,
+	.tz-magazine-columns-6 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-bottom: -1.5em;
+
+		.tz-post-wrap {
+			padding-right: 1.5em;
+			width: 50%;
+		}
+	}
+}
+
+@media only screen and (min-width: 720px) {
+	.tz-magazine-columns-3 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-bottom: -1.5em;
+
+		.tz-post-wrap {
+			padding-right: 1.5em;
+			width: 33.3333333333333%;
+		}
+	}
+
+	.tz-magazine-columns-5 .tz-post-wrap,
+	.tz-magazine-columns-6 .tz-post-wrap {
+		width: 33.3333333333333%;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.tz-magazine-columns-4 .tz-post-wrap {
+		width: 25%;
+	}
+}
+
+@media only screen and (min-width: 1040px) {
+	.tz-magazine-columns-5 .tz-post-wrap {
+		width: 20%;
+	}
+}
+
+@media only screen and (min-width: 1120px) {
+	.tz-magazine-columns-6 .tz-post-wrap {
+		width: 16.666666666666%;
+	}
+}

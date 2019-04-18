@@ -22,15 +22,15 @@ class ThemeZee_Blocks_Magazine_Grid {
 	static function setup() {
 
 		// Register Block.
-		add_action( 'init', array( __CLASS__, 'register_magazine_grid_block' ) );
+		add_action( 'init', array( __CLASS__, 'register_block' ) );
 	}
 
 	/**
-	 * Register Magazine Grid block on server.
+	 * Register block on server.
 	 *
 	 * @return void
 	 */
-	static function register_magazine_grid_block() {
+	static function register_block() {
 		register_block_type(
 			'themezee-blocks/magazine-grid',
 			array(
@@ -58,19 +58,19 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'default' => 'date',
 					),
 				),
-				'render_callback' => array( __CLASS__, 'render_magazine_grid_block' ),
+				'render_callback' => array( __CLASS__, 'render_block' ),
 			)
 		);
 	}
 
 	/**
-	 * Render Magazine Grid block.
+	 * Render block.
 	 *
 	 * @param array $attributes The block attributes.
 	 *
 	 * @return string Returns the block content.
 	 */
-	static function render_magazine_grid_block( $attributes ) {
+	static function render_block( $attributes ) {
 		$query_arguments = array(
 			'posts_per_page'      => $attributes['postsToShow'],
 			'post_status'         => 'publish',
@@ -106,19 +106,38 @@ class ThemeZee_Blocks_Magazine_Grid {
 		// Reset Postdata.
 		wp_reset_postdata();
 
-		$class = 'wp-block-themezee-blocks-magazine-grid';
+		// Define Block Content.
+		$block_content = sprintf( '<div class="tz-magazine-columns tz-magazine-columns-3">%s</div>', $posts_markup );
 
-		if ( isset( $attributes['className'] ) ) {
-			$class .= ' ' . $attributes['className'];
-		}
+		// Get Block Classes.
+		$block_classes = self::get_block_classes( $attributes );
 
-		$block_content = sprintf(
+		// Wrap Block Content.
+		$block = sprintf(
 			'<div class="%1$s">%2$s</div>',
-			esc_attr( $class ),
-			$posts_markup
+			esc_attr( $block_classes ),
+			$block_content
 		);
 
-		return $block_content;
+		return $block;
+	}
+
+	/**
+	 * Get Block Classes.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the block classes.
+	 */
+	static function get_block_classes( $attributes ) {
+		$classes  = 'wp-block-themezee-blocks-magazine-grid';
+		$classes .= ' tz-magazine-block';
+
+		if ( isset( $attributes['className'] ) ) {
+			$classes .= ' ' . $attributes['className'];
+		}
+
+		return $classes;
 	}
 }
 
