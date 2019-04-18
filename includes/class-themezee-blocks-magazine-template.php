@@ -25,7 +25,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = '';
 
 		// Add Featured Image.
-		$post_content .= self::get_post_image( $attributes );
+		$post_content .= self::get_post_image( 'large', $attributes );
 
 		// Add Post Header.
 		$post_content .= self::get_post_header( $attributes );
@@ -54,8 +54,14 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post image.
 	 */
-	static function get_post_image( $attributes ) {
-		return 'image';
+	static function get_post_image( $size, $attributes ) {
+		$image = sprintf(
+			'<figure class="entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
+			esc_url( get_permalink() ),
+			get_the_post_thumbnail( null, $size )
+		);
+
+		return $image;
 	}
 
 	/**
@@ -75,20 +81,9 @@ class ThemeZee_Blocks_Magazine_Template {
 		$header_content .= self::get_post_meta( $attributes );
 
 		// Wrap header content.
-		$header = sprintf( '<header class="entry-header">%s</header><!-- .entry-header -->', $header_content );
+		$header = sprintf( '<header class="entry-header">%s</header>', $header_content );
 
 		return $header;
-	}
-
-	/**
-	 * Get Post Excerpt.
-	 *
-	 * @param array $attributes The block attributes.
-	 *
-	 * @return string Returns the post excerpt.
-	 */
-	static function get_post_excerpt( $attributes ) {
-		return 'excerpt';
 	}
 
 	/**
@@ -116,6 +111,101 @@ class ThemeZee_Blocks_Magazine_Template {
 	 * @return string Returns the post meta.
 	 */
 	static function get_post_meta( $attributes ) {
-		return 'meta';
+		$meta_content = '';
+
+		// Add Date.
+		$meta_content .= self::get_post_date( $attributes );
+
+		// Add Author.
+		$meta_content .= self::get_post_author( $attributes );
+
+		// Wrap header content.
+		$postmeta = sprintf( '<div class="entry-meta">%s</div>', $meta_content );
+
+		return $postmeta;
+	}
+
+	/**
+	 * Get Post Date.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post date.
+	 */
+	static function get_post_date( $attributes ) {
+
+		// Create date string.
+		$time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date published updated" datetime="%3$s">%4$s</time></a>',
+			esc_url( get_permalink() ),
+			esc_attr( get_the_time() ),
+			esc_attr( get_the_date( 'c' ) ),
+			esc_html( get_the_date() )
+		);
+
+		// Wrap date.
+		$date = sprintf( '<span class="meta-date">%s</span>', $time_string );
+
+		return $date;
+	}
+
+	/**
+	 * Get Post Author.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post author.
+	 */
+	static function get_post_author( $attributes ) {
+
+		// Create author string.
+		$author_string = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'themezee-blocks' ), get_the_author() ) ),
+			esc_html( get_the_author() )
+		);
+
+		// Wrap author.
+		$author = sprintf( '<span class="meta-date">%s</span>', $author_string );
+
+		return $author;
+	}
+
+	/**
+	 * Get Post Excerpt.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post excerpt.
+	 */
+	static function get_post_excerpt( $attributes ) {
+		$post_content = '';
+
+		// Add Excerpt.
+		$post_content .= sprintf( '<p>%s</p>', get_the_excerpt() );
+
+		// Add Read More link.
+		$post_content .= self::get_post_read_more_link( $attributes );
+
+		// Wrap header content.
+		$excerpt = sprintf( '<div class="entry-content">%s</div>', $post_content );
+
+		return $excerpt;
+	}
+
+	/**
+	 * Get Post Read More link.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post read more link.
+	 */
+	static function get_post_read_more_link( $attributes ) {
+		$link = sprintf(
+			'<p class="read-more"><a href="%1$s" class="more-link" rel="bookmark">%2$s</a></p>',
+			esc_url( get_permalink() ),
+			esc_html__( 'Read More', 'themezee-blocks' )
+		);
+
+		return $link;
 	}
 }
