@@ -9,7 +9,6 @@ const { isUndefined, pickBy } = lodash;
 const {
 	Component,
 	Fragment,
-	RawHTML,
 } = wp.element;
 
 const { __ } = wp.i18n;
@@ -24,6 +23,7 @@ const {
 const {
 	PanelBody,
 	Placeholder,
+	ServerSideRender,
 	Spinner,
 	QueryControls,
 } = wp.components;
@@ -114,7 +114,7 @@ class MagazineGridEdit extends Component {
 					{ inspectorControls }
 
 					<Placeholder
-						icon="admin-post"
+						icon="format-aside"
 						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
@@ -127,34 +127,15 @@ class MagazineGridEdit extends Component {
 			);
 		}
 
-		// Removing posts from display should be instant.
-		const displayPosts = latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
-
 		return (
 			<Fragment>
 
 				{ inspectorControls }
 
-				<ul className={ this.props.className }>
-
-					{ displayPosts.map( ( post, i ) => {
-						const titleTrimmed = post.title.rendered.trim();
-						return (
-							<li key={ i }>
-								<a href={ post.link } target="_blank" rel="noreferrer noopener">
-									{ titleTrimmed ? (
-										<RawHTML>
-											{ titleTrimmed }
-										</RawHTML>
-									) :
-										__( '(Untitled)', 'themezee-blocks' )
-									}
-								</a>
-							</li>
-						);
-					} ) }
-
-				</ul>
+				<ServerSideRender
+					block="themezee-blocks/magazine-grid"
+					attributes={ attributes }
+				/>
 
 			</Fragment>
 		);
