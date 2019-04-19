@@ -144,10 +144,23 @@ class MagazineGridEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { categories, author, numberOfPosts, order, orderBy, offset } = props.attributes;
+		const { categories, tags, author, numberOfPosts, order, orderBy, offset } = props.attributes;
 		const { getEntityRecords } = select( 'core' );
+
+		// Retrieve Tag IDs from Tag names.
+		let tagsIDs;
+		if ( ! ( ! tags || 0 === tags.length ) ) {
+			const tagsObj = getEntityRecords( 'taxonomy', 'post_tag', { per_page: -1, slug: tags } );
+			if ( tagsObj ) {
+				tagsIDs = Object.keys( tagsObj ).reduce( ( str, key ) => str + tagsObj[ key ].id + ',', '' );
+				tagsIDs = tagsIDs.slice( 0, -1 );
+			}
+		}
+
+		// Query Posts.
 		const latestPostsQuery = pickBy( {
 			categories,
+			tags: '' !== tagsIDs ? tagsIDs : '99999999999999999999999999999999999', // dirty hack
 			author,
 			order,
 			orderby: orderBy,
