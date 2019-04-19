@@ -41,13 +41,9 @@ class ThemeZee_Blocks_Magazine_Grid {
 					'categories' => array(
 						'type' => 'string',
 					),
-					'postsToShow' => array(
+					'numberOfPosts' => array(
 						'type'    => 'number',
 						'default' => 6,
-					),
-					'displayPostDate' => array(
-						'type'    => 'boolean',
-						'default' => false,
 					),
 					'order' => array(
 						'type'    => 'string',
@@ -72,7 +68,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 	 */
 	static function render_block( $attributes ) {
 		$query_arguments = array(
-			'posts_per_page'      => $attributes['postsToShow'],
+			'posts_per_page'      => $attributes['numberOfPosts'],
 			'post_status'         => 'publish',
 			'order'               => $attributes['order'],
 			'orderby'             => $attributes['orderBy'],

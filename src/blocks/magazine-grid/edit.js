@@ -48,7 +48,7 @@ class MagazineGridEdit extends Component {
 			order,
 			orderBy,
 			categories,
-			postsToShow,
+			numberOfPosts,
 		} = attributes;
 
 		const inspectorControls = (
@@ -64,8 +64,8 @@ class MagazineGridEdit extends Component {
 					<RangeControl
 						key="tz-number-of-posts-control"
 						label={ __( 'Number of posts', 'themezee-blocks' ) }
-						value={ postsToShow }
-						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						value={ numberOfPosts }
+						onChange={ ( value ) => setAttributes( { numberOfPosts: value } ) }
 						min={ 1 }
 						max={ 30 }
 					/>
@@ -119,13 +119,13 @@ class MagazineGridEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { numberOfPosts, order, orderBy, categories } = props.attributes;
 		const { getEntityRecords } = select( 'core' );
 		const latestPostsQuery = pickBy( {
 			categories,
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
+			per_page: numberOfPosts,
 		}, ( value ) => ! isUndefined( value ) );
 
 		return {
