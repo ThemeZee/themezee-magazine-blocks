@@ -13,7 +13,6 @@ const {
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { addQueryArgs } = wp.url;
 const { withSelect } = wp.data;
 
 const {
@@ -35,49 +34,10 @@ import CategorySelect from '../../components/category-select';
 import OrderSelect from '../../components/order-select';
 
 /**
- * Module Constants
- */
-const CATEGORIES_LIST_QUERY = {
-	per_page: -1,
-};
-
-/**
  * Block Edit Component
  */
 class MagazineGridEdit extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			categoriesList: [],
-		};
-	}
-
-	componentDidMount() {
-		this.isStillMounted = true;
-		this.fetchRequest = wp.apiFetch( {
-			path: addQueryArgs( '/wp/v2/categories', CATEGORIES_LIST_QUERY ),
-		} ).then(
-			( categoriesList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList } );
-				}
-			}
-		).catch(
-			() => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList: [] } );
-				}
-			}
-		);
-	}
-
-	componentWillUnmount() {
-		this.isStillMounted = false;
-	}
-
 	render() {
-		const { categoriesList } = this.state;
-
 		const {
 			attributes,
 			setAttributes,
@@ -97,7 +57,6 @@ class MagazineGridEdit extends Component {
 				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) }>
 
 					<CategorySelect
-						categoriesList={ categoriesList }
 						selectedCategoryId={ categories }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 					/>
