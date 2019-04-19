@@ -144,13 +144,15 @@ class MagazineGridEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, props ) => {
-		const { numberOfPosts, order, orderBy, categories } = props.attributes;
+		const { categories, author, numberOfPosts, order, orderBy, offset } = props.attributes;
 		const { getEntityRecords } = select( 'core' );
 		const latestPostsQuery = pickBy( {
 			categories,
+			author,
 			order,
 			orderby: orderBy,
 			per_page: numberOfPosts,
+			offset,
 		}, ( value ) => ! isUndefined( value ) );
 
 		return {
