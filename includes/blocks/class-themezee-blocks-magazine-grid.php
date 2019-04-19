@@ -41,6 +41,9 @@ class ThemeZee_Blocks_Magazine_Grid {
 					'categories' => array(
 						'type' => 'string',
 					),
+					'author' => array(
+						'type' => 'number',
+					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
 						'default' => 6,
@@ -72,21 +75,25 @@ class ThemeZee_Blocks_Magazine_Grid {
 	 */
 	static function render_block( $attributes ) {
 		$query_arguments = array(
-			'posts_per_page'      => $attributes['numberOfPosts'],
+			'posts_per_page'      => intval( $attributes['numberOfPosts'] ),
 			'post_status'         => 'publish',
-			'order'               => $attributes['order'],
-			'orderby'             => $attributes['orderBy'],
+			'order'               => esc_attr( $attributes['order'] ),
+			'orderby'             => esc_attr( $attributes['orderBy'] ),
 			'suppress_filters'    => false,
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
-			$query_arguments['cat'] = $attributes['categories'];
+			$query_arguments['cat'] = esc_attr( $attributes['categories'] );
+		}
+
+		if ( isset( $attributes['author'] ) ) {
+			$query_arguments['author'] = intval( $attributes['author'] );
 		}
 
 		if ( isset( $attributes['offset'] ) && $attributes['offset'] > 0 ) {
-			$query_arguments['offset'] = $attributes['offset'];
+			$query_arguments['offset'] = intval( $attributes['offset'] );
 		}
 
 		// Fetch posts from database.

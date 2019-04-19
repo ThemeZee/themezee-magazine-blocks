@@ -31,6 +31,7 @@ const {
  * Internal dependencies
  */
 import CategorySelect from '../../components/category-select';
+import AuthorSelect from '../../components/author-select';
 import OrderSelect from '../../components/order-select';
 
 /**
@@ -45,6 +46,7 @@ class MagazineGridEdit extends Component {
 		} = this.props;
 
 		const {
+			author,
 			categories,
 			numberOfPosts,
 			offset,
@@ -60,6 +62,11 @@ class MagazineGridEdit extends Component {
 					<CategorySelect
 						selectedCategoryId={ categories }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+					/>
+
+					<AuthorSelect
+						selectedAuthorId={ author }
+						onAuthorChange={ ( value ) => setAttributes( { author: '' !== value ? value : undefined } ) }
 					/>
 
 					<RangeControl
