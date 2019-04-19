@@ -42,7 +42,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'type' => 'string',
 					),
 					'author' => array(
-						'type' => 'number',
+						'type' => 'string',
 					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
@@ -89,7 +89,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 		}
 
 		if ( isset( $attributes['author'] ) ) {
-			$query_arguments['author'] = intval( $attributes['author'] );
+			$query_arguments['author'] = esc_attr( $attributes['author'] );
 		}
 
 		if ( isset( $attributes['offset'] ) && $attributes['offset'] > 0 ) {

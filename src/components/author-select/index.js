@@ -2,62 +2,23 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
+const { withSelect } = wp.data;
 const { Component } = wp.element;
 const { TreeSelect } = wp.components;
-const { addQueryArgs } = wp.url;
 
 /**
  * Internal dependencies
  */
 import './style.scss';
 
-/**
- * Module Constants
- */
-const AUTHOR_LIST_QUERY = {
-	who: 'authors',
-	context: 'edit',
-	per_page: -1,
-};
-
 class AuthorSelect extends Component {
-	constructor() {
-		super( ...arguments );
-		this.state = {
-			authorList: [],
-		};
-	}
-
-	componentDidMount() {
-		this.isStillMounted = true;
-		this.fetchRequest = wp.apiFetch( {
-			path: addQueryArgs( '/wp/v2/users', AUTHOR_LIST_QUERY ),
-		} ).then(
-			( authorList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { authorList } );
-				}
-			}
-		).catch(
-			() => {
-				if ( this.isStillMounted ) {
-					this.setState( { authorList: [] } );
-				}
-			}
-		);
-	}
-
-	componentWillUnmount() {
-		this.isStillMounted = false;
-	}
-
 	render() {
 		const {
+			authorList,
 			selectedAuthorId,
 			onAuthorChange,
 		} = this.props;
-
-		const { authorList } = this.state;
 
 		return (
 			onAuthorChange && (
@@ -74,4 +35,11 @@ class AuthorSelect extends Component {
 	}
 }
 
-export default AuthorSelect;
+export default compose( [
+	withSelect( ( select ) => {
+		const { getAuthors } = select( 'core' );
+		return {
+			authorList: getAuthors(),
+		};
+	} ),
+] )( AuthorSelect );
