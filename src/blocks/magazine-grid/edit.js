@@ -45,10 +45,11 @@ class MagazineGridEdit extends Component {
 		} = this.props;
 
 		const {
-			order,
-			orderBy,
 			categories,
 			numberOfPosts,
+			offset,
+			order,
+			orderBy,
 		} = attributes;
 
 		const inspectorControls = (
@@ -67,6 +68,15 @@ class MagazineGridEdit extends Component {
 						value={ numberOfPosts }
 						onChange={ ( value ) => setAttributes( { numberOfPosts: value } ) }
 						min={ 1 }
+						max={ 30 }
+					/>
+
+					<RangeControl
+						key="tz-offset-control"
+						label={ __( 'Offset', 'themezee-blocks' ) }
+						value={ offset }
+						onChange={ ( value ) => setAttributes( { offset: value } ) }
+						min={ 0 }
 						max={ 30 }
 					/>
 

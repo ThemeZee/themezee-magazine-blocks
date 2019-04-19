@@ -45,6 +45,10 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'type'    => 'number',
 						'default' => 6,
 					),
+					'offset' => array(
+						'type'    => 'number',
+						'default' => 0,
+					),
 					'order' => array(
 						'type'    => 'string',
 						'default' => 'desc',
@@ -79,6 +83,10 @@ class ThemeZee_Blocks_Magazine_Grid {
 
 		if ( isset( $attributes['categories'] ) ) {
 			$query_arguments['cat'] = $attributes['categories'];
+		}
+
+		if ( isset( $attributes['offset'] ) && $attributes['offset'] > 0 ) {
+			$query_arguments['offset'] = $attributes['offset'];
 		}
 
 		// Fetch posts from database.
