@@ -26,12 +26,12 @@ const {
 	RangeControl,
 	ServerSideRender,
 	Spinner,
-	QueryControls,
 } = wp.components;
 
 /**
  * Internal dependencies
  */
+import CategorySelect from '../../components/category-select';
 import OrderSelect from '../../components/order-select';
 
 /**
@@ -96,15 +96,10 @@ class MagazineGridEdit extends Component {
 
 				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) }>
 
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
+					<CategorySelect
 						categoriesList={ categoriesList }
 						selectedCategoryId={ categories }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 
 					<RangeControl
