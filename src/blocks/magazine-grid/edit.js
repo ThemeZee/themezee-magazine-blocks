@@ -25,6 +25,7 @@ const {
 	RangeControl,
 	ServerSideRender,
 	Spinner,
+	TextControl,
 } = wp.components;
 
 /**
@@ -46,12 +47,13 @@ class MagazineGridEdit extends Component {
 		} = this.props;
 
 		const {
-			author,
 			categories,
-			numberOfPosts,
-			offset,
+			tags,
+			author,
 			order,
 			orderBy,
+			numberOfPosts,
+			offset,
 		} = attributes;
 
 		const inspectorControls = (
@@ -64,9 +66,21 @@ class MagazineGridEdit extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 					/>
 
+					<TextControl
+						label={ __( 'Tags' ) }
+						value={ tags }
+						onChange={ ( value ) => setAttributes( { tags: '' !== value ? value : undefined } ) }
+					/>
+
 					<AuthorSelect
 						selectedAuthorId={ author }
 						onAuthorChange={ ( value ) => setAttributes( { author: '' !== value ? value : undefined } ) }
+					/>
+
+					<OrderSelect
+						{ ...{ order, orderBy } }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 					/>
 
 					<RangeControl
@@ -85,12 +99,6 @@ class MagazineGridEdit extends Component {
 						onChange={ ( value ) => setAttributes( { offset: value } ) }
 						min={ 0 }
 						max={ 30 }
-					/>
-
-					<OrderSelect
-						{ ...{ order, orderBy } }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 					/>
 
 				</PanelBody>

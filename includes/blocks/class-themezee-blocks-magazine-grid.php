@@ -41,6 +41,9 @@ class ThemeZee_Blocks_Magazine_Grid {
 					'categories' => array(
 						'type' => 'string',
 					),
+					'tags' => array(
+						'type' => 'string',
+					),
 					'author' => array(
 						'type' => 'string',
 					),
@@ -86,6 +89,10 @@ class ThemeZee_Blocks_Magazine_Grid {
 
 		if ( isset( $attributes['categories'] ) ) {
 			$query_arguments['cat'] = esc_attr( $attributes['categories'] );
+		}
+
+		if ( isset( $attributes['tags'] ) ) {
+			$query_arguments['tag'] = esc_attr( $attributes['tags'] );
 		}
 
 		if ( isset( $attributes['author'] ) ) {
