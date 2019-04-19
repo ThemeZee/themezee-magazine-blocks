@@ -82,7 +82,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
-			$query_arguments['category'] = $attributes['categories'];
+			$query_arguments['cat'] = $attributes['categories'];
 		}
 
 		// Fetch posts from database.
