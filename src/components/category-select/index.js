@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+const { groupBy } = lodash;
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -10,7 +15,6 @@ const { addQueryArgs } = wp.url;
  * Internal dependencies
  */
 import './style.scss';
-import { buildTermsTree } from './terms';
 
 /**
  * Module Constants
@@ -50,6 +54,30 @@ class CategorySelect extends Component {
 		this.isStillMounted = false;
 	}
 
+	/**
+	 * Returns terms in a tree form.
+	 *
+	 * @param {Array} flatTerms  Array of terms in flat format.
+	 *
+	 * @return {Array} Array of terms in tree format.
+	 */
+	buildTermsTree( flatTerms ) {
+		const termsByParent = groupBy( flatTerms, 'parent' );
+		const fillWithChildren = ( terms ) => {
+			return terms.map( ( term ) => {
+				const children = termsByParent[ term.id ];
+				return {
+					...term,
+					children: children && children.length ?
+						fillWithChildren( children ) :
+						[],
+				};
+			} );
+		};
+
+		return fillWithChildren( termsByParent[ '0' ] || [] );
+	}
+
 	render() {
 		const {
 			selectedCategoryId,
@@ -57,7 +85,7 @@ class CategorySelect extends Component {
 		} = this.props;
 
 		const { categoriesList } = this.state;
-		const termsTree = buildTermsTree( categoriesList );
+		const termsTree = this.buildTermsTree( categoriesList );
 
 		return (
 			onCategoryChange && (
