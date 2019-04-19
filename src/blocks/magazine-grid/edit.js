@@ -29,6 +29,11 @@ const {
 } = wp.components;
 
 /**
+ * Internal dependencies
+ */
+import OrderSelect from '../../components/order-select';
+
+/**
  * Module Constants
  */
 const CATEGORIES_LIST_QUERY = {
@@ -99,6 +104,12 @@ class MagazineGridEdit extends Component {
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+
+					<OrderSelect
+						{ ...{ order, orderBy } }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 					/>
 
 				</PanelBody>
