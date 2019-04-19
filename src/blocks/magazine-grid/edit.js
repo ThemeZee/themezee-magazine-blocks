@@ -23,6 +23,7 @@ const {
 const {
 	PanelBody,
 	Placeholder,
+	RangeControl,
 	ServerSideRender,
 	Spinner,
 	QueryControls,
@@ -104,6 +105,15 @@ class MagazineGridEdit extends Component {
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+
+					<RangeControl
+						key="tz-number-of-posts-control"
+						label={ __( 'Number of posts', 'themezee-blocks' ) }
+						value={ postsToShow }
+						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						min={ 1 }
+						max={ 30 }
 					/>
 
 					<OrderSelect
