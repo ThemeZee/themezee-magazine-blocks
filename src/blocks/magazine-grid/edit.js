@@ -24,7 +24,6 @@ const {
 	PanelBody,
 	Placeholder,
 	RangeControl,
-	ServerSideRender,
 	Spinner,
 	TextControl,
 } = wp.components;
@@ -147,7 +146,7 @@ class MagazineGridEdit extends Component {
 
 						{ displayPosts.map( ( post, i ) => {
 							return (
-								<MagazinePost key={ i } post={ post } />
+								<MagazinePost key={ i } post={ post } attributes={ attributes } />
 							);
 						} ) }
 
