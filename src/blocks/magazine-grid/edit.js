@@ -2,6 +2,7 @@
  * External dependencies
  */
 const { isUndefined, pickBy } = lodash;
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -34,6 +35,7 @@ const {
 import CategorySelect from '../../components/category-select';
 import AuthorSelect from '../../components/author-select';
 import OrderSelect from '../../components/order-select';
+import MagazinePost from '../../components/magazine-post';
 
 /**
  * Block Edit Component
@@ -42,6 +44,7 @@ class MagazineGridEdit extends Component {
 	render() {
 		const {
 			attributes,
+			className,
 			setAttributes,
 			latestPosts,
 		} = this.props;
@@ -55,6 +58,8 @@ class MagazineGridEdit extends Component {
 			numberOfPosts,
 			offset,
 		} = attributes;
+
+		const blockClasses = classnames( className, 'tz-magazine-block' );
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -127,15 +132,27 @@ class MagazineGridEdit extends Component {
 			);
 		}
 
+		// Removing posts from display should be instant.
+		const displayPosts = latestPosts.length > numberOfPosts ?
+			latestPosts.slice( 0, numberOfPosts ) :
+			latestPosts;
+
 		return (
 			<Fragment>
 
 				{ inspectorControls }
 
-				<ServerSideRender
-					block="themezee-blocks/magazine-grid"
-					attributes={ attributes }
-				/>
+				<div className={ blockClasses }>
+					<div className="tz-magazine-columns tz-magazine-columns-3">
+
+						{ displayPosts.map( ( post, i ) => {
+							return (
+								<MagazinePost key={ i } post={ post } />
+							);
+						} ) }
+
+					</div>
+				</div>
 
 			</Fragment>
 		);
