@@ -165,7 +165,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		);
 
 		// Wrap author.
-		$author = sprintf( '<span class="meta-date">%s</span>', $author_string );
+		$author = sprintf( '<span class="meta-author">%s</span>', $author_string );
 
 		return $author;
 	}

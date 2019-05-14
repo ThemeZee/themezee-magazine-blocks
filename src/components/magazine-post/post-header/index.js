@@ -7,11 +7,13 @@ const { Component, RawHTML } = wp.element;
 /**
  * Internal dependencies
  */
+import PostMeta from '../post-meta';
 import './style.scss';
 
 class PostHeader extends Component {
 	render() {
 		const {
+			attributes,
 			post,
 		} = this.props;
 
@@ -31,6 +33,8 @@ class PostHeader extends Component {
 						}
 					</a>
 				</h2>
+
+				<PostMeta post={ post } attributes={ attributes } />
 
 			</header>
 		);
