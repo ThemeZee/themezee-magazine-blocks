@@ -6,13 +6,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, RawHTML } = wp.element;
+const { Component } = wp.element;
 
 /**
  * Internal dependencies
  */
 import PostImage from './post-image';
+import PostHeader from './post-header';
 import './style.scss';
 
 class MagazinePost extends Component {
@@ -38,21 +38,12 @@ class MagazinePost extends Component {
 		const postID = `post-${ post.id }`;
 		const postClasses = this.getPostClasses();
 
-		const titleTrimmed = post.title.rendered.trim();
-
 		return (
 			<div className="tz-post-wrap">
 				<article id={ postID } className={ postClasses }>
 
 					<PostImage post={ post } attributes={ attributes } />
-
-					{ titleTrimmed ? (
-						<RawHTML>
-							{ titleTrimmed }
-						</RawHTML>
-					) :
-						__( '(Untitled)' )
-					}
+					<PostHeader post={ post } attributes={ attributes } />
 
 				</article>
 			</div>
