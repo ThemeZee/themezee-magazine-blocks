@@ -24,6 +24,7 @@ const {
 	PanelBody,
 	Placeholder,
 	RangeControl,
+	SelectControl,
 	Spinner,
 	TextControl,
 } = wp.components;
@@ -56,6 +57,7 @@ class MagazineGridEdit extends Component {
 			orderBy,
 			numberOfPosts,
 			offset,
+			imageSize,
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
@@ -63,7 +65,7 @@ class MagazineGridEdit extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 
-				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) }>
+				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
 						selectedCategoryId={ categories }
@@ -107,6 +109,22 @@ class MagazineGridEdit extends Component {
 
 				</PanelBody>
 
+				<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
+
+					<SelectControl
+						label={ __( 'Image Size', 'themezee-blocks' ) }
+						value={ imageSize }
+						onChange={ ( newSize ) => setAttributes( { imageSize: newSize } ) }
+						options={ [
+							{ value: 'post-thumbnail', label: __( 'Thumbnail', 'themezee-blocks' ) },
+							{ value: 'medium', label: __( 'Medium', 'themezee-blocks' ) },
+							{ value: 'large', label: __( 'Large', 'themezee-blocks' ) },
+							{ value: 'full', label: __( 'Full Size', 'themezee-blocks' ) },
+						] }
+					/>
+
+				</PanelBody>
+
 			</InspectorControls>
 		);
 
@@ -144,11 +162,9 @@ class MagazineGridEdit extends Component {
 				<div className={ blockClasses }>
 					<div className="tz-magazine-columns tz-magazine-columns-3">
 
-						{ displayPosts.map( ( post, i ) => {
-							return (
-								<MagazinePost key={ i } post={ post } attributes={ attributes } />
-							);
-						} ) }
+						{ displayPosts.map( ( post, i ) =>
+							<MagazinePost key={ i } post={ post } attributes={ attributes } />
+						) }
 
 					</div>
 				</div>

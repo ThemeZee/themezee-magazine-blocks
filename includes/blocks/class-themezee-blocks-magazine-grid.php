@@ -63,6 +63,10 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'type'    => 'string',
 						'default' => 'date',
 					),
+					'imageSize' => array(
+						'type'    => 'string',
+						'default' => 'post-thumbnail',
+					),
 				),
 				'render_callback' => array( __CLASS__, 'render_block' ),
 			)

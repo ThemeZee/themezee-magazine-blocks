@@ -29,20 +29,20 @@ class PostImage extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		const { size } = this.props.attributes;
+		const { imageSize } = this.props.attributes;
 
 		// Update image url if it is empty.
 		if ( this.props.image && '' === this.state.imageURL ) {
-			this.updateImageURL( 'post-thumbnail' );
+			this.updateImageURL( imageSize );
 		}
 
 		// Update image url if new image size was chosen.
-		if ( size !== prevProps.attributes.size ) {
-			this.updateImageURL( size );
+		if ( imageSize !== prevProps.attributes.imageSize ) {
+			this.updateImageURL( imageSize );
 		}
 	}
 
-	updateImageURL( size ) {
+	updateImageURL( imageSize ) {
 		const availableSizes = this.getAvailableSizes();
 
 		// Return early if image sizes are not available yet.
@@ -51,9 +51,9 @@ class PostImage extends Component {
 		}
 
 		// Check if image size exists.
-		if ( availableSizes.hasOwnProperty( size ) ) {
+		if ( availableSizes.hasOwnProperty( imageSize ) ) {
 			this.setState( {
-				imageURL: availableSizes[ size ].source_url,
+				imageURL: availableSizes[ imageSize ].source_url,
 			} );
 		} else {
 			this.setState( {
