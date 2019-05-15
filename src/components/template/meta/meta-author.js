@@ -2,18 +2,29 @@
  * WordPress dependencies
  */
 const { Component } = wp.element;
+const { compose } = wp.compose;
+const { withSelect } = wp.data;
 
 class MetaAuthor extends Component {
 	render() {
 		const {
+			authors,
 			post,
 		} = this.props;
+
+		// Retrieve post author.
+		const postAuthor = authors.find( author => author.id === post.author );
+
+		// Return early if no author is found.
+		if ( 'undefined' === typeof postAuthor ) {
+			return null;
+		}
 
 		return (
 			<span className="tz-meta-author meta-author">
 				<span className="author vcard">
-					<a className="url fn n" href="%1$s" rel="author">
-						{ post.author }
+					<a className="url fn n" href={ postAuthor.link } target="_blank" rel="noreferrer noopener">
+						{ postAuthor.name }
 					</a>
 				</span>
 			</span>
@@ -21,4 +32,11 @@ class MetaAuthor extends Component {
 	}
 }
 
-export default MetaAuthor;
+export default compose( [
+	withSelect( ( select ) => {
+		const { getAuthors } = select( 'core' );
+		return {
+			authors: getAuthors(),
+		};
+	} ),
+] )( MetaAuthor );
