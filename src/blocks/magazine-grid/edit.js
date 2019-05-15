@@ -100,7 +100,7 @@ class MagazineGridEdit extends Component {
 
 					<RangeControl
 						key="tz-offset-control"
-						label={ __( 'Offset', 'themezee-blocks' ) }
+						label={ __( 'Skip Posts', 'themezee-blocks' ) }
 						value={ offset }
 						onChange={ ( value ) => setAttributes( { offset: value } ) }
 						min={ 0 }

@@ -11,8 +11,8 @@ const { Component } = wp.element;
 /**
  * Internal dependencies
  */
-import PostImage from './post-image';
-import PostHeader from './post-header';
+import PostImage from '../template/post/post-image';
+import PostHeader from '../template/post/post-header';
 import './style.scss';
 
 class MagazinePost extends Component {

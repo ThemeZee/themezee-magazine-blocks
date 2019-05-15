@@ -8,7 +8,6 @@ const { Component, RawHTML } = wp.element;
  * Internal dependencies
  */
 import PostMeta from '../post-meta';
-import './style.scss';
 
 class PostHeader extends Component {
 	render() {

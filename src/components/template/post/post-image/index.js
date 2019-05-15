@@ -13,11 +13,6 @@ const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 
-/**
- * Internal dependencies
- */
-import './style.scss';
-
 class PostImage extends Component {
 	constructor() {
 		super( ...arguments );
