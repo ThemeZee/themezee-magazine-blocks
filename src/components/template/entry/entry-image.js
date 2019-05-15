@@ -14,66 +14,21 @@ const { compose } = wp.compose;
 const { withSelect } = wp.data;
 
 class EntryImage extends Component {
-	constructor() {
-		super( ...arguments );
-		this.updateImageURL = this.updateImageURL.bind( this );
-
-		this.state = {
-			imageURL: '',
-		};
-	}
-
-	componentDidUpdate( prevProps ) {
-		const { imageSize } = this.props.attributes;
-
-		// Update image url if it is empty.
-		if ( this.props.image && '' === this.state.imageURL ) {
-			this.updateImageURL( imageSize );
-		}
-
-		// Update image url if new image size was chosen.
-		if ( imageSize !== prevProps.attributes.imageSize ) {
-			this.updateImageURL( imageSize );
-		}
-	}
-
-	updateImageURL( imageSize ) {
-		const availableSizes = this.getAvailableSizes();
-
-		// Return early if image sizes are not available yet.
-		if ( isEmpty( availableSizes ) ) {
-			return;
-		}
-
-		// Check if image size exists.
-		if ( availableSizes.hasOwnProperty( imageSize ) ) {
-			this.setState( {
-				imageURL: availableSizes[ imageSize ].source_url,
-			} );
-		} else {
-			this.setState( {
-				imageURL: availableSizes.full.source_url,
-			} );
-		}
-	}
-
-	getAvailableSizes() {
-		return get( this.props.image, [ 'media_details', 'sizes' ], {} );
-	}
-
 	render() {
-		const { post } = this.props;
-		const { imageURL } = this.state;
+		const {
+			post,
+			image,
+		} = this.props;
 
 		// Return early if image is not loaded.
-		if ( '' === imageURL ) {
+		if ( '' === image ) {
 			return null;
 		}
 
 		return (
 			<figure className="entry-image">
 				<a href={ post.link } target="_blank" rel="noreferrer noopener">
-					<img src={ imageURL } alt="" />
+					<img src={ image } alt="" />
 				</a>
 			</figure>
 		);
@@ -83,11 +38,29 @@ class EntryImage extends Component {
 export default compose( [
 	withSelect( ( select, props ) => {
 		const { getMedia } = select( 'core' );
-		const id = props.post.featured_media;
+		const {
+			attributes,
+			post,
+		} = props;
+
+		const image = post.featured_media ? getMedia( post.featured_media ) : null;
+		const availableSizes = get( image, [ 'media_details', 'sizes' ], {} );
+
+		if ( isEmpty( availableSizes ) ) {
+			return;
+		}
+
+		let imageURL = '';
+
+		// Check if image size exists.
+		if ( availableSizes.hasOwnProperty( attributes.imageSize ) ) {
+			imageURL = availableSizes[ attributes.imageSize ].source_url;
+		} else {
+			imageURL = availableSizes.full.source_url;
+		}
 
 		return {
-			image: id ? getMedia( id ) : null,
+			image: imageURL,
 		};
 	} ),
 ] )( EntryImage );
-
