@@ -13,7 +13,7 @@ const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 
-class PostImage extends Component {
+class EntryImage extends Component {
 	constructor() {
 		super( ...arguments );
 		this.updateImageURL = this.updateImageURL.bind( this );
@@ -89,5 +89,5 @@ export default compose( [
 			image: id ? getMedia( id ) : null,
 		};
 	} ),
-] )( PostImage );
+] )( EntryImage );
 

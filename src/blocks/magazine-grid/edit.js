@@ -32,10 +32,10 @@ const {
 /**
  * Internal dependencies
  */
-import CategorySelect from '../../components/category-select';
-import AuthorSelect from '../../components/author-select';
-import OrderSelect from '../../components/order-select';
-import MagazinePost from '../../components/magazine-post';
+import CategorySelect from '../../components/controls/category-select';
+import AuthorSelect from '../../components/controls/author-select';
+import OrderSelect from '../../components/controls/order-select';
+import MagazinePost from '../../components/template/post/magazine-post.js';
 
 /**
  * Block Edit Component

@@ -11,9 +11,8 @@ const { Component } = wp.element;
 /**
  * Internal dependencies
  */
-import PostImage from '../template/post/post-image';
-import PostHeader from '../template/post/post-header';
-import './style.scss';
+import EntryImage from '../entry/entry-image.js';
+import EntryHeader from '../entry/entry-header.js';
 
 class MagazinePost extends Component {
 	getPostClasses() {
@@ -42,8 +41,8 @@ class MagazinePost extends Component {
 			<div className="tz-post-wrap">
 				<article id={ postID } className={ postClasses }>
 
-					<PostImage post={ post } attributes={ attributes } />
-					<PostHeader post={ post } attributes={ attributes } />
+					<EntryImage post={ post } attributes={ attributes } />
+					<EntryHeader post={ post } attributes={ attributes } />
 
 				</article>
 			</div>

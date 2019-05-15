@@ -6,10 +6,10 @@ const { Component } = wp.element;
 /**
  * Internal dependencies
  */
-import MetaDate from '../../meta/meta-date.js';
-import MetaAuthor from '../../meta/meta-author.js';
+import MetaDate from '../meta/meta-date.js';
+import MetaAuthor from '../meta/meta-author.js';
 
-class PostMeta extends Component {
+class EntryMeta extends Component {
 	render() {
 		const {
 			attributes,
@@ -28,4 +28,4 @@ class PostMeta extends Component {
 	}
 }
 
-export default PostMeta;
+export default EntryMeta;
