@@ -67,6 +67,34 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'type'    => 'string',
 						'default' => 'post-thumbnail',
 					),
+					'metaPosition' => array(
+						'type'    => 'string',
+						'default' => 'below-title',
+					),
+					'showDate' => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'showAuthor' => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'showCategories' => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
+					'showComments' => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
+					'excerptLength' => array(
+						'type'    => 'number',
+						'default' => 25,
+					),
+					'moreText' => array(
+						'type'    => 'string',
+						'default' => esc_html__( 'Continue Reading', 'themezee-blocks' ),
+					),
 				),
 				'render_callback' => array( __CLASS__, 'render_block' ),
 			)

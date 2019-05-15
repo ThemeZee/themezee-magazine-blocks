@@ -27,6 +27,7 @@ const {
 	SelectControl,
 	Spinner,
 	TextControl,
+	ToggleControl,
 } = wp.components;
 
 /**
@@ -58,6 +59,13 @@ class MagazineGridEdit extends Component {
 			numberOfPosts,
 			offset,
 			imageSize,
+			metaPosition,
+			showDate,
+			showAuthor,
+			showCategories,
+			showComments,
+			excerptLength,
+			moreText,
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
@@ -65,7 +73,7 @@ class MagazineGridEdit extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 
-				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Select Content', 'themezee-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
 						selectedCategoryId={ categories }
@@ -73,7 +81,7 @@ class MagazineGridEdit extends Component {
 					/>
 
 					<TextControl
-						label={ __( 'Tags' ) }
+						label={ __( 'Tags', 'themezee-blocks' ) }
 						value={ tags }
 						onChange={ ( value ) => setAttributes( { tags: '' !== value ? value : undefined } ) }
 					/>
@@ -114,13 +122,65 @@ class MagazineGridEdit extends Component {
 					<SelectControl
 						label={ __( 'Image Size', 'themezee-blocks' ) }
 						value={ imageSize }
-						onChange={ ( newSize ) => setAttributes( { imageSize: newSize } ) }
+						onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 						options={ [
 							{ value: 'post-thumbnail', label: __( 'Thumbnail', 'themezee-blocks' ) },
 							{ value: 'medium', label: __( 'Medium', 'themezee-blocks' ) },
 							{ value: 'large', label: __( 'Large', 'themezee-blocks' ) },
 							{ value: 'full', label: __( 'Full Size', 'themezee-blocks' ) },
 						] }
+					/>
+
+				</PanelBody>
+
+				<PanelBody title={ __( 'Post Settings', 'themezee-blocks' ) } initialOpen={ false }>
+
+					<SelectControl
+						label={ __( 'Post Details', 'themezee-blocks' ) }
+						value={ metaPosition }
+						onChange={ ( value ) => setAttributes( { metaPosition: value } ) }
+						options={ [
+							{ value: 'above-title', label: __( 'Show above post title', 'themezee-blocks' ) },
+							{ value: 'below-title', label: __( 'Show below post title', 'themezee-blocks' ) },
+						] }
+					/>
+
+					<ToggleControl
+						label={ __( 'Display Date', 'gt-blocks' ) }
+						checked={ !! showDate }
+						onChange={ () => setAttributes( { showDate: ! showDate } ) }
+					/>
+
+					<ToggleControl
+						label={ __( 'Display Author', 'gt-blocks' ) }
+						checked={ !! showAuthor }
+						onChange={ () => setAttributes( { showAuthor: ! showAuthor } ) }
+					/>
+
+					<ToggleControl
+						label={ __( 'Display Categories', 'gt-blocks' ) }
+						checked={ !! showCategories }
+						onChange={ () => setAttributes( { showCategories: ! showCategories } ) }
+					/>
+
+					<ToggleControl
+						label={ __( 'Display Comments', 'gt-blocks' ) }
+						checked={ !! showComments }
+						onChange={ () => setAttributes( { showComments: ! showComments } ) }
+					/>
+
+					<RangeControl
+						label={ __( 'Excerpt Length', 'themezee-blocks' ) }
+						value={ excerptLength }
+						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+						min={ 0 }
+						max={ 100 }
+					/>
+
+					<TextControl
+						label={ __( 'Read More Text', 'themezee-blocks' ) }
+						value={ moreText }
+						onChange={ ( value ) => setAttributes( { moreText: '' !== value ? value : undefined } ) }
 					/>
 
 				</PanelBody>
