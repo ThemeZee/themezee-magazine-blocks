@@ -16,12 +16,28 @@ class EntryHeader extends Component {
 			post,
 		} = this.props;
 
+		const {
+			metaPosition,
+			showDate,
+			showAuthor,
+			showCategories,
+			showComments,
+		} = attributes;
+
+		const showMeta = showDate || showAuthor || showCategories || showComments;
+
 		return (
 			<header className="tz-entry-header entry-header">
 
+				{ ( 'above-title' === metaPosition && showMeta ) && (
+					<EntryMeta post={ post } attributes={ attributes } />
+				) }
+
 				<EntryTitle post={ post } attributes={ attributes } />
 
-				<EntryMeta post={ post } attributes={ attributes } />
+				{ ( 'below-title' === metaPosition && showMeta ) && (
+					<EntryMeta post={ post } attributes={ attributes } />
+				) }
 
 			</header>
 		);

@@ -16,12 +16,23 @@ class EntryMeta extends Component {
 			post,
 		} = this.props;
 
+		const {
+			showDate,
+			showAuthor,
+			showCategories,
+			showComments,
+		} = attributes;
+
 		return (
 			<div className="tz-entry-meta entry-meta">
 
-				<MetaDate post={ post } attributes={ attributes } />
+				{ showDate && (
+					<MetaDate post={ post } attributes={ attributes } />
+				) }
 
-				<MetaAuthor post={ post } attributes={ attributes } />
+				{ showAuthor && (
+					<MetaAuthor post={ post } attributes={ attributes } />
+				) }
 
 			</div>
 		);
