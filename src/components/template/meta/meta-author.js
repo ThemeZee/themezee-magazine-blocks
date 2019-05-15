@@ -21,12 +21,10 @@ class MetaAuthor extends Component {
 		}
 
 		return (
-			<span className="tz-meta-author meta-author">
-				<span className="author vcard">
-					<a className="url fn n" href={ postAuthor.link } target="_blank" rel="noreferrer noopener">
-						{ postAuthor.name }
-					</a>
-				</span>
+			<span className="tz-meta-author author vcard">
+				<a className="url fn n" href={ postAuthor.link } target="_blank" rel="noreferrer noopener">
+					{ postAuthor.name }
+				</a>
 			</span>
 		);
 	}

@@ -8,6 +8,7 @@ const { Component } = wp.element;
  */
 import MetaDate from '../meta/meta-date.js';
 import MetaAuthor from '../meta/meta-author.js';
+import MetaCategories from '../meta/meta-categories.js';
 
 class EntryMeta extends Component {
 	render() {
@@ -32,6 +33,10 @@ class EntryMeta extends Component {
 
 				{ showAuthor && (
 					<MetaAuthor post={ post } attributes={ attributes } />
+				) }
+
+				{ showCategories && (
+					<MetaCategories post={ post } attributes={ attributes } />
 				) }
 
 			</div>
