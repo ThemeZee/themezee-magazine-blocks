@@ -13,6 +13,7 @@ const { Component } = wp.element;
  */
 import EntryImage from '../entry/entry-image.js';
 import EntryHeader from '../entry/entry-header.js';
+import EntryContent from '../entry/entry-content.js';
 
 class MagazinePost extends Component {
 	getPostClasses() {
@@ -43,6 +44,7 @@ class MagazinePost extends Component {
 
 					<EntryImage post={ post } attributes={ attributes } />
 					<EntryHeader post={ post } attributes={ attributes } />
+					<EntryContent post={ post } attributes={ attributes } />
 
 				</article>
 			</div>
