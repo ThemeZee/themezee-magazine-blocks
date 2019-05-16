@@ -43,7 +43,7 @@ class EntryContent extends Component {
 				</RawHTML>
 
 				{ '' !== moreText && (
-					<p className="tz-read-more">
+					<p className="tz-read-more read-more">
 						<a className="tz-more-link more-link" href={ post.link } target="_blank" rel="noopener noreferrer">
 							{ moreText }
 						</a>

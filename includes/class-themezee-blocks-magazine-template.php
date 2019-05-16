@@ -56,7 +56,7 @@ class ThemeZee_Blocks_Magazine_Template {
 	 */
 	static function get_post_image( $size, $attributes ) {
 		$image = sprintf(
-			'<figure class="entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
+			'<figure class="tz-entry-image entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
 			esc_url( get_permalink() ),
 			get_the_post_thumbnail( null, $size )
 		);
@@ -81,7 +81,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$header_content .= self::get_post_meta( $attributes );
 
 		// Wrap header content.
-		$header = sprintf( '<header class="entry-header">%s</header>', $header_content );
+		$header = sprintf( '<header class="tz-entry-header entry-header">%s</header>', $header_content );
 
 		return $header;
 	}
@@ -95,7 +95,7 @@ class ThemeZee_Blocks_Magazine_Template {
 	 */
 	static function get_post_title( $attributes ) {
 		$title = sprintf(
-			'<h2 class="entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+			'<h2 class="tz-entry-title entry-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 			esc_url( get_permalink() ),
 			esc_html( get_the_title() )
 		);
@@ -120,7 +120,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$meta_content .= self::get_post_author( $attributes );
 
 		// Wrap header content.
-		$postmeta = sprintf( '<div class="entry-meta">%s</div>', $meta_content );
+		$postmeta = sprintf( '<div class="tz-entry-meta entry-meta">%s</div>', $meta_content );
 
 		return $postmeta;
 	}
@@ -135,7 +135,7 @@ class ThemeZee_Blocks_Magazine_Template {
 	static function get_post_date( $attributes ) {
 
 		// Create date string.
-		$time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date published updated" datetime="%3$s">%4$s</time></a>',
+		$time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="published updated" datetime="%3$s">%4$s</time></a>',
 			esc_url( get_permalink() ),
 			esc_attr( get_the_time() ),
 			esc_attr( get_the_date( 'c' ) ),
@@ -143,7 +143,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		);
 
 		// Wrap date.
-		$date = sprintf( '<span class="meta-date">%s</span>', $time_string );
+		$date = sprintf( '<span class="tz-meta-date tz-meta-field">%s</span>', $time_string );
 
 		return $date;
 	}
@@ -158,14 +158,14 @@ class ThemeZee_Blocks_Magazine_Template {
 	static function get_post_author( $attributes ) {
 
 		// Create author string.
-		$author_string = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+		$author_string = sprintf( '<a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'themezee-blocks' ), get_the_author() ) ),
 			esc_html( get_the_author() )
 		);
 
 		// Wrap author.
-		$author = sprintf( '<span class="meta-author">%s</span>', $author_string );
+		$author = sprintf( '<span class="tz-meta-author tz-meta-field author vcard">%s</span>', $author_string );
 
 		return $author;
 	}
@@ -187,7 +187,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content .= self::get_post_read_more_link( $attributes );
 
 		// Wrap header content.
-		$excerpt = sprintf( '<div class="entry-content">%s</div>', $post_content );
+		$excerpt = sprintf( '<div class="tz-entry-content entry-content">%s</div>', $post_content );
 
 		return $excerpt;
 	}
@@ -201,7 +201,7 @@ class ThemeZee_Blocks_Magazine_Template {
 	 */
 	static function get_post_read_more_link( $attributes ) {
 		$link = sprintf(
-			'<p class="read-more"><a href="%1$s" class="more-link" rel="bookmark">%2$s</a></p>',
+			'<p class="tz-read-more read-more"><a href="%1$s" class="tz-more-link more-link" rel="bookmark">%2$s</a></p>',
 			esc_url( get_permalink() ),
 			esc_html__( 'Read More', 'themezee-blocks' )
 		);

@@ -1,4 +1,3 @@
-
 /* Magazine Columns */
 @media only screen and (min-width: 480px) {
 	.tz-magazine-columns-2,
@@ -52,4 +51,21 @@
 	.tz-magazine-columns-6 .tz-post-wrap {
 		width: 16.666666666666%;
 	}
+}
+
+/* Default Post Styling */
+.tz-entry-image {
+	margin: 0;
+	max-width: 100%;
+	vertical-align: top;
+}
+
+.tz-entry-meta {
+	margin: 0 0 0.5rem;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+.tz-meta-field {
+	margin-right: 0.5rem;
 }

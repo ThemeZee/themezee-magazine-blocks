@@ -26,7 +26,7 @@ class MetaCategories extends Component {
 		}
 
 		return (
-			<span className="tz-meta-categories">
+			<span className="tz-meta-categories tz-meta-field">
 
 				{ postCategories.map( ( category, i ) =>
 					<a key={ i } href={ category.link } target="_blank" rel="noreferrer noopener">

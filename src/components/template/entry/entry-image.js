@@ -26,7 +26,7 @@ class EntryImage extends Component {
 		}
 
 		return (
-			<figure className="entry-image">
+			<figure className="tz-entry-image entry-image">
 				<a href={ post.link } target="_blank" rel="noreferrer noopener">
 					<img src={ image } alt="" />
 				</a>
