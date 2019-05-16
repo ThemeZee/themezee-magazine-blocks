@@ -25,7 +25,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = '';
 
 		// Add Featured Image.
-		$post_content .= self::get_post_image( 'large', $attributes );
+		$post_content .= self::get_post_image( $attributes );
 
 		// Add Post Header.
 		$post_content .= self::get_post_header( $attributes );
@@ -54,11 +54,11 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post image.
 	 */
-	static function get_post_image( $size, $attributes ) {
+	static function get_post_image( $attributes ) {
 		$image = sprintf(
 			'<figure class="tz-entry-image entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
 			esc_url( get_permalink() ),
-			get_the_post_thumbnail( null, $size )
+			get_the_post_thumbnail( null, $attributes['imageSize'] )
 		);
 
 		return $image;
@@ -74,11 +74,20 @@ class ThemeZee_Blocks_Magazine_Template {
 	static function get_post_header( $attributes ) {
 		$header_content = '';
 
+		$show_meta = $attributes['showDate'] || $attributes['showAuthor'] || $attributes['showCategories'] || $attributes['showComments'];
+
+		// Show Post Meta?
+		if ( 'above-title' === $attributes['metaPosition'] && true === $show_meta ) {
+			$header_content .= self::get_post_meta( $attributes );
+		}
+
 		// Add Title.
 		$header_content .= self::get_post_title( $attributes );
 
-		// Add Post Meta.
-		$header_content .= self::get_post_meta( $attributes );
+		// Show Post Meta?
+		if ( 'below-title' === $attributes['metaPosition'] && true === $show_meta ) {
+			$header_content .= self::get_post_meta( $attributes );
+		}
 
 		// Wrap header content.
 		$header = sprintf( '<header class="tz-entry-header entry-header">%s</header>', $header_content );
@@ -113,17 +122,25 @@ class ThemeZee_Blocks_Magazine_Template {
 	static function get_post_meta( $attributes ) {
 		$meta_content = '';
 
-		// Add Date.
-		$meta_content .= self::get_post_date( $attributes );
+		// Show Date?
+		if ( true === $attributes['showDate'] ) {
+			$meta_content .= self::get_post_date( $attributes );
+		}
 
-		// Add Author.
-		$meta_content .= self::get_post_author( $attributes );
+		// Show Author?
+		if ( true === $attributes['showAuthor'] ) {
+			$meta_content .= self::get_post_author( $attributes );
+		}
 
-		// Add Categories.
-		$meta_content .= self::get_post_categories( $attributes );
+		// Show Categories?
+		if ( true === $attributes['showCategories'] ) {
+			$meta_content .= self::get_post_categories( $attributes );
+		}
 
-		// Add Comments.
-		$meta_content .= self::get_post_comments( $attributes );
+		// Show Comments?
+		if ( true === $attributes['showComments'] ) {
+			$meta_content .= self::get_post_comments( $attributes );
+		}
 
 		// Wrap header content.
 		$postmeta = sprintf( '<div class="tz-entry-meta entry-meta">%s</div>', $meta_content );
