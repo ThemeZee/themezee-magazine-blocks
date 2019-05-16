@@ -1,16 +1,17 @@
 /* Magazine Columns */
 @media only screen and (min-width: 480px) {
 	.tz-magazine-columns-2,
-	.tz-magazine-columns-4,
-	.tz-magazine-columns-5,
-	.tz-magazine-columns-6 {
+	.tz-magazine-columns-4 {
 		display: flex;
 		flex-wrap: wrap;
 		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--tz-column-gap) );
 		margin-bottom: -1.5em;
+		margin-bottom: calc( -1 * var(--tz-column-gap) );
 
 		.tz-post-wrap {
 			padding-right: 1.5em;
+			padding-right: var(--tz-column-gap);
 			width: 50%;
 		}
 	}
@@ -21,17 +22,15 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--tz-column-gap) );
 		margin-bottom: -1.5em;
+		margin-bottom: calc( -1 * var(--tz-column-gap) );
 
 		.tz-post-wrap {
 			padding-right: 1.5em;
+			padding-right: var(--tz-column-gap);
 			width: 33.3333333333333%;
 		}
-	}
-
-	.tz-magazine-columns-5 .tz-post-wrap,
-	.tz-magazine-columns-6 .tz-post-wrap {
-		width: 33.3333333333333%;
 	}
 }
 
@@ -39,33 +38,4 @@
 	.tz-magazine-columns-4 .tz-post-wrap {
 		width: 25%;
 	}
-}
-
-@media only screen and (min-width: 1040px) {
-	.tz-magazine-columns-5 .tz-post-wrap {
-		width: 20%;
-	}
-}
-
-@media only screen and (min-width: 1120px) {
-	.tz-magazine-columns-6 .tz-post-wrap {
-		width: 16.666666666666%;
-	}
-}
-
-/* Default Post Styling */
-.tz-entry-image {
-	margin: 0;
-	max-width: 100%;
-	vertical-align: top;
-}
-
-.tz-entry-meta {
-	margin: 0 0 0.5rem;
-	font-size: 15px;
-	font-size: 0.9375rem;
-}
-
-.tz-meta-field {
-	margin-right: 0.5rem;
 }

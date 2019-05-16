@@ -1,0 +1,20 @@
+/* Default Styling */
+:root {
+	--tz-column-gap: 1.5em;
+}
+
+.tz-entry-image {
+	margin: 0;
+	max-width: 100%;
+	vertical-align: top;
+}
+
+.tz-entry-meta {
+	margin: 0 0 0.5rem;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+.tz-meta-field {
+	margin-right: 0.5rem;
+}
