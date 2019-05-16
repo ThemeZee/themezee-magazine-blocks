@@ -23,7 +23,7 @@ class EntryContent extends Component {
 		}
 
 		// Set excerpt more text if excerpt needs to be shortened.
-		const excerptMore = excerptLength < excerpt.trim().split( ' ' ).length ? ' [...] ' : '';
+		const excerptMore = excerptLength < excerpt.trim().split( ' ' ).length ? ' <span class="tz-excerpt-more">[...]</span>' : '';
 
 		// Shorten the excerpt.
 		excerpt = excerpt.trim().split( ' ', excerptLength ).join( ' ' );

@@ -181,7 +181,7 @@ class MagazineGridEdit extends Component {
 						<TextControl
 							label={ __( 'Read More Text', 'themezee-blocks' ) }
 							value={ moreText }
-							onChange={ ( value ) => setAttributes( { moreText: '' !== value ? value : undefined } ) }
+							onChange={ ( value ) => setAttributes( { moreText: value } ) }
 						/>
 					) }
 

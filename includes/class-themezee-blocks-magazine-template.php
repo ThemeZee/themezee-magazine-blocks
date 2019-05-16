@@ -30,8 +30,10 @@ class ThemeZee_Blocks_Magazine_Template {
 		// Add Post Header.
 		$post_content .= self::get_post_header( $attributes );
 
-		// Add Excerpt.
-		$post_content .= self::get_post_excerpt( $attributes );
+		// Show Excerpt?
+		if ( $attributes['excerptLength'] > 0 ) {
+			$post_content .= self::get_post_content( $attributes );
+		}
 
 		// Wrap post content into <article> tag.
 		$post_article = sprintf(
@@ -250,6 +252,30 @@ class ThemeZee_Blocks_Magazine_Template {
 	}
 
 	/**
+	 * Get Post Content.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post content.
+	 */
+	static function get_post_content( $attributes ) {
+		$post_content = '';
+
+		// Add Excerpt.
+		$post_content .= self::get_post_excerpt( $attributes );
+
+		// Show Read More link?
+		if ( '' !== $attributes['moreText'] ) {
+			$post_content .= self::get_post_read_more_link( $attributes );
+		}
+
+		// Wrap post content.
+		$content = sprintf( '<div class="tz-entry-content entry-content">%s</div>', $post_content );
+
+		return $content;
+	}
+
+	/**
 	 * Get Post Excerpt.
 	 *
 	 * @param array $attributes The block attributes.
@@ -257,16 +283,22 @@ class ThemeZee_Blocks_Magazine_Template {
 	 * @return string Returns the post excerpt.
 	 */
 	static function get_post_excerpt( $attributes ) {
-		$post_content = '';
+		$post = get_post( $post );
 
-		// Add Excerpt.
-		$post_content .= sprintf( '<p>%s</p>', get_the_excerpt() );
+		if ( empty( $post ) ) {
+			return '';
+		}
 
-		// Add Read More link.
-		$post_content .= self::get_post_read_more_link( $attributes );
+		$post_excerpt = $post->post_excerpt;
 
-		// Wrap header content.
-		$excerpt = sprintf( '<div class="tz-entry-content entry-content">%s</div>', $post_content );
+		if ( ! ( $post_excerpt ) ) {
+			$post_excerpt = $post->post_content;
+		}
+
+		$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], '' ) );
+
+		// Wrap Excerpt.
+		$excerpt = sprintf( '<p>%s <span class="tz-excerpt-more">[&hellip;]</span></p>', $trimmed_excerpt );
 
 		return $excerpt;
 	}
@@ -282,7 +314,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$link = sprintf(
 			'<p class="tz-read-more read-more"><a href="%1$s" class="tz-more-link more-link" rel="bookmark">%2$s</a></p>',
 			esc_url( get_permalink() ),
-			esc_html__( 'Read More', 'themezee-blocks' )
+			esc_html( $attributes['moreText'] )
 		);
 
 		return $link;
