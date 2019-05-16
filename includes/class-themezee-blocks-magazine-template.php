@@ -122,6 +122,9 @@ class ThemeZee_Blocks_Magazine_Template {
 		// Add Categories.
 		$meta_content .= self::get_post_categories( $attributes );
 
+		// Add Comments.
+		$meta_content .= self::get_post_comments( $attributes );
+
 		// Wrap header content.
 		$postmeta = sprintf( '<div class="tz-entry-meta entry-meta">%s</div>', $meta_content );
 
@@ -193,6 +196,40 @@ class ThemeZee_Blocks_Magazine_Template {
 		$categories = sprintf( '<span class="tz-meta-categories tz-meta-field">%s</span>', $category_list );
 
 		return $categories;
+	}
+
+	/**
+	 * Get Post Comments.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post comments.
+	 */
+	static function get_post_comments( $attributes ) {
+
+		// Return early if post has no comment function.
+		if ( ! ( comments_open() || get_comments_number() ) ) {
+			return;
+		}
+
+		// Start Output Buffering.
+		ob_start();
+
+		// Get Comment String.
+		comments_popup_link(
+			esc_html__( 'Leave a comment', 'themezee-blocks' ),
+			esc_html__( 'One comment', 'themezee-blocks' ),
+			esc_html__( '% comments', 'themezee-blocks' )
+		);
+		$comment_string = ob_get_contents();
+
+		// End Output Buffering.
+		ob_end_clean();
+
+		// Wrap comments.
+		$comments = sprintf( '<span class="tz-meta-comments tz-meta-field">%s</span>', $comment_string );
+
+		return $comments;
 	}
 
 	/**

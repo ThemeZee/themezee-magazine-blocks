@@ -45,7 +45,7 @@ class MetaComments extends Component {
 		let comments;
 
 		if ( commentCount < 1 && 'open' === post.comment_status ) {
-			comments = __( 'Leave comment', 'themezee-blocks' );
+			comments = __( 'Leave a comment', 'themezee-blocks' );
 		} else if ( commentCount < 1 && 'open' !== post.comment_status ) {
 			comments = __( 'Comments off', 'themezee-blocks' );
 		} else if ( commentCount === 1 ) {
