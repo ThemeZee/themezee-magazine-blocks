@@ -119,6 +119,9 @@ class ThemeZee_Blocks_Magazine_Template {
 		// Add Author.
 		$meta_content .= self::get_post_author( $attributes );
 
+		// Add Categories.
+		$meta_content .= self::get_post_categories( $attributes );
+
 		// Wrap header content.
 		$postmeta = sprintf( '<div class="tz-entry-meta entry-meta">%s</div>', $meta_content );
 
@@ -168,6 +171,28 @@ class ThemeZee_Blocks_Magazine_Template {
 		$author = sprintf( '<span class="tz-meta-author tz-meta-field author vcard">%s</span>', $author_string );
 
 		return $author;
+	}
+
+	/**
+	 * Get Post Categories.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post categories.
+	 */
+	static function get_post_categories( $attributes ) {
+
+		// Return early if post has no category.
+		if ( ! has_category() ) {
+			return;
+		}
+
+		$category_list = get_the_category_list( ', ' );
+
+		// Wrap categories.
+		$categories = sprintf( '<span class="tz-meta-categories tz-meta-field">%s</span>', $category_list );
+
+		return $categories;
 	}
 
 	/**
