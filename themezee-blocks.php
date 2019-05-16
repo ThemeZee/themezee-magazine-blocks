@@ -152,6 +152,7 @@ class ThemeZee_Blocks {
 				'wp-element',
 				'wp-components',
 				'wp-editor',
+				'wp-api-fetch',
 				'lodash',
 			),
 			THEMEZEE_BLOCKS_VERSION
