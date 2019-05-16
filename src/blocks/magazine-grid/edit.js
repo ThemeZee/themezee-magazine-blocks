@@ -1,8 +1,13 @@
 /**
  * External dependencies
  */
-const { isUndefined, pickBy } = lodash;
 import classnames from 'classnames';
+const {
+	isUndefined,
+	pickBy,
+	startCase,
+	map,
+} = lodash;
 
 /**
  * WordPress dependencies
@@ -55,6 +60,7 @@ class MagazineGridEdit extends Component {
 			className,
 			setAttributes,
 			latestPosts,
+			availableImageSizes,
 		} = this.props;
 
 		const {
@@ -166,12 +172,10 @@ class MagazineGridEdit extends Component {
 						label={ __( 'Image Size', 'themezee-blocks' ) }
 						value={ imageSize }
 						onChange={ ( value ) => setAttributes( { imageSize: value } ) }
-						options={ [
-							{ value: 'post-thumbnail', label: __( 'Thumbnail', 'themezee-blocks' ) },
-							{ value: 'medium', label: __( 'Medium', 'themezee-blocks' ) },
-							{ value: 'large', label: __( 'Large', 'themezee-blocks' ) },
-							{ value: 'full', label: __( 'Full Size', 'themezee-blocks' ) },
-						] }
+						options={ map( availableImageSizes, ( size ) => ( {
+							value: size.slug,
+							label: size.name,
+						} ) ) }
 					/>
 
 				</PanelBody>
@@ -285,6 +289,8 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const { categories, tags, author, numberOfPosts, order, orderBy, offset } = props.attributes;
 		const { getEntityRecords } = select( 'core' );
+		const { getEditorSettings } = select( 'core/editor' );
+		const settings = getEditorSettings();
 
 		// Retrieve Tag IDs from Tag names.
 		let tagsIDs;
@@ -309,6 +315,7 @@ export default compose( [
 
 		return {
 			latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+			availableImageSizes: settings.imageSizes,
 		};
 	} ),
 ] )( MagazineGridEdit );

@@ -69,7 +69,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 					),
 					'imageSize' => array(
 						'type'    => 'string',
-						'default' => 'post-thumbnail',
+						'default' => 'full',
 					),
 					'metaPosition' => array(
 						'type'    => 'string',
