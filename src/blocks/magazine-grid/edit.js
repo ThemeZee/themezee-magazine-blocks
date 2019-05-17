@@ -301,11 +301,12 @@ export default compose( [
 				tagsIDs = tagsIDs.slice( 0, -1 );
 			}
 		}
+		const tagsQuery = '' !== tagsIDs ? { tags: tagsIDs } : undefined;
 
 		// Query Posts.
 		const latestPostsQuery = pickBy( {
 			categories,
-			tags: '' !== tagsIDs ? tagsIDs : '99999999999999999999999999999999999', // dirty hack
+			...tagsQuery,
 			author,
 			order,
 			orderby: orderBy,
