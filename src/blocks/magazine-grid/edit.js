@@ -5,7 +5,6 @@ import classnames from 'classnames';
 const {
 	isUndefined,
 	pickBy,
-	startCase,
 	map,
 } = lodash;
 

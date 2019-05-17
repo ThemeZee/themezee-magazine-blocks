@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 
@@ -28,10 +28,15 @@ class MetaCategories extends Component {
 		return (
 			<span className="tz-meta-categories tz-meta-field">
 
-				{ postCategories.map( ( category, i ) =>
-					<a key={ i } href={ category.link } target="_blank" rel="noreferrer noopener">
-						{ category.name }
-					</a>
+				{ postCategories.map( ( category, i, cats ) =>
+					<Fragment key={ i }>
+						<a href={ category.link } target="_blank" rel="noreferrer noopener">
+							{ category.name }
+						</a>
+						{ i + 1 < cats.length && (
+							<span className="tz-meta-categories-sep">, </span>
+						) }
+					</Fragment>
 				) }
 
 			</span>
