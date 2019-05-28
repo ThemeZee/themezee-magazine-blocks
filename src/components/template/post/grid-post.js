@@ -15,7 +15,7 @@ import EntryImage from '../entry/entry-image.js';
 import EntryHeader from '../entry/entry-header.js';
 import EntryContent from '../entry/entry-content.js';
 
-class MagazinePost extends Component {
+class GridPost extends Component {
 	getPostClasses() {
 		const { post } = this.props;
 
@@ -52,4 +52,4 @@ class MagazinePost extends Component {
 	}
 }
 
-export default MagazinePost;
+export default GridPost;

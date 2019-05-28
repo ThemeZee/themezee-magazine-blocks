@@ -42,7 +42,7 @@ const {
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
-import MagazinePost from '../../components/template/post/magazine-post.js';
+import ListPost from '../../components/template/post/list-post.js';
 
 /**
  * Block Edit Component
@@ -227,7 +227,7 @@ class MagazineListEdit extends Component {
 
 					<Placeholder
 						icon="format-aside"
-						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
+						label={ __( 'Magazine List', 'themezee-blocks' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -254,7 +254,7 @@ class MagazineListEdit extends Component {
 					<div className={ listClasses }>
 
 						{ displayPosts.map( ( post, i ) =>
-							<MagazinePost key={ i } post={ post } attributes={ attributes } />
+							<ListPost key={ i } post={ post } attributes={ attributes } />
 						) }
 
 					</div>

@@ -46,7 +46,7 @@ const {
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
-import MagazinePost from '../../components/template/post/magazine-post.js';
+import GridPost from '../../components/template/post/grid-post.js';
 import {
 	IconNumberTwo,
 	IconNumberThree,
@@ -277,7 +277,7 @@ class MagazineGridEdit extends Component {
 					<div className={ columnClasses }>
 
 						{ displayPosts.map( ( post, i ) =>
-							<MagazinePost key={ i } post={ post } attributes={ attributes } />
+							<GridPost key={ i } post={ post } attributes={ attributes } />
 						) }
 
 					</div>
