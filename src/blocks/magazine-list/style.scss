@@ -10,13 +10,39 @@
 			flex-wrap: wrap;
 
 			.tz-post-image {
-				padding-right: 1.5em;
-				padding-right: var(--tz-column-gap);
-				width: 30%;
+				padding-right: 0.75em;
+				padding-right: calc( var(--tz-column-gap) / 2 );
+				width: 50%;
 
 				.wp-post-image {
 					margin: 0;
 				}
+			}
+
+			.tz-post-content {
+				padding-left: 0.75em;
+				padding-left: calc( var(--tz-column-gap) / 2 );
+				width: 50%;
+			}
+		}
+	}
+
+	.tz-magazine-list-40-60 {
+		.tz-magazine-post {
+			.tz-post-image {
+				width: 40%;
+			}
+
+			.tz-post-content {
+				width: 60%;
+			}
+		}
+	}
+
+	.tz-magazine-list-30-70 {
+		.tz-magazine-post {
+			.tz-post-image {
+				width: 30%;
 			}
 
 			.tz-post-content {

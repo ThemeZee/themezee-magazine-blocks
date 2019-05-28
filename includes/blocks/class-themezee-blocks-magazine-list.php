@@ -65,7 +65,7 @@ class ThemeZee_Blocks_Magazine_List {
 					),
 					'layout' => array(
 						'type'    => 'string',
-						'default' => 'large-list',
+						'default' => '50-50',
 					),
 					'imageSize' => array(
 						'type'    => 'string',
@@ -161,7 +161,7 @@ class ThemeZee_Blocks_Magazine_List {
 		wp_reset_postdata();
 
 		// Set List class.
-		$list_class = sanitize_key( 'tz-magazine-' . $attributes['list'] );
+		$list_class = sanitize_key( 'tz-magazine-list-' . $attributes['layout'] );
 
 		// Define Block Content.
 		$block_content = sprintf( '<div class="tz-magazine-list %1$s">%2$s</div>', $list_class, $posts_markup );

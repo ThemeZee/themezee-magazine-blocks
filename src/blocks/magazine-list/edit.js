@@ -79,7 +79,7 @@ class MagazineListEdit extends Component {
 		const blockClasses = classnames( className, 'tz-magazine-block' );
 
 		const listClasses = classnames( 'tz-magazine-list', {
-			[ `tz-magazine-${ layout }` ]: layout,
+			[ `tz-magazine-list-${ layout }` ]: layout,
 		} );
 
 		const blockControls = (
@@ -142,9 +142,9 @@ class MagazineListEdit extends Component {
 						value={ layout }
 						onChange={ ( value ) => setAttributes( { layout: value } ) }
 						options={ [
-							{ value: 'large-list', label: __( 'Large List', 'themezee-blocks' ) },
-							{ value: 'thumbnail-list', label: __( 'Thumbnail List', 'themezee-blocks' ) },
-							{ value: 'highlight-list', label: __( 'Highlight List', 'themezee-blocks' ) },
+							{ value: '50-50', label: __( '50% - 50%', 'themezee-blocks' ) },
+							{ value: '40-60', label: __( '40% - 60%', 'themezee-blocks' ) },
+							{ value: '30-70', label: __( '30% - 70%', 'themezee-blocks' ) },
 						] }
 					/>
 
