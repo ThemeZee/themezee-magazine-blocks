@@ -63,9 +63,9 @@ class ThemeZee_Blocks_Magazine_List {
 						'type'    => 'string',
 						'default' => 'date',
 					),
-					'columns' => array(
-						'type'    => 'number',
-						'default' => 3,
+					'layout' => array(
+						'type'    => 'string',
+						'default' => 'large-list',
 					),
 					'imageSize' => array(
 						'type'    => 'string',

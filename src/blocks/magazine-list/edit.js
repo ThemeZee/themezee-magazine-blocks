@@ -19,10 +19,7 @@ const {
 	Fragment,
 } = wp.element;
 
-const {
-	__,
-	sprintf,
-} = wp.i18n;
+const { __ } = wp.i18n;
 
 const {
 	BlockControls,
@@ -37,7 +34,6 @@ const {
 	Spinner,
 	TextControl,
 	ToggleControl,
-	Toolbar,
 } = wp.components;
 
 /**
@@ -47,11 +43,6 @@ import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
 import MagazinePost from '../../components/template/post/magazine-post.js';
-import {
-	IconNumberTwo,
-	IconNumberThree,
-	IconNumberFour,
-} from '../../components/icons';
 
 /**
  * Block Edit Component
@@ -74,7 +65,7 @@ class MagazineListEdit extends Component {
 			orderBy,
 			numberOfPosts,
 			offset,
-			columns,
+			layout,
 			imageSize,
 			metaPosition,
 			showDate,
@@ -87,29 +78,12 @@ class MagazineListEdit extends Component {
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
 
-		const columnClasses = classnames( 'tz-magazine-columns', {
-			[ `tz-magazine-columns-${ columns }` ]: columns,
+		const listClasses = classnames( 'tz-magazine-list', {
+			[ `tz-magazine-${ layout }` ]: layout,
 		} );
-
-		const columnIcons = {
-			2: IconNumberTwo,
-			3: IconNumberThree,
-			4: IconNumberFour,
-		};
 
 		const blockControls = (
 			<BlockControls key="controls">
-
-				<Toolbar
-					controls={
-						[ 2, 3, 4 ].map( column => ( {
-							icon: columnIcons[ column ],
-							title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
-							isActive: column === columns,
-							onClick: () => setAttributes( { columns: column } ),
-						} ) )
-					}
-				/>
 
 			</BlockControls>
 		);
@@ -163,12 +137,15 @@ class MagazineListEdit extends Component {
 
 				<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
 
-					<RangeControl
-						label={ __( 'Columns', 'themezee-blocks' ) }
-						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ 2 }
-						max={ 4 }
+					<SelectControl
+						label={ __( 'List Layout', 'themezee-blocks' ) }
+						value={ layout }
+						onChange={ ( value ) => setAttributes( { layout: value } ) }
+						options={ [
+							{ value: 'large-list', label: __( 'Large List', 'themezee-blocks' ) },
+							{ value: 'thumbnail-list', label: __( 'Thumbnail List', 'themezee-blocks' ) },
+							{ value: 'highlight-list', label: __( 'Highlight List', 'themezee-blocks' ) },
+						] }
 					/>
 
 					<SelectControl
@@ -274,7 +251,7 @@ class MagazineListEdit extends Component {
 				{ inspectorControls }
 
 				<div className={ blockClasses }>
-					<div className={ columnClasses }>
+					<div className={ listClasses }>
 
 						{ displayPosts.map( ( post, i ) =>
 							<MagazinePost key={ i } post={ post } attributes={ attributes } />
