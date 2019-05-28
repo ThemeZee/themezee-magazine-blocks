@@ -1,3 +1,27 @@
 .wp-block-themezee-blocks-magazine-list {
 	margin-bottom: 1.5em;
 }
+
+/* Magazine Columns */
+@media only screen and (min-width: 480px) {
+	.tz-magazine-list {
+		.tz-magazine-post {
+			display: flex;
+			flex-wrap: wrap;
+
+			.tz-post-image {
+				padding-right: 1.5em;
+				padding-right: var(--tz-column-gap);
+				width: 30%;
+
+				.wp-post-image {
+					margin: 0;
+				}
+			}
+
+			.tz-post-content {
+				width: 70%;
+			}
+		}
+	}
+}

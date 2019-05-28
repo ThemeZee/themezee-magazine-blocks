@@ -151,7 +151,7 @@ class ThemeZee_Blocks_Magazine_List {
 			while ( $posts_query->have_posts() ) :
 				$posts_query->the_post();
 
-				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_post( $attributes );
+				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes );
 
 			endwhile;
 
@@ -160,11 +160,11 @@ class ThemeZee_Blocks_Magazine_List {
 		// Reset Postdata.
 		wp_reset_postdata();
 
-		// Set Columns class.
-		$columns_class = sanitize_key( 'tz-magazine-columns-' . $attributes['columns'] );
+		// Set List class.
+		$list_class = sanitize_key( 'tz-magazine-' . $attributes['list'] );
 
 		// Define Block Content.
-		$block_content = sprintf( '<div class="tz-magazine-columns %1$s">%2$s</div>', $columns_class, $posts_markup );
+		$block_content = sprintf( '<div class="tz-magazine-list %1$s">%2$s</div>', $list_class, $posts_markup );
 
 		// Get Block Classes.
 		$block_classes = self::get_block_classes( $attributes );

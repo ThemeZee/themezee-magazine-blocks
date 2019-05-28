@@ -15,13 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ThemeZee_Blocks_Magazine_Template {
 	/**
-	 * Get Magazine Post Content.
+	 * Get Grid Post.
 	 *
 	 * @param array $attributes The block attributes.
 	 *
 	 * @return string Returns the post content.
 	 */
-	static function get_post( $attributes ) {
+	static function get_grid_post( $attributes ) {
 		$post_content = '';
 
 		// Add Featured Image.
@@ -35,6 +35,51 @@ class ThemeZee_Blocks_Magazine_Template {
 			$post_content .= self::get_post_content( $attributes );
 		}
 
+		// Wrap Post Content.
+		$post_wrap = self::get_post_wrap( $post_content );
+
+		return $post_wrap;
+	}
+
+	/**
+	 * Get List Post.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post content.
+	 */
+	static function get_list_post( $attributes ) {
+		// Get Featured Image.
+		$post_image = self::get_post_image( $attributes );
+
+		// Wrap post image.
+		$post_image = sprintf( '<div class="tz-post-image">%s</div>', $post_image );
+
+		// Get Post Header.
+		$post_content = self::get_post_header( $attributes );
+
+		// Show Excerpt?
+		if ( $attributes['excerptLength'] > 0 ) {
+			$post_content .= self::get_post_content( $attributes );
+		}
+
+		// Wrap post content.
+		$post_content = sprintf( '<div class="tz-post-content">%s</div>', $post_content );
+
+		// Wrap Post.
+		$post = self::get_post_wrap( $post_image . $post_content );
+
+		return $post;
+	}
+
+	/**
+	 * Get Post Wrap.
+	 *
+	 * @param array $post_content The post.
+	 *
+	 * @return string Returns the post wrap.
+	 */
+	static function get_post_wrap( $post_content ) {
 		// Wrap post content into <article> tag.
 		$post_article = sprintf(
 			'<article id="post-%1$s" class="%2$s">%3$s</article>',

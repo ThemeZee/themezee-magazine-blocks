@@ -151,7 +151,7 @@ class ThemeZee_Blocks_Magazine_Grid {
 			while ( $posts_query->have_posts() ) :
 				$posts_query->the_post();
 
-				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_post( $attributes );
+				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes );
 
 			endwhile;
 
