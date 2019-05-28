@@ -42,7 +42,8 @@ const {
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
-import ListPost from '../../components/template/post/list-post.js';
+import GridPost from '../../components/template/post/grid-post.js';
+import ThumbnailPost from '../../components/template/post/thumbnail-post';
 
 /**
  * Block Edit Component
@@ -77,10 +78,6 @@ class MagazineVerticalEdit extends Component {
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
-
-		const listClasses = classnames( 'tz-magazine-list', {
-			[ `tz-magazine-list-${ layout }` ]: layout,
-		} );
 
 		const blockControls = (
 			<BlockControls key="controls">
@@ -251,11 +248,21 @@ class MagazineVerticalEdit extends Component {
 				{ inspectorControls }
 
 				<div className={ blockClasses }>
-					<div className={ listClasses }>
+					<div className="tz-magazine-vertical">
 
-						{ displayPosts.map( ( post, i ) =>
-							<ListPost key={ i } post={ post } attributes={ attributes } />
-						) }
+						<div className="tz-magazine-highlight-post">
+							<GridPost post={ displayPosts[ '0' ] } attributes={ attributes } />
+						</div>
+
+						<div className="tz-magazine-list tz-magazine-thumbnail-list">
+							{ displayPosts.map( ( post, i ) => {
+								if ( 0 !== i ) {
+									return (
+										<ThumbnailPost key={ i } post={ post } attributes={ attributes } />
+									);
+								}
+							} ) }
+						</div>
 
 					</div>
 				</div>
