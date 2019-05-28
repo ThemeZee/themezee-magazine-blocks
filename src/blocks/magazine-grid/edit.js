@@ -47,7 +47,11 @@ import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
 import MagazinePost from '../../components/template/post/magazine-post.js';
-import { IconNumberTwo, IconNumberThree, IconNumberFour } from '../../components/icons';
+import {
+	IconNumberTwo,
+	IconNumberThree,
+	IconNumberFour,
+} from '../../components/icons';
 
 /**
  * Block Edit Component
