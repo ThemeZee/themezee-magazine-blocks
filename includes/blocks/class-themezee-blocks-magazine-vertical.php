@@ -142,7 +142,8 @@ class ThemeZee_Blocks_Magazine_Vertical {
 		// Fetch posts from database.
 		$posts_query = new WP_Query( $query_arguments );
 
-		$posts_markup = '';
+		$highlight_posts = '';
+		$thumbnail_posts = '';
 
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
@@ -151,7 +152,16 @@ class ThemeZee_Blocks_Magazine_Vertical {
 			while ( $posts_query->have_posts() ) :
 				$posts_query->the_post();
 
-				$posts_markup .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes );
+				// Display first post differently.
+				if ( 0 === $posts_query->current_post ) :
+
+					$highlight_posts .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes );
+
+				else :
+
+					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes, false );
+
+				endif;
 
 			endwhile;
 
@@ -160,11 +170,17 @@ class ThemeZee_Blocks_Magazine_Vertical {
 		// Reset Postdata.
 		wp_reset_postdata();
 
-		// Set Vertical class.
-		$list_class = sanitize_key( 'tz-magazine-list-' . $attributes['layout'] );
+		// Wrap Highlight Posts.
+		$highlight_posts = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_posts );
+
+		// Wrap Thumbnail Posts.
+		$thumbnail_posts = sprintf( '<div class="tz-magazine-list tz-magazine-thumbnail-list">%s</div>', $thumbnail_posts );
+
+		// Set Posts Markup.
+		$posts_markup = $highlight_posts . $thumbnail_posts;
 
 		// Define Block Content.
-		$block_content = sprintf( '<div class="tz-magazine-list %1$s">%2$s</div>', $list_class, $posts_markup );
+		$block_content = sprintf( '<div class="tz-magazine-vertical">%s</div>', $posts_markup );
 
 		// Get Block Classes.
 		$block_classes = self::get_block_classes( $attributes );

@@ -48,7 +48,7 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post content.
 	 */
-	static function get_list_post( $attributes ) {
+	static function get_list_post( $attributes, $excerpt = true ) {
 		// Get Featured Image.
 		$post_image = self::get_post_image( $attributes );
 
@@ -59,7 +59,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = self::get_post_header( $attributes );
 
 		// Show Excerpt?
-		if ( $attributes['excerptLength'] > 0 ) {
+		if ( $attributes['excerptLength'] > 0 && $excerpt ) {
 			$post_content .= self::get_post_content( $attributes );
 		}
 

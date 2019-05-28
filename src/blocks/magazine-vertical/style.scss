@@ -2,51 +2,32 @@
 	margin-bottom: 1.5em;
 }
 
-/* Magazine Columns */
 @media only screen and (min-width: 480px) {
 	.tz-magazine-vertical {
-		.tz-magazine-post {
-			display: flex;
-			flex-wrap: wrap;
+		display: flex;
+		flex-wrap: wrap;
 
-			.tz-post-image {
-				padding-right: 0.75em;
-				padding-right: calc( var(--tz-column-gap) / 2 );
-				width: 50%;
+		.tz-magazine-highlight-post {
+			padding-right: 0.75em;
+			padding-right: calc( var(--tz-column-gap) / 2 );
+			width: 50%;
+		}
 
-				.wp-post-image {
-					margin: 0;
+		.tz-magazine-thumbnail-list {
+			padding-left: 0.75em;
+			padding-left: calc( var(--tz-column-gap) / 2 );
+			width: 50%;
+
+			.tz-magazine-post {
+				flex-wrap: nowrap;
+
+				.tz-post-image {
+					width: 30%;
 				}
-			}
 
-			.tz-post-content {
-				padding-left: 0.75em;
-				padding-left: calc( var(--tz-column-gap) / 2 );
-				width: 50%;
-			}
-		}
-	}
-
-	.tz-magazine-vertical-40-60 {
-		.tz-magazine-post {
-			.tz-post-image {
-				width: 40%;
-			}
-
-			.tz-post-content {
-				width: 60%;
-			}
-		}
-	}
-
-	.tz-magazine-vertical-30-70 {
-		.tz-magazine-post {
-			.tz-post-image {
-				width: 30%;
-			}
-
-			.tz-post-content {
-				width: 70%;
+				.tz-post-content {
+					width: 70%;
+				}
 			}
 		}
 	}
