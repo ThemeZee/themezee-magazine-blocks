@@ -104,6 +104,7 @@ class ThemeZee_Blocks {
 
 		// Include Blocks for server-side.
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-grid.php';
+		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-list.php';
 	}
 
 	/**
