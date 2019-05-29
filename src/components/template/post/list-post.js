@@ -43,7 +43,7 @@ class ListPost extends Component {
 				<article id={ postID } className={ postClasses }>
 
 					<div className="tz-post-image">
-						<EntryImage post={ post } attributes={ attributes } />
+						<EntryImage post={ post } imageSize={ attributes.imageSize } />
 					</div>
 
 					<div className="tz-post-content">

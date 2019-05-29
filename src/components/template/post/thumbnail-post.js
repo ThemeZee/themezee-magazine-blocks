@@ -42,7 +42,7 @@ class ThumbnailPost extends Component {
 				<article id={ postID } className={ postClasses }>
 
 					<div className="tz-post-image">
-						<EntryImage post={ post } attributes={ attributes } />
+						<EntryImage post={ post } imageSize={ attributes.thumbnailSize } />
 					</div>
 
 					<div className="tz-post-content">

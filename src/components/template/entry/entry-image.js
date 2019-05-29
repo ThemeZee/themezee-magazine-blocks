@@ -39,7 +39,7 @@ export default compose( [
 	withSelect( ( select, props ) => {
 		const { getMedia } = select( 'core' );
 		const {
-			attributes,
+			imageSize,
 			post,
 		} = props;
 
@@ -53,8 +53,8 @@ export default compose( [
 		let imageURL = '';
 
 		// Check if image size exists.
-		if ( availableSizes.hasOwnProperty( attributes.imageSize ) ) {
-			imageURL = availableSizes[ attributes.imageSize ].source_url;
+		if ( availableSizes.hasOwnProperty( imageSize ) ) {
+			imageURL = availableSizes[ imageSize ].source_url;
 		} else {
 			imageURL = availableSizes.full.source_url;
 		}

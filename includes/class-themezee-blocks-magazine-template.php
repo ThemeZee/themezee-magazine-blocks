@@ -25,7 +25,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = '';
 
 		// Add Featured Image.
-		$post_content .= self::get_post_image( $attributes );
+		$post_content .= self::get_post_image( $attributes['imageSize'] );
 
 		// Add Post Header.
 		$post_content .= self::get_post_header( $attributes );
@@ -48,9 +48,9 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post content.
 	 */
-	static function get_list_post( $attributes, $excerpt = true ) {
+	static function get_list_post( $attributes ) {
 		// Get Featured Image.
-		$post_image = self::get_post_image( $attributes );
+		$post_image = self::get_post_image( $attributes['imageSize'] );
 
 		// Wrap post image.
 		$post_image = sprintf( '<div class="tz-post-image">%s</div>', $post_image );
@@ -59,9 +59,35 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = self::get_post_header( $attributes );
 
 		// Show Excerpt?
-		if ( $attributes['excerptLength'] > 0 && $excerpt ) {
+		if ( $attributes['excerptLength'] > 0 ) {
 			$post_content .= self::get_post_content( $attributes );
 		}
+
+		// Wrap post content.
+		$post_content = sprintf( '<div class="tz-post-content">%s</div>', $post_content );
+
+		// Wrap Post.
+		$post = self::get_post_wrap( $post_image . $post_content );
+
+		return $post;
+	}
+
+	/**
+	 * Get Thumbnail Post.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post content.
+	 */
+	static function get_thumbnail_post( $attributes ) {
+		// Get Featured Image.
+		$post_image = self::get_post_image( $attributes['thumbnailSize'] );
+
+		// Wrap post image.
+		$post_image = sprintf( '<div class="tz-post-image">%s</div>', $post_image );
+
+		// Get Post Header.
+		$post_content = self::get_post_header( $attributes );
 
 		// Wrap post content.
 		$post_content = sprintf( '<div class="tz-post-content">%s</div>', $post_content );
@@ -97,15 +123,15 @@ class ThemeZee_Blocks_Magazine_Template {
 	/**
 	 * Get Post Image.
 	 *
-	 * @param array $attributes The block attributes.
+	 * @param array $image_size The image size.
 	 *
 	 * @return string Returns the post image.
 	 */
-	static function get_post_image( $attributes ) {
+	static function get_post_image( $image_size = 'post-thumbnail' ) {
 		$image = sprintf(
 			'<figure class="tz-entry-image entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
 			esc_url( get_permalink() ),
-			get_the_post_thumbnail( null, $attributes['imageSize'] )
+			get_the_post_thumbnail( null, $image_size )
 		);
 
 		return $image;

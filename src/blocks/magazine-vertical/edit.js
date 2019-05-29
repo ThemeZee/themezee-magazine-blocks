@@ -67,6 +67,7 @@ class MagazineVerticalEdit extends Component {
 			numberOfPosts,
 			offset,
 			imageSize,
+			thumbnailSize,
 			metaPosition,
 			showDate,
 			showAuthor,
@@ -137,6 +138,16 @@ class MagazineVerticalEdit extends Component {
 						label={ __( 'Image Size', 'themezee-blocks' ) }
 						value={ imageSize }
 						onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+						options={ map( availableImageSizes, ( size ) => ( {
+							value: size.slug,
+							label: size.name,
+						} ) ) }
+					/>
+
+					<SelectControl
+						label={ __( 'Thumbnail Size', 'themezee-blocks' ) }
+						value={ thumbnailSize }
+						onChange={ ( value ) => setAttributes( { thumbnailSize: value } ) }
 						options={ map( availableImageSizes, ( size ) => ( {
 							value: size.slug,
 							label: size.name,

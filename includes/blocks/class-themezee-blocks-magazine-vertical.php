@@ -67,6 +67,10 @@ class ThemeZee_Blocks_Magazine_Vertical {
 						'type'    => 'string',
 						'default' => 'full',
 					),
+					'thumbnailSize' => array(
+						'type'    => 'string',
+						'default' => 'full',
+					),
 					'metaPosition' => array(
 						'type'    => 'string',
 						'default' => 'below-title',
@@ -155,7 +159,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 
 				else :
 
-					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes, false );
+					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes );
 
 				endif;
 

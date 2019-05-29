@@ -42,7 +42,7 @@ class GridPost extends Component {
 			<div className="tz-post-wrap">
 				<article id={ postID } className={ postClasses }>
 
-					<EntryImage post={ post } attributes={ attributes } />
+					<EntryImage post={ post } imageSize={ attributes.imageSize } />
 					<EntryHeader post={ post } attributes={ attributes } />
 					<EntryContent post={ post } attributes={ attributes } />
 
