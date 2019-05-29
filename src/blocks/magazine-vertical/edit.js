@@ -66,7 +66,6 @@ class MagazineVerticalEdit extends Component {
 			orderBy,
 			numberOfPosts,
 			offset,
-			layout,
 			imageSize,
 			metaPosition,
 			showDate,
@@ -133,17 +132,6 @@ class MagazineVerticalEdit extends Component {
 				</PanelBody>
 
 				<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
-
-					<SelectControl
-						label={ __( 'List Layout', 'themezee-blocks' ) }
-						value={ layout }
-						onChange={ ( value ) => setAttributes( { layout: value } ) }
-						options={ [
-							{ value: '50-50', label: __( '50% - 50%', 'themezee-blocks' ) },
-							{ value: '40-60', label: __( '40% - 60%', 'themezee-blocks' ) },
-							{ value: '30-70', label: __( '30% - 70%', 'themezee-blocks' ) },
-						] }
-					/>
 
 					<SelectControl
 						label={ __( 'Image Size', 'themezee-blocks' ) }

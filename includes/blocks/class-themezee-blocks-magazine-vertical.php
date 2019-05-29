@@ -63,10 +63,6 @@ class ThemeZee_Blocks_Magazine_Vertical {
 						'type'    => 'string',
 						'default' => 'date',
 					),
-					'layout' => array(
-						'type'    => 'string',
-						'default' => '50-50',
-					),
 					'imageSize' => array(
 						'type'    => 'string',
 						'default' => 'full',
