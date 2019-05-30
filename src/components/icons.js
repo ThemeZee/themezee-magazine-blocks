@@ -11,6 +11,17 @@ export const IconMagazineGrid = <svg version="1.0" xmlns="http://www.w3.org/2000
 	</g>
 </svg>;
 
+/* Magazine Horizontal */
+export const IconMagazineHorizontal = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+	width="96" height="96" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
+	<g transform="translate(0,96) scale(0.1,-0.1)" fill="#1a6bb2">
+		<path d="M40 480 l0 -290 200 0 200 0 0 290 0 290 -200 0 -200 0 0 -290z" />
+		<path d="M520 700 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
+		<path d="M520 480 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
+		<path d="M520 260 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
+	</g>
+</svg>;
+
 /* Magazine List */
 export const IconMagazineList = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 	width="96" height="96" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
