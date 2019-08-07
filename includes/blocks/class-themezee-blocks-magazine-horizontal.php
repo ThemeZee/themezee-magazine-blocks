@@ -63,6 +63,10 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 						'type'    => 'string',
 						'default' => 'date',
 					),
+					'columns' => array(
+						'type'    => 'number',
+						'default' => 3,
+					),
 					'imageSize' => array(
 						'type'    => 'string',
 						'default' => 'full',
@@ -143,7 +147,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		$posts_query = new WP_Query( $query_arguments );
 
 		$highlight_posts = '';
-		$thumbnail_posts = '';
+		$grid_posts      = '';
 
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
@@ -159,7 +163,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 
 				else :
 
-					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes );
+					$grid_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes );
 
 				endif;
 
@@ -173,11 +177,14 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		// Wrap Highlight Posts.
 		$highlight_posts = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_posts );
 
-		// Wrap Thumbnail Posts.
-		$thumbnail_posts = sprintf( '<div class="tz-magazine-list tz-magazine-thumbnail-list">%s</div>', $thumbnail_posts );
+		// Set Columns class.
+		$columns_class = sanitize_key( 'tz-magazine-columns-' . $attributes['columns'] );
+
+		// Wrap Grid Posts.
+		$grid_posts = sprintf( '<div class="tz-magazine-columns %1$s">%2$s</div>', $columns_class, $grid_posts );
 
 		// Set Posts Markup.
-		$posts_markup = $highlight_posts . $thumbnail_posts;
+		$posts_markup = $highlight_posts . $grid_posts;
 
 		// Define Block Content.
 		$block_content = sprintf( '<div class="tz-magazine-horizontal">%s</div>', $posts_markup );

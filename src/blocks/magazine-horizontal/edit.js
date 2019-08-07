@@ -43,7 +43,6 @@ import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
 import GridPost from '../../components/template/post/grid-post.js';
-import ThumbnailPost from '../../components/template/post/thumbnail-post';
 
 /**
  * Block Edit Component
@@ -66,6 +65,7 @@ class MagazineHorizontalEdit extends Component {
 			orderBy,
 			numberOfPosts,
 			offset,
+			columns,
 			imageSize,
 			thumbnailSize,
 			metaPosition,
@@ -78,6 +78,10 @@ class MagazineHorizontalEdit extends Component {
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
+
+		const columnClasses = classnames( 'tz-magazine-columns', {
+			[ `tz-magazine-columns-${ columns }` ]: columns,
+		} );
 
 		const blockControls = (
 			<BlockControls key="controls">
@@ -133,6 +137,14 @@ class MagazineHorizontalEdit extends Component {
 				</PanelBody>
 
 				<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
+
+					<RangeControl
+						label={ __( 'Columns', 'themezee-blocks' ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 2 }
+						max={ 4 }
+					/>
 
 					<SelectControl
 						label={ __( 'Image Size', 'themezee-blocks' ) }
@@ -253,11 +265,11 @@ class MagazineHorizontalEdit extends Component {
 							<GridPost post={ displayPosts[ '0' ] } attributes={ attributes } />
 						</div>
 
-						<div className="tz-magazine-list tz-magazine-thumbnail-list">
+						<div className={ columnClasses }>
 							{ displayPosts.map( ( post, i ) => {
 								if ( 0 !== i ) {
 									return (
-										<ThumbnailPost key={ i } post={ post } attributes={ attributes } />
+										<GridPost key={ i } post={ post } attributes={ attributes } />
 									);
 								}
 							} ) }
