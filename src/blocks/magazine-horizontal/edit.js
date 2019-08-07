@@ -270,7 +270,13 @@ class MagazineHorizontalEdit extends Component {
 							{ displayPosts.map( ( post, i ) => {
 								if ( 0 !== i ) {
 									return (
-										<GridPost key={ i } post={ post } attributes={ attributes } />
+										<GridPost
+											key={ i }
+											post={ post }
+											attributes={ attributes }
+											imageSize={ attributes.thumbnailSize }
+											showContent={ false }
+										/>
 									);
 								}
 							} ) }

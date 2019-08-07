@@ -33,6 +33,8 @@ class GridPost extends Component {
 		const {
 			attributes,
 			post,
+			imageSize,
+			showContent,
 		} = this.props;
 
 		const postID = `post-${ post.id }`;
@@ -42,9 +44,12 @@ class GridPost extends Component {
 			<div className="tz-post-wrap">
 				<article id={ postID } className={ postClasses }>
 
-					<EntryImage post={ post } imageSize={ attributes.imageSize } />
+					<EntryImage post={ post } imageSize={ imageSize } />
 					<EntryHeader post={ post } attributes={ attributes } />
-					<EntryContent post={ post } attributes={ attributes } />
+
+					{ showContent && (
+						<EntryContent post={ post } attributes={ attributes } />
+					) }
 
 				</article>
 			</div>

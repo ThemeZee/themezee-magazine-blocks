@@ -250,7 +250,12 @@ class MagazineVerticalEdit extends Component {
 					<div className="tz-magazine-vertical">
 
 						<div className="tz-magazine-highlight-post">
-							<GridPost post={ displayPosts[ '0' ] } attributes={ attributes } />
+							<GridPost
+								post={ displayPosts[ '0' ] }
+								attributes={ attributes }
+								imageSize={ attributes.imageSize }
+								showContent={ true }
+							/>
 						</div>
 
 						<div className="tz-magazine-list tz-magazine-thumbnail-list">

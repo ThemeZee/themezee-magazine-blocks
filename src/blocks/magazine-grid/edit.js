@@ -277,7 +277,13 @@ class MagazineGridEdit extends Component {
 					<div className={ columnClasses }>
 
 						{ displayPosts.map( ( post, i ) =>
-							<GridPost key={ i } post={ post } attributes={ attributes } />
+							<GridPost
+								key={ i }
+								post={ post }
+								attributes={ attributes }
+								imageSize={ attributes.imageSize }
+								showContent={ true }
+							/>
 						) }
 
 					</div>
