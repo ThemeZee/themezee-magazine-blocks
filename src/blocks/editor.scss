@@ -2,3 +2,14 @@
 .edit-post-visual-editor .editor-block-list__block .tz-entry-title {
 	margin-top: 0;
 }
+
+.edit-post-visual-editor .tz-posts-placeholder .components-placeholder__label {
+	display: flex;
+	flex-direction: column;
+
+	svg {
+		width: 36px;
+		height: 36px;
+		margin-bottom: 0.25rem;
+	}
+}

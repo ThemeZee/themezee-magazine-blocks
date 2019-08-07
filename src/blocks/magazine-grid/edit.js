@@ -48,6 +48,7 @@ import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
 import GridPost from '../../components/template/post/grid-post.js';
 import {
+	IconMagazineGrid,
 	IconNumberTwo,
 	IconNumberThree,
 	IconNumberFour,
@@ -249,8 +250,9 @@ class MagazineGridEdit extends Component {
 					{ inspectorControls }
 
 					<Placeholder
-						icon="format-aside"
+						icon={ IconMagazineGrid }
 						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
+						className="tz-posts-placeholder"
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :

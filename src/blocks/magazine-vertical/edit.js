@@ -39,6 +39,7 @@ const {
 /**
  * Internal dependencies
  */
+import { IconMagazineVertical } from '../../components/icons';
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
@@ -222,8 +223,9 @@ class MagazineVerticalEdit extends Component {
 					{ inspectorControls }
 
 					<Placeholder
-						icon="format-aside"
+						icon={ IconMagazineVertical }
 						label={ __( 'Magazine Vertical', 'themezee-blocks' ) }
+						className="tz-posts-placeholder"
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :

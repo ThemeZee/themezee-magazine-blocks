@@ -39,6 +39,7 @@ const {
 /**
  * Internal dependencies
  */
+import { IconMagazineHorizontal } from '../../components/icons';
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
@@ -235,8 +236,9 @@ class MagazineHorizontalEdit extends Component {
 					{ inspectorControls }
 
 					<Placeholder
-						icon="format-aside"
+						icon={ IconMagazineHorizontal }
 						label={ __( 'Magazine Horizontal', 'themezee-blocks' ) }
+						className="tz-posts-placeholder"
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
