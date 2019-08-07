@@ -42,6 +42,7 @@ const {
 import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
+import ListPost from '../../components/template/post/list-post.js';
 import GridPost from '../../components/template/post/grid-post.js';
 
 /**
@@ -262,7 +263,7 @@ class MagazineHorizontalEdit extends Component {
 					<div className="tz-magazine-horizontal">
 
 						<div className="tz-magazine-highlight-post">
-							<GridPost post={ displayPosts[ '0' ] } attributes={ attributes } />
+							<ListPost post={ displayPosts[ '0' ] } attributes={ attributes } />
 						</div>
 
 						<div className={ columnClasses }>

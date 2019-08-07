@@ -159,7 +159,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 				// Display first post differently.
 				if ( 0 === $posts_query->current_post ) :
 
-					$highlight_post .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['imageSize'] );
+					$highlight_post .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes, $attributes['imageSize'] );
 
 				else :
 
