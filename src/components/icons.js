@@ -11,17 +11,6 @@ export const IconMagazineGrid = <svg version="1.0" xmlns="http://www.w3.org/2000
 	</g>
 </svg>;
 
-/* Magazine Horizontal */
-export const IconMagazineHorizontal = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-	width="96" height="96" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
-	<g transform="translate(0,96) scale(0.1,-0.1)" fill="#1a6bb2">
-		<path d="M40 480 l0 -290 200 0 200 0 0 290 0 290 -200 0 -200 0 0 -290z" />
-		<path d="M520 700 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
-		<path d="M520 480 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
-		<path d="M520 260 l0 -70 200 0 200 0 0 70 0 70 -200 0 -200 0 0 -70z" />
-	</g>
-</svg>;
-
 /* Magazine List */
 export const IconMagazineList = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 	width="96" height="96" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
@@ -30,6 +19,17 @@ export const IconMagazineList = <svg version="1.0" xmlns="http://www.w3.org/2000
 		<path d="M360 650 l0 -130 280 0 280 0 0 130 0 130 -280 0 -280 0 0 -130z" />
 		<path d="M40 310 l0 -130 120 0 120 0 0 130 0 130 -120 0 -120 0 0 -130z" />
 		<path d="M360 310 l0 -130 70 0 c40 0 160 0 280 0 l210 0 0 130 0 130 -280 0 -280 0 0 -130z" />
+	</g>
+</svg>;
+
+/* Magazine Horizontal */
+export const IconMagazineHorizontal = <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+	width="96" height="96" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
+	<g transform="translate(0,96) scale(0.1,-0.1)" fill="#1a6bb2">
+		<path d="M40 650 l0 -130 440 0 440 0 0 130 0 130 -440 0 -440 0 0 -130z" />
+		<path d="M40 310 l0 -130 126 0 c126 0 126 0 120 23 -3 12 -6 70 -6 130 l0 107 -120 0 -120 0 0 -130z" />
+		<path d="M360 310 l0 -130 126 0 c126 0 126 0 120 23 -3 12 -6 70 -6 130 l0 107 -120 0 -120 0 0 -130z" />
+		<path d="M680 310 l0 -130 120 0 120 0 0 130 0 130 -120 0 -120 0 0 -130z" />
 	</g>
 </svg>;
 
