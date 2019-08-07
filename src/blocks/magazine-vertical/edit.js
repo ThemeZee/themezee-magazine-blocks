@@ -43,7 +43,7 @@ import CategorySelect from '../../components/controls/category-select';
 import AuthorSelect from '../../components/controls/author-select';
 import OrderSelect from '../../components/controls/order-select';
 import GridPost from '../../components/template/post/grid-post.js';
-import ThumbnailPost from '../../components/template/post/thumbnail-post';
+import ListPost from '../../components/template/post/list-post';
 
 /**
  * Block Edit Component
@@ -262,7 +262,13 @@ class MagazineVerticalEdit extends Component {
 							{ displayPosts.map( ( post, i ) => {
 								if ( 0 !== i ) {
 									return (
-										<ThumbnailPost key={ i } post={ post } attributes={ attributes } />
+										<ListPost
+											key={ i }
+											post={ post }
+											attributes={ attributes }
+											imageSize={ attributes.thumbnailSize }
+											showContent={ false }
+										/>
 									);
 								}
 							} ) }

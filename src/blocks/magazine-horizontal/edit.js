@@ -263,7 +263,12 @@ class MagazineHorizontalEdit extends Component {
 					<div className="tz-magazine-horizontal">
 
 						<div className="tz-magazine-highlight-post">
-							<ListPost post={ displayPosts[ '0' ] } attributes={ attributes } />
+							<ListPost
+								post={ displayPosts[ '0' ] }
+								attributes={ attributes }
+								imageSize={ attributes.imageSize }
+								showContent={ true }
+							/>
 						</div>
 
 						<div className={ columnClasses }>

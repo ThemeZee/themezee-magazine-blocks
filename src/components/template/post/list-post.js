@@ -33,6 +33,8 @@ class ListPost extends Component {
 		const {
 			attributes,
 			post,
+			imageSize,
+			showContent,
 		} = this.props;
 
 		const postID = `post-${ post.id }`;
@@ -43,12 +45,15 @@ class ListPost extends Component {
 				<article id={ postID } className={ postClasses }>
 
 					<div className="tz-post-image">
-						<EntryImage post={ post } imageSize={ attributes.imageSize } />
+						<EntryImage post={ post } imageSize={ imageSize } />
 					</div>
 
 					<div className="tz-post-content">
 						<EntryHeader post={ post } attributes={ attributes } />
-						<EntryContent post={ post } attributes={ attributes } />
+
+						{ showContent && (
+							<EntryContent post={ post } attributes={ attributes } />
+						) }
 					</div>
 
 				</article>

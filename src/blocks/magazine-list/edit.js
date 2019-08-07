@@ -254,7 +254,13 @@ class MagazineListEdit extends Component {
 					<div className={ listClasses }>
 
 						{ displayPosts.map( ( post, i ) =>
-							<ListPost key={ i } post={ post } attributes={ attributes } />
+							<ListPost
+								key={ i }
+								post={ post }
+								attributes={ attributes }
+								imageSize={ attributes.imageSize }
+								showContent={ true }
+							/>
 						) }
 
 					</div>
