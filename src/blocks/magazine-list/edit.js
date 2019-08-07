@@ -92,7 +92,7 @@ class MagazineListEdit extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 
-				<PanelBody title={ __( 'Select Content', 'themezee-blocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
 						selectedCategoryId={ categories }
@@ -233,7 +233,7 @@ class MagazineListEdit extends Component {
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( 'No posts found.', 'themezee-blocks' )
+							__( 'No posts found. You may have to reconfigure your content settings.', 'themezee-blocks' )
 						}
 					</Placeholder>
 
