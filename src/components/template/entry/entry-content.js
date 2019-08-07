@@ -22,6 +22,11 @@ class EntryContent extends Component {
 			excerpt = post.content.raw;
 		}
 
+		// Remove Rich HTML like images or videos from excerpt.
+		const excerptElement = document.createElement( 'div' );
+		excerptElement.innerHTML = excerpt;
+		excerpt = excerptElement.textContent || excerptElement.innerText || '';
+
 		// Set excerpt more text if excerpt needs to be shortened.
 		const excerptMore = excerptLength < excerpt.trim().split( ' ' ).length ? ' <span class="tz-excerpt-more">[...]</span>' : '';
 
