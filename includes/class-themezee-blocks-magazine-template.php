@@ -102,13 +102,19 @@ class ThemeZee_Blocks_Magazine_Template {
 	 * @return string Returns the post image.
 	 */
 	static function get_post_image( $image_size = 'post-thumbnail' ) {
-		$image = sprintf(
+		if ( has_post_thumbnail() ) {
+			$image = get_the_post_thumbnail( null, $image_size );
+		} else {
+			$image = '<img src="' . THEMEZEE_BLOCKS_PLUGIN_URL . 'assets/images/default-featured-image.png" class="attachment-full size-full wp-post-image" width="1600" height="1200" alt />';
+		}
+
+		$figure = sprintf(
 			'<figure class="tz-entry-image entry-image"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
 			esc_url( get_permalink() ),
-			get_the_post_thumbnail( null, $image_size )
+			$image
 		);
 
-		return $image;
+		return $figure;
 	}
 
 	/**
