@@ -5,6 +5,11 @@ import './blocks/editor.scss';
 import './blocks/style.scss';
 
 /**
+ * Import Data Store
+ */
+import './components/data-store.js';
+
+/**
  * Import Blocks
  */
 import './blocks/magazine-grid';

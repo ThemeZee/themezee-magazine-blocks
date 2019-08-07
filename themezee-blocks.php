@@ -162,7 +162,7 @@ class ThemeZee_Blocks {
 		);
 
 		// Transfer Data from PHP to ThemeZee Blocks Redux Store.
-		//wp_add_inline_script( 'themezee-blocks', self::get_dispatch_data(), 'after' );
+		wp_add_inline_script( 'themezee-blocks', self::get_dispatch_data(), 'after' );
 
 		// Load javascript translation files.
 		wp_set_script_translations( 'themezee-blocks-editor', 'themezee-blocks', THEMEZEE_BLOCKS_PLUGIN_DIR . 'languages/js' );
