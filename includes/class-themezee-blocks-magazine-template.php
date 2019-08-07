@@ -21,17 +21,17 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post content.
 	 */
-	static function get_grid_post( $attributes ) {
+	static function get_grid_post( $attributes, $image_size, $show_content = true ) {
 		$post_content = '';
 
 		// Add Featured Image.
-		$post_content .= self::get_post_image( $attributes['imageSize'] );
+		$post_content .= self::get_post_image( $image_size );
 
 		// Add Post Header.
 		$post_content .= self::get_post_header( $attributes );
 
 		// Show Excerpt?
-		if ( $attributes['excerptLength'] > 0 ) {
+		if ( true === $show_content && $attributes['excerptLength'] > 0 ) {
 			$post_content .= self::get_post_content( $attributes );
 		}
 

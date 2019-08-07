@@ -159,11 +159,11 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 				// Display first post differently.
 				if ( 0 === $posts_query->current_post ) :
 
-					$highlight_posts .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes );
+					$highlight_posts .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['imageSize'] );
 
 				else :
 
-					$grid_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes );
+					$grid_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes, $attributes['thumbnailSize'], false );
 
 				endif;
 
