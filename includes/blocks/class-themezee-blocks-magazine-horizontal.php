@@ -146,8 +146,8 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		// Fetch posts from database.
 		$posts_query = new WP_Query( $query_arguments );
 
-		$highlight_posts = '';
-		$grid_posts      = '';
+		$highlight_post = '';
+		$grid_posts     = '';
 
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
@@ -159,7 +159,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 				// Display first post differently.
 				if ( 0 === $posts_query->current_post ) :
 
-					$highlight_posts .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['imageSize'] );
+					$highlight_post .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['imageSize'] );
 
 				else :
 
@@ -175,7 +175,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		wp_reset_postdata();
 
 		// Wrap Highlight Posts.
-		$highlight_posts = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_posts );
+		$highlight_post = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_post );
 
 		// Set Columns class.
 		$columns_class = sanitize_key( 'tz-magazine-columns-' . $attributes['columns'] );
@@ -184,7 +184,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		$grid_posts = sprintf( '<div class="tz-magazine-columns %1$s">%2$s</div>', $columns_class, $grid_posts );
 
 		// Set Posts Markup.
-		$posts_markup = $highlight_posts . $grid_posts;
+		$posts_markup = $highlight_post . $grid_posts;
 
 		// Define Block Content.
 		$block_content = sprintf( '<div class="tz-magazine-horizontal">%s</div>', $posts_markup );
