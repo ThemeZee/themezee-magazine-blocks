@@ -49,7 +49,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
-						'default' => 6,
+						'default' => 4,
 					),
 					'offset' => array(
 						'type'    => 'number',

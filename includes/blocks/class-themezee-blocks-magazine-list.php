@@ -49,7 +49,7 @@ class ThemeZee_Blocks_Magazine_List {
 					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
-						'default' => 6,
+						'default' => 3,
 					),
 					'offset' => array(
 						'type'    => 'number',
