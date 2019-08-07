@@ -159,7 +159,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 
 				else :
 
-					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes );
+					$thumbnail_posts .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes, $attributes['thumbnailSize'], false );
 
 				endif;
 

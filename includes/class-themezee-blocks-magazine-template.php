@@ -48,9 +48,9 @@ class ThemeZee_Blocks_Magazine_Template {
 	 *
 	 * @return string Returns the post content.
 	 */
-	static function get_list_post( $attributes ) {
+	static function get_list_post( $attributes, $image_size, $show_content = true ) {
 		// Get Featured Image.
-		$post_image = self::get_post_image( $attributes['imageSize'] );
+		$post_image = self::get_post_image( $image_size );
 
 		// Wrap post image.
 		$post_image = sprintf( '<div class="tz-post-image">%s</div>', $post_image );
@@ -59,35 +59,9 @@ class ThemeZee_Blocks_Magazine_Template {
 		$post_content = self::get_post_header( $attributes );
 
 		// Show Excerpt?
-		if ( $attributes['excerptLength'] > 0 ) {
+		if ( true === $show_content && $attributes['excerptLength'] > 0 ) {
 			$post_content .= self::get_post_content( $attributes );
 		}
-
-		// Wrap post content.
-		$post_content = sprintf( '<div class="tz-post-content">%s</div>', $post_content );
-
-		// Wrap Post.
-		$post = self::get_post_wrap( $post_image . $post_content );
-
-		return $post;
-	}
-
-	/**
-	 * Get Thumbnail Post.
-	 *
-	 * @param array $attributes The block attributes.
-	 *
-	 * @return string Returns the post content.
-	 */
-	static function get_thumbnail_post( $attributes ) {
-		// Get Featured Image.
-		$post_image = self::get_post_image( $attributes['thumbnailSize'] );
-
-		// Wrap post image.
-		$post_image = sprintf( '<div class="tz-post-image">%s</div>', $post_image );
-
-		// Get Post Header.
-		$post_content = self::get_post_header( $attributes );
 
 		// Wrap post content.
 		$post_content = sprintf( '<div class="tz-post-content">%s</div>', $post_content );

@@ -163,7 +163,7 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 
 				else :
 
-					$grid_posts .= ThemeZee_Blocks_Magazine_Template::get_thumbnail_post( $attributes, $attributes['thumbnailSize'], false );
+					$grid_posts .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['thumbnailSize'], false );
 
 				endif;
 
