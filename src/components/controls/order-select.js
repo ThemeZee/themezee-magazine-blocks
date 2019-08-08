@@ -4,11 +4,6 @@
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
 
-/**
- * Internal dependencies
- */
-import './style.scss';
-
 function OrderSelect( {
 	order,
 	orderBy,

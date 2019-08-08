@@ -7,11 +7,6 @@ const { withSelect } = wp.data;
 const { Component } = wp.element;
 const { TreeSelect } = wp.components;
 
-/**
- * Internal dependencies
- */
-import './style.scss';
-
 class AuthorSelect extends Component {
 	render() {
 		const {

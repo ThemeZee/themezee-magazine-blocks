@@ -12,11 +12,6 @@ const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { TreeSelect } = wp.components;
 
-/**
- * Internal dependencies
- */
-import './style.scss';
-
 class CategorySelect extends Component {
 	/**
 	 * Returns terms in a tree form.
