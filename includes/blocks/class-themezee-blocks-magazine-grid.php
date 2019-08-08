@@ -39,13 +39,13 @@ class ThemeZee_Blocks_Magazine_Grid {
 						'type' => 'string',
 					),
 					'categories' => array(
-						'type' => 'number',
+						'type' => 'string',
 					),
 					'tags' => array(
 						'type' => 'string',
 					),
 					'author' => array(
-						'type' => 'number',
+						'type' => 'string',
 					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
