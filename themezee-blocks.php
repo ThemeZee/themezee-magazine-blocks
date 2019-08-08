@@ -91,13 +91,15 @@ class ThemeZee_Blocks {
 	 * @return void
 	 */
 	static function includes() {
-
 		// Include Plugin Updater.
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/admin/class-themezee-blocks-plugin-updater.php';
 
 		// Include Plugin Settings.
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/admin/class-themezee-blocks-settings.php';
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/admin/class-themezee-blocks-settings-page.php';
+
+		// Include Magazine Cache Class.
+		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/class-themezee-blocks-magazine-cache.php';
 
 		// Include Magazine Template Class.
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/class-themezee-blocks-magazine-template.php';
