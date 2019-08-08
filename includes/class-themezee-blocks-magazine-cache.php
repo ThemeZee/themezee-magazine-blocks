@@ -15,6 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ThemeZee_Blocks_Magazine_Cache {
 	/**
+	 * Setup the class
+	 *
+	 * @return void
+	 */
+	static function setup() {
+		// Flush Cache if needed.
+		add_action( 'save_post', array( __CLASS__, 'flush_cached_post_ids' ) );
+		add_action( 'deleted_post', array( __CLASS__, 'flush_cached_post_ids' ) );
+		add_action( 'customize_save_after', array( __CLASS__, 'flush_cached_post_ids' ) );
+		add_action( 'switch_theme', array( __CLASS__, 'flush_cached_post_ids' ) );
+	}
+
+	/**
+	 * Delete Cached Post IDs
+	 *
+	 * @return void
+	 */
+	static function flush_cached_post_ids() {
+		delete_transient( 'themezee_blocks_cached_post_ids' );
+	}
+
+	/**
 	 * Get Post IDs.
 	 *
 	 * @param array $attributes The block attributes.
@@ -116,3 +138,6 @@ class ThemeZee_Blocks_Magazine_Cache {
 		return sanitize_key( $cache_id );
 	}
 }
+
+// Run Class.
+ThemeZee_Blocks_Magazine_Cache::setup();
