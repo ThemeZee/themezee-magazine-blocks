@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { Component } = wp.element;
@@ -12,6 +7,7 @@ const { Component } = wp.element;
  * Internal dependencies
  */
 import GridPost from '../post/grid-post';
+import ListPost from '../post/list-post';
 
 class MagazineVertical extends Component {
 	render() {
@@ -20,24 +16,33 @@ class MagazineVertical extends Component {
 			attributes,
 		} = this.props;
 
-		const { columns } = attributes;
-
-		const columnClasses = classnames( 'tz-magazine-columns', {
-			[ `tz-magazine-columns-${ columns }` ]: columns,
-		} );
-
 		return (
-			<div className={ columnClasses }>
+			<div className="tz-magazine-vertical">
 
-				{ posts.map( ( post, i ) =>
+				<div className="tz-magazine-highlight-post">
 					<GridPost
-						key={ i }
-						post={ post }
+						post={ posts[ '0' ] }
 						attributes={ attributes }
 						imageSize={ attributes.imageSize }
 						showContent={ true }
 					/>
-				) }
+				</div>
+
+				<div className="tz-magazine-list tz-magazine-thumbnail-list">
+					{ posts.map( ( post, i ) => {
+						if ( 0 !== i ) {
+							return (
+								<ListPost
+									key={ i }
+									post={ post }
+									attributes={ attributes }
+									imageSize={ attributes.thumbnailSize }
+									showContent={ false }
+								/>
+							);
+						}
+					} ) }
+				</div>
 
 			</div>
 		);

@@ -11,7 +11,7 @@ const { Component } = wp.element;
 /**
  * Internal dependencies
  */
-import GridPost from '../post/grid-post';
+import ListPost from '../post/list-post';
 
 class MagazineList extends Component {
 	render() {
@@ -20,17 +20,17 @@ class MagazineList extends Component {
 			attributes,
 		} = this.props;
 
-		const { columns } = attributes;
+		const { layout } = attributes;
 
-		const columnClasses = classnames( 'tz-magazine-columns', {
-			[ `tz-magazine-columns-${ columns }` ]: columns,
+		const listClasses = classnames( 'tz-magazine-list', {
+			[ `tz-magazine-list-${ layout }` ]: layout,
 		} );
 
 		return (
-			<div className={ columnClasses }>
+			<div className={ listClasses }>
 
 				{ posts.map( ( post, i ) =>
-					<GridPost
+					<ListPost
 						key={ i }
 						post={ post }
 						attributes={ attributes }
