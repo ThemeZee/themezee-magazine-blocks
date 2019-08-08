@@ -7,7 +7,7 @@ import './blocks/style.scss';
 /**
  * Import Data Store
  */
-import './components/data-store.js';
+import './components/data/store.js';
 
 /**
  * Import Blocks

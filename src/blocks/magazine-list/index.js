@@ -10,7 +10,7 @@ const { registerBlockType } = wp.blocks;
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
-import { IconMagazineList } from '../../components/icons';
+import { IconMagazineList } from '../../components/data/icons';
 
 /**
  * Register block

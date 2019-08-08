@@ -21,7 +21,7 @@ const {
  * Internal dependencies
  */
 import MagazineBlock from '../../components/magazine-block';
-import { IconMagazineVertical } from '../../components/icons';
+import { IconMagazineVertical } from '../../components/data/icons';
 
 /**
  * Block Edit Component

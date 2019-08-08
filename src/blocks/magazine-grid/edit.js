@@ -37,7 +37,7 @@ import {
 	IconNumberTwo,
 	IconNumberThree,
 	IconNumberFour,
-} from '../../components/icons';
+} from '../../components/data/icons';
 
 /**
  * Block Edit Component

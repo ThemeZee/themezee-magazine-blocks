@@ -22,7 +22,7 @@ const {
  * Internal dependencies
  */
 import MagazineBlock from '../../components/magazine-block';
-import { IconMagazineList } from '../../components/icons';
+import { IconMagazineList } from '../../components/data/icons';
 
 /**
  * Block Edit Component
