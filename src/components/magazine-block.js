@@ -42,7 +42,7 @@ const {
 import CategorySelect from './controls/category-select';
 import AuthorSelect from './controls/author-select';
 import OrderSelect from './controls/order-select';
-import GridPost from './template/post/grid-post.js';
+import MagazineTemplate from './magazine-template';
 
 /**
  * Block Edit Component
@@ -55,6 +55,7 @@ class MagazineBlock extends Component {
 			setAttributes,
 			latestPosts,
 			magazineBlockIcon,
+			magazineTemplate,
 		} = this.props;
 
 		const {
@@ -65,7 +66,6 @@ class MagazineBlock extends Component {
 			orderBy,
 			numberOfPosts,
 			offset,
-			columns,
 			metaPosition,
 			showDate,
 			showAuthor,
@@ -76,10 +76,6 @@ class MagazineBlock extends Component {
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
-
-		const columnClasses = classnames( 'tz-magazine-columns', {
-			[ `tz-magazine-columns-${ columns }` ]: columns,
-		} );
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -222,19 +218,13 @@ class MagazineBlock extends Component {
 				{ inspectorControls }
 
 				<div className={ blockClasses }>
-					<div className={ columnClasses }>
 
-						{ displayPosts.map( ( post, i ) =>
-							<GridPost
-								key={ i }
-								post={ post }
-								attributes={ attributes }
-								imageSize={ attributes.imageSize }
-								showContent={ true }
-							/>
-						) }
+					<MagazineTemplate
+						posts={ displayPosts }
+						attributes={ attributes }
+						template={ magazineTemplate }
+					/>
 
-					</div>
 				</div>
 
 			</Fragment>

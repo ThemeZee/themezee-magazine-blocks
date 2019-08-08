@@ -10,11 +10,7 @@ const {
  */
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-
-const {
-	Component,
-	Fragment,
-} = wp.element;
+const { Component } = wp.element;
 
 const {
 	__,
@@ -107,16 +103,13 @@ class MagazineGridEdit extends Component {
 		);
 
 		return (
-			<Fragment>
-
-				<MagazineBlock
-					blockControls={ blockControls }
-					layoutSettings={ layoutSettings }
-					magazineBlockIcon={ IconMagazineGrid }
-					{ ...this.props }
-				/>
-
-			</Fragment>
+			<MagazineBlock
+				blockControls={ blockControls }
+				layoutSettings={ layoutSettings }
+				magazineBlockIcon={ IconMagazineGrid }
+				magazineTemplate="magazine-grid"
+				{ ...this.props }
+			/>
 		);
 	}
 }
