@@ -37,6 +37,31 @@ class ThemeZee_Blocks_Magazine_Cache {
 	}
 
 	/**
+	 * Query Posts from cache or database.
+	 *
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return array Returns the post query.
+	 */
+	static function query_posts( $attributes ) {
+		// Get post ids from cache or database.
+		$post_ids = self::get_post_ids( $attributes );
+
+		// Set query arguments.
+		$query_arguments = array(
+			'post__in'            => $post_ids,
+			'posts_per_page'      => absint( $attributes['numberOfPosts'] ),
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		);
+
+		// Fetch posts from database.
+		$posts_query = new WP_Query( $query_arguments );
+
+		return $posts_query;
+	}
+
+	/**
 	 * Get Post IDs.
 	 *
 	 * @param array $attributes The block attributes.

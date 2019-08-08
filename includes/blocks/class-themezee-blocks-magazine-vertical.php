@@ -113,19 +113,8 @@ class ThemeZee_Blocks_Magazine_Vertical {
 	 * @return string Returns the block content.
 	 */
 	static function render_block( $attributes ) {
-		// Get post ids from cache or database.
-		$post_ids = ThemeZee_Blocks_Magazine_Cache::get_post_ids( $attributes );
-
-		// Set query arguments.
-		$query_arguments = array(
-			'post__in'            => $post_ids,
-			'posts_per_page'      => absint( $attributes['numberOfPosts'] ),
-			'ignore_sticky_posts' => true,
-			'no_found_rows'       => true,
-		);
-
-		// Fetch posts from database.
-		$posts_query = new WP_Query( $query_arguments );
+		// Fetch posts from cache or database.
+		$posts_query = ThemeZee_Blocks_Magazine_Cache::query_posts( $attributes );
 
 		// Set up markup variables.
 		$highlight_post = '';
