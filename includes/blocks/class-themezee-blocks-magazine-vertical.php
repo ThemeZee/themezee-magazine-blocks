@@ -113,35 +113,21 @@ class ThemeZee_Blocks_Magazine_Vertical {
 	 * @return string Returns the block content.
 	 */
 	static function render_block( $attributes ) {
+		// Get post ids from cache or database.
+		$post_ids = ThemeZee_Blocks_Magazine_Cache::get_post_ids( $attributes );
+
+		// Set query arguments.
 		$query_arguments = array(
-			'posts_per_page'      => intval( $attributes['numberOfPosts'] ),
-			'post_status'         => 'publish',
-			'order'               => esc_attr( $attributes['order'] ),
-			'orderby'             => esc_attr( $attributes['orderBy'] ),
-			'suppress_filters'    => false,
+			'post__in'            => $post_ids,
+			'posts_per_page'      => absint( $attributes['numberOfPosts'] ),
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		);
 
-		if ( isset( $attributes['categories'] ) ) {
-			$query_arguments['cat'] = esc_attr( $attributes['categories'] );
-		}
-
-		if ( isset( $attributes['tags'] ) ) {
-			$query_arguments['tag'] = esc_attr( $attributes['tags'] );
-		}
-
-		if ( isset( $attributes['author'] ) ) {
-			$query_arguments['author'] = esc_attr( $attributes['author'] );
-		}
-
-		if ( isset( $attributes['offset'] ) && $attributes['offset'] > 0 ) {
-			$query_arguments['offset'] = intval( $attributes['offset'] );
-		}
-
 		// Fetch posts from database.
 		$posts_query = new WP_Query( $query_arguments );
 
+		// Set up markup variables.
 		$highlight_post = '';
 		$list_posts     = '';
 

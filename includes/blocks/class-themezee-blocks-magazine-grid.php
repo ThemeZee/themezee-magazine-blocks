@@ -113,8 +113,6 @@ class ThemeZee_Blocks_Magazine_Grid {
 	 * @return string Returns the block content.
 	 */
 	static function render_block( $attributes ) {
-		$posts_markup = '';
-
 		// Get post ids from cache or database.
 		$post_ids = ThemeZee_Blocks_Magazine_Cache::get_post_ids( $attributes );
 
@@ -128,6 +126,9 @@ class ThemeZee_Blocks_Magazine_Grid {
 
 		// Fetch posts from database.
 		$posts_query = new WP_Query( $query_arguments );
+
+		// Set up markup variable.
+		$posts_markup = '';
 
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
