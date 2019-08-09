@@ -34,6 +34,7 @@ registerBlockType(
 
 		supports: {
 			html: false,
+			inserter: false,
 		},
 
 		edit,
