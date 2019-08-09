@@ -1,0 +1,24 @@
+.editor-block-list__block .tz-magazine-columns {
+	display: block;
+	margin: 0;
+
+	.wp-block-themezee-blocks-magazine-column {
+		padding-right: 0;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.editor-block-list__block {
+		.tz-magazine-columns {
+			> .editor-inner-blocks > .editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+	
+				> [data-type="themezee-blocks/magazine-column"] {
+					width: 50%;
+				}
+			}
+		}
+	}
+}

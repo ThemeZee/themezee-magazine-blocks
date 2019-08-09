@@ -13,6 +13,7 @@ import './components/data/store.js';
  * Import Blocks
  */
 import './blocks/magazine-column';
+import './blocks/magazine-columns';
 import './blocks/magazine-grid';
 import './blocks/magazine-horizontal';
 import './blocks/magazine-list';
