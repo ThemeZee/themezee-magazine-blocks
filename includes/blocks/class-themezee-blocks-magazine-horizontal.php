@@ -153,10 +153,10 @@ class ThemeZee_Blocks_Magazine_Horizontal {
 		$highlight_post = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_post );
 
 		// Set Columns class.
-		$columns_class = sanitize_key( 'tz-magazine-columns-' . $attributes['columns'] );
+		$columns_class = sanitize_key( 'tz-magazine-grid-columns-' . $attributes['columns'] );
 
 		// Wrap Grid Posts.
-		$grid_posts = sprintf( '<div class="tz-magazine-columns %1$s">%2$s</div>', $columns_class, $grid_posts );
+		$grid_posts = sprintf( '<div class="tz-magazine-grid-columns %1$s">%2$s</div>', $columns_class, $grid_posts );
 
 		// Set Posts Markup.
 		$posts_markup = $highlight_post . $grid_posts;

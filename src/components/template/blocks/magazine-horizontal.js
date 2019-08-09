@@ -23,8 +23,8 @@ class MagazineHorizontal extends Component {
 
 		const { columns } = attributes;
 
-		const columnClasses = classnames( 'tz-magazine-columns', {
-			[ `tz-magazine-columns-${ columns }` ]: columns,
+		const columnClasses = classnames( 'tz-magazine-grid-columns', {
+			[ `tz-magazine-grid-columns-${ columns }` ]: columns,
 		} );
 
 		return (

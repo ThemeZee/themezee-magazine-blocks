@@ -136,10 +136,10 @@ class ThemeZee_Blocks_Magazine_Grid {
 		wp_reset_postdata();
 
 		// Set Columns class.
-		$columns_class = sanitize_key( 'tz-magazine-columns-' . $attributes['columns'] );
+		$columns_class = sanitize_key( 'tz-magazine-grid-columns-' . $attributes['columns'] );
 
 		// Define Block Content.
-		$block_content = sprintf( '<div class="tz-magazine-columns %1$s">%2$s</div>', $columns_class, $posts_markup );
+		$block_content = sprintf( '<div class="tz-magazine-grid-columns %1$s">%2$s</div>', $columns_class, $posts_markup );
 
 		// Get Block Classes.
 		$block_classes = self::get_block_classes( $attributes );
