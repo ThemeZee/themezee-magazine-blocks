@@ -28,7 +28,7 @@ class MagazineColumn extends Component {
 					/>
 				</div>
 
-				<div className="tz-magazine-list tz-magazine-thumbnail-list">
+				<div className="tz-magazine-thumbnail-list">
 					{ posts.map( ( post, i ) => {
 						if ( 0 !== i ) {
 							return (

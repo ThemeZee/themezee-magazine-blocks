@@ -149,7 +149,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 		$highlight_post = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_post );
 
 		// Wrap Thumbnail Posts.
-		$list_posts = sprintf( '<div class="tz-magazine-list tz-magazine-thumbnail-list">%s</div>', $list_posts );
+		$list_posts = sprintf( '<div class="tz-magazine-thumbnail-list">%s</div>', $list_posts );
 
 		// Set Posts Markup.
 		$posts_markup = $highlight_post . $list_posts;

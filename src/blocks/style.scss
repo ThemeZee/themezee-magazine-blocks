@@ -1,8 +1,9 @@
-/* Default Styling */
+/* Default Spacing */
 :root {
 	--tz-column-gap: 1.5em;
 }
 
+/* Default Post Styling */
 .tz-magazine-block {
 	.tz-magazine-post {
 		margin-bottom: 1.5em;
@@ -31,5 +32,29 @@
 
 	.tz-meta-field {
 		margin-right: 0.5rem;
+	}
+}
+
+/* Thumbnail List */
+.tz-magazine-thumbnail-list {
+	.tz-magazine-post {
+		display: flex;
+		flex-wrap: nowrap;
+
+		.tz-post-image {
+			padding-right: 0.5em;
+			padding-right: calc( var(--tz-column-gap) / 3 );
+			width: 30%;
+
+			.wp-post-image {
+				margin: 0;
+			}
+		}
+
+		.tz-post-content {
+			padding-left: 0.5em;
+			padding-left: calc( var(--tz-column-gap) / 3 );
+			width: 70%;
+		}
 	}
 }

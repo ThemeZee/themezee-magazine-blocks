@@ -17,18 +17,6 @@
 			padding-left: 0.75em;
 			padding-left: calc( var(--tz-column-gap) / 2 );
 			width: 50%;
-
-			.tz-magazine-post {
-				flex-wrap: nowrap;
-
-				.tz-post-image {
-					width: 30%;
-				}
-
-				.tz-post-content {
-					width: 70%;
-				}
-			}
 		}
 	}
 }
