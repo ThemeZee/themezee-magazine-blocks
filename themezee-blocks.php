@@ -89,6 +89,7 @@ class ThemeZee_Blocks {
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/class-themezee-blocks-magazine-template.php';
 
 		// Include Blocks for server-side.
+		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-column.php';
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-grid.php';
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-horizontal.php';
 		require_once THEMEZEE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-blocks-magazine-list.php';

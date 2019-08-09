@@ -22,11 +22,6 @@
 		font-size: 1.5rem;
 	}
 
-	.tz-magazine-thumbnail-list .tz-entry-title {
-		font-size: 18px;
-		font-size: 1.125rem;
-	}
-
 	.tz-entry-meta {
 		font-size: 15px;
 		font-size: 0.9375rem;
@@ -57,6 +52,11 @@
 			padding-left: 0.5em;
 			padding-left: calc( var(--tz-column-gap) / 3 );
 			width: 70%;
+		}
+
+		.tz-entry-title {
+			font-size: 18px;
+			font-size: 1.125rem;
 		}
 	}
 }

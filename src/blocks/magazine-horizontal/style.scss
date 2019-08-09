@@ -1,23 +1,25 @@
 @media only screen and (min-width: 640px) {
-	.tz-magazine-highlight-post {
-		.tz-magazine-post {
-			display: flex;
-			flex-wrap: wrap;
+	.tz-magazine-horizontal {
+		.tz-magazine-highlight-post {
+			.tz-magazine-post {
+				display: flex;
+				flex-wrap: wrap;
 
-			.tz-post-image {
-				padding-right: 0.75em;
-				padding-right: calc( var(--tz-column-gap) / 2 );
-				width: 50%;
+				.tz-post-image {
+					padding-right: 0.75em;
+					padding-right: calc( var(--tz-column-gap) / 2 );
+					width: 50%;
 
-				.wp-post-image {
-					margin: 0;
+					.wp-post-image {
+						margin: 0;
+					}
 				}
-			}
 
-			.tz-post-content {
-				padding-left: 0.75em;
-				padding-left: calc( var(--tz-column-gap) / 2 );
-				width: 50%;
+				.tz-post-content {
+					padding-left: 0.75em;
+					padding-left: calc( var(--tz-column-gap) / 2 );
+					width: 50%;
+				}
 			}
 		}
 	}

@@ -9,6 +9,7 @@ const {
 /**
  * Internal dependencies
  */
+import MagazineColumn from './template/blocks/magazine-column.js';
 import MagazineGrid from './template/blocks/magazine-grid.js';
 import MagazineHorizontal from './template/blocks/magazine-horizontal.js';
 import MagazineList from './template/blocks/magazine-list.js';
@@ -24,6 +25,10 @@ class MagazineTemplate extends Component {
 
 		return (
 			<Fragment>
+
+				{ 'magazine-column' === template && (
+					<MagazineColumn posts={ posts } attributes={ attributes } />
+				) }
 
 				{ 'magazine-grid' === template && (
 					<MagazineGrid posts={ posts } attributes={ attributes } />
