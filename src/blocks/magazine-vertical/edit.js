@@ -67,8 +67,9 @@ class MagazineVerticalEdit extends Component {
 
 		return (
 			<MagazineBlock
+				placeholderLabel={ __( 'Magazine Vertical', 'themezee-blocks' ) }
+				placeholderIcon={ IconMagazineVertical }
 				layoutSettings={ layoutSettings }
-				magazineBlockIcon={ IconMagazineVertical }
 				magazineTemplate="magazine-vertical"
 				{ ...this.props }
 			/>

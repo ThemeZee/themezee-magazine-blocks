@@ -67,8 +67,9 @@ class MagazineColumnEdit extends Component {
 
 		return (
 			<MagazineBlock
+				placeholderLabel={ __( 'Magazine Column', 'themezee-blocks' ) }
+				placeholderIcon={ IconMagazineColumn }
 				layoutSettings={ layoutSettings }
-				magazineBlockIcon={ IconMagazineColumn }
 				magazineTemplate="magazine-column"
 				{ ...this.props }
 			/>

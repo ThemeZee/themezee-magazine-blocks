@@ -79,8 +79,9 @@ class MagazineHorizontalEdit extends Component {
 
 		return (
 			<MagazineBlock
+				placeholderLabel={ __( 'Magazine Horizontal', 'themezee-blocks' ) }
+				placeholderIcon={ IconMagazineHorizontal }
 				layoutSettings={ layoutSettings }
-				magazineBlockIcon={ IconMagazineHorizontal }
 				magazineTemplate="magazine-horizontal"
 				{ ...this.props }
 			/>

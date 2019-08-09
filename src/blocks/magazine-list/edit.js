@@ -69,8 +69,9 @@ class MagazineListEdit extends Component {
 
 		return (
 			<MagazineBlock
+				placeholderLabel={ __( 'Magazine List', 'themezee-blocks' ) }
+				placeholderIcon={ IconMagazineList }
 				layoutSettings={ layoutSettings }
-				magazineBlockIcon={ IconMagazineList }
 				magazineTemplate="magazine-list"
 				{ ...this.props }
 			/>

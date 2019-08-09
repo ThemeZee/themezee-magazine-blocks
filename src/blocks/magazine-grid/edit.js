@@ -104,9 +104,9 @@ class MagazineGridEdit extends Component {
 
 		return (
 			<MagazineBlock
-				blockControls={ blockControls }
+				placeholderLabel={ __( 'Magazine Grid', 'themezee-blocks' ) }
+				placeholderIcon={ IconMagazineGrid }
 				layoutSettings={ layoutSettings }
-				magazineBlockIcon={ IconMagazineGrid }
 				magazineTemplate="magazine-grid"
 				{ ...this.props }
 			/>

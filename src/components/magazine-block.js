@@ -54,7 +54,8 @@ class MagazineBlock extends Component {
 			className,
 			setAttributes,
 			latestPosts,
-			magazineBlockIcon,
+			placeholderLabel,
+			placeholderIcon,
 			magazineTemplate,
 		} = this.props;
 
@@ -192,8 +193,8 @@ class MagazineBlock extends Component {
 					{ inspectorControls }
 
 					<Placeholder
-						icon={ magazineBlockIcon }
-						label={ __( 'Magazine Grid', 'themezee-blocks' ) }
+						icon={ placeholderIcon }
+						label={ placeholderLabel }
 						className="tz-posts-placeholder"
 					>
 						{ ! Array.isArray( latestPosts ) ?
