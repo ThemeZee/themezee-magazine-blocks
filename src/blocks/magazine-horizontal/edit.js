@@ -12,19 +12,27 @@ const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
 
-const { __ } = wp.i18n;
+const {
+	__,
+	sprintf,
+} = wp.i18n;
 
 const {
 	PanelBody,
 	RangeControl,
 	SelectControl,
+	Toolbar,
 } = wp.components;
 
 /**
  * Internal dependencies
  */
 import MagazineBlock from '../../components/magazine-block';
-import { IconMagazineHorizontal } from '../../components/data/icons';
+import {
+	IconMagazineHorizontal,
+	IconNumberThree,
+	IconNumberFour,
+} from '../../components/data/icons';
 
 /**
  * Block Edit Component
@@ -43,6 +51,24 @@ class MagazineHorizontalEdit extends Component {
 			thumbnailSize,
 		} = attributes;
 
+		const columnIcons = {
+			3: IconNumberThree,
+			4: IconNumberFour,
+		};
+
+		const blockControls = (
+			<Toolbar
+				controls={
+					[ 3, 4 ].map( column => ( {
+						icon: columnIcons[ column ],
+						title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
+						isActive: column === columns,
+						onClick: () => setAttributes( { columns: column } ),
+					} ) )
+				}
+			/>
+		);
+
 		const layoutSettings = (
 			<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
 
@@ -50,7 +76,7 @@ class MagazineHorizontalEdit extends Component {
 					label={ __( 'Columns', 'themezee-blocks' ) }
 					value={ columns }
 					onChange={ ( value ) => setAttributes( { columns: value } ) }
-					min={ 2 }
+					min={ 3 }
 					max={ 4 }
 				/>
 
@@ -81,6 +107,7 @@ class MagazineHorizontalEdit extends Component {
 			<MagazineBlock
 				placeholderLabel={ __( 'Magazine Horizontal', 'themezee-blocks' ) }
 				placeholderIcon={ IconMagazineHorizontal }
+				blockControls={ blockControls }
 				layoutSettings={ layoutSettings }
 				magazineTemplate="magazine-horizontal"
 				{ ...this.props }
