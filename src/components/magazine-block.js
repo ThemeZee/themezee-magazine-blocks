@@ -35,6 +35,7 @@ const {
 	Spinner,
 	TextControl,
 	ToggleControl,
+	Toolbar,
 } = wp.components;
 
 /**
@@ -83,6 +84,24 @@ class MagazineBlock extends Component {
 			<BlockControls key="controls">
 
 				{ this.props.blockControls ? this.props.blockControls : null }
+
+				<Toolbar
+					controls={ [ {
+						// Font Awesone Plus Solid
+						icon: 'plus',
+						title: __( 'Show one post more', 'gt-blocks' ),
+						onClick: () => setAttributes( { numberOfPosts: numberOfPosts + 1 } ),
+					}, {
+						// Font Awesone Minus Solid
+						icon: 'minus',
+						title: __( 'Show one post less', 'gt-blocks' ),
+						onClick: () => {
+							if ( numberOfPosts > 1 ) {
+								setAttributes( { numberOfPosts: numberOfPosts - 1 } );
+							}
+						},
+					} ] }
+				/>
 
 			</BlockControls>
 		);
