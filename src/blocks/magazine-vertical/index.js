@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 
 /**
  * Internal dependencies
@@ -34,6 +34,32 @@ registerBlockType(
 
 		supports: {
 			html: false,
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-grid' ],
+					transform: ( attributes ) => {
+						return createBlock( 'themezee-blocks/magazine-grid', { ...attributes } );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-horizontal' ],
+					transform: ( attributes ) => {
+						return createBlock( 'themezee-blocks/magazine-horizontal', { ...attributes } );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-list' ],
+					transform: ( attributes ) => {
+						return createBlock( 'themezee-blocks/magazine-list', { ...attributes } );
+					},
+				},
+			],
 		},
 
 		edit,
