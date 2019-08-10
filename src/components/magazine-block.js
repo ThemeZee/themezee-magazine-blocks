@@ -23,6 +23,7 @@ const {
 } = wp.i18n;
 
 const {
+	BlockControls,
 	InspectorControls,
 } = wp.editor;
 
@@ -77,6 +78,14 @@ class MagazineBlock extends Component {
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
+
+		const blockControls = (
+			<BlockControls key="controls">
+
+				{ this.props.blockControls ? this.props.blockControls : null }
+
+			</BlockControls>
+		);
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -189,7 +198,7 @@ class MagazineBlock extends Component {
 			return (
 				<Fragment>
 
-					{ this.props.blockControls ? this.props.blockControls : null }
+					{ blockControls }
 					{ inspectorControls }
 
 					<Placeholder
@@ -215,7 +224,7 @@ class MagazineBlock extends Component {
 		return (
 			<Fragment>
 
-				{ this.props.blockControls ? this.props.blockControls : null }
+				{ blockControls }
 				{ inspectorControls }
 
 				<div className={ blockClasses }>

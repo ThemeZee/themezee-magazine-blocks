@@ -18,10 +18,6 @@ const {
 } = wp.i18n;
 
 const {
-	BlockControls,
-} = wp.editor;
-
-const {
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -62,20 +58,16 @@ class MagazineGridEdit extends Component {
 		};
 
 		const blockControls = (
-			<BlockControls key="controls">
-
-				<Toolbar
-					controls={
-						[ 2, 3, 4 ].map( column => ( {
-							icon: columnIcons[ column ],
-							title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
-							isActive: column === columns,
-							onClick: () => setAttributes( { columns: column } ),
-						} ) )
-					}
-				/>
-
-			</BlockControls>
+			<Toolbar
+				controls={
+					[ 2, 3, 4 ].map( column => ( {
+						icon: columnIcons[ column ],
+						title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
+						isActive: column === columns,
+						onClick: () => setAttributes( { columns: column } ),
+					} ) )
+				}
+			/>
 		);
 
 		const layoutSettings = (
@@ -106,6 +98,7 @@ class MagazineGridEdit extends Component {
 			<MagazineBlock
 				placeholderLabel={ __( 'Magazine Grid', 'themezee-blocks' ) }
 				placeholderIcon={ IconMagazineGrid }
+				blockControls={ blockControls }
 				layoutSettings={ layoutSettings }
 				magazineTemplate="magazine-grid"
 				{ ...this.props }
