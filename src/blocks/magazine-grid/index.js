@@ -40,6 +40,20 @@ registerBlockType(
 			to: [
 				{
 					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-columns' ],
+					transform: ( attributes ) => {
+						return createBlock(
+							'themezee-blocks/magazine-columns',
+							{},
+							[
+								createBlock( 'themezee-blocks/magazine-column', { ...attributes } ),
+								createBlock( 'themezee-blocks/magazine-column', { ...attributes } ),
+							],
+						);
+					},
+				},
+				{
+					type: 'block',
 					blocks: [ 'themezee-blocks/magazine-horizontal' ],
 					transform: ( attributes ) => {
 						return createBlock( 'themezee-blocks/magazine-horizontal', { ...attributes } );

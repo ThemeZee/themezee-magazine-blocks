@@ -7,8 +7,9 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
+const { select } = wp.data;
 
 /**
  * Internal dependencies
@@ -37,6 +38,43 @@ registerBlockType(
 			__( 'Columns', 'themezee-blocks' ),
 			__( 'ThemeZee', 'themezee-blocks' ),
 		],
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-grid' ],
+					transform: ( attributes, innerBlocks ) => {
+						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
+						return createBlock( 'themezee-blocks/magazine-grid', { ...childAttributes } );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-horizontal' ],
+					transform: ( attributes, innerBlocks ) => {
+						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
+						return createBlock( 'themezee-blocks/magazine-horizontal', { ...childAttributes } );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-list' ],
+					transform: ( attributes, innerBlocks ) => {
+						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
+						return createBlock( 'themezee-blocks/magazine-list', { ...childAttributes } );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'themezee-blocks/magazine-vertical' ],
+					transform: ( attributes, innerBlocks ) => {
+						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
+						return createBlock( 'themezee-blocks/magazine-vertical', { ...childAttributes } );
+					},
+				},
+			],
+		},
 
 		edit,
 
