@@ -55,7 +55,7 @@ class MetaComments extends Component {
 		}
 
 		return (
-			<span className="tz-meta-comments tz-meta-field">
+			<span className="tz-meta-comments meta-comments tz-meta-field">
 				<a href={ post.link + '#comments' } target="_blank" rel="noreferrer noopener">
 					{ comments }
 				</a>

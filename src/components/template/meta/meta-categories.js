@@ -26,7 +26,7 @@ class MetaCategories extends Component {
 		}
 
 		return (
-			<span className="tz-meta-categories tz-meta-field">
+			<span className="tz-meta-categories meta-categories tz-meta-field">
 
 				{ postCategories.map( ( category, i, cats ) =>
 					<Fragment key={ i }>

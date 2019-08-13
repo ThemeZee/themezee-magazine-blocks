@@ -18,7 +18,7 @@ class MetaDate extends Component {
 		const dateFormat = __experimentalGetSettings().formats.date;
 
 		return (
-			<span className="tz-meta-date tz-meta-field">
+			<span className="tz-meta-date meta-date tz-meta-field">
 				<a href={ post.link } target="_blank" rel="noreferrer noopener">
 					<time dateTime={ format( 'c', post.date_gmt ) } className="published updated">
 						{ dateI18n( dateFormat, post.date_gmt ) }

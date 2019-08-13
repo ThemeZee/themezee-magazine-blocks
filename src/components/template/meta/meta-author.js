@@ -21,7 +21,7 @@ class MetaAuthor extends Component {
 		}
 
 		return (
-			<span className="tz-meta-author tz-meta-field author vcard">
+			<span className="tz-meta-author meta-author tz-meta-field author vcard">
 				<a className="url fn n" href={ postAuthor.link } target="_blank" rel="noreferrer noopener">
 					{ postAuthor.name }
 				</a>

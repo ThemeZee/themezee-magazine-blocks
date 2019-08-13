@@ -219,7 +219,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		);
 
 		// Wrap date.
-		$date = sprintf( '<span class="tz-meta-date tz-meta-field">%s</span>', $time_string );
+		$date = sprintf( '<span class="tz-meta-date meta-date tz-meta-field">%s</span>', $time_string );
 
 		return $date;
 	}
@@ -241,7 +241,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		);
 
 		// Wrap author.
-		$author = sprintf( '<span class="tz-meta-author tz-meta-field author vcard">%s</span>', $author_string );
+		$author = sprintf( '<span class="tz-meta-author meta-author tz-meta-field author vcard">%s</span>', $author_string );
 
 		return $author;
 	}
@@ -263,7 +263,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		$category_list = get_the_category_list( ', ' );
 
 		// Wrap categories.
-		$categories = sprintf( '<span class="tz-meta-categories tz-meta-field">%s</span>', $category_list );
+		$categories = sprintf( '<span class="tz-meta-categories meta-categories tz-meta-field">%s</span>', $category_list );
 
 		return $categories;
 	}
@@ -297,7 +297,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		ob_end_clean();
 
 		// Wrap comments.
-		$comments = sprintf( '<span class="tz-meta-comments tz-meta-field">%s</span>', $comment_string );
+		$comments = sprintf( '<span class="tz-meta-comments meta-comments tz-meta-field">%s</span>', $comment_string );
 
 		return $comments;
 	}
