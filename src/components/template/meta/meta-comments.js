@@ -45,11 +45,11 @@ class MetaComments extends Component {
 		let comments;
 
 		if ( commentCount < 1 && 'open' === post.comment_status ) {
-			comments = __( 'Leave a comment', 'themezee-blocks' );
+			comments = __( 'Leave a comment', 'themezee-magazine-blocks' );
 		} else if ( commentCount < 1 && 'open' !== post.comment_status ) {
-			comments = __( 'Comments off', 'themezee-blocks' );
+			comments = __( 'Comments off', 'themezee-magazine-blocks' );
 		} else if ( commentCount === 1 ) {
-			comments = __( 'One comment', 'themezee-blocks' );
+			comments = __( 'One comment', 'themezee-magazine-blocks' );
 		} else {
 			comments = sprintf( __( '%s comments' ), commentCount );
 		}

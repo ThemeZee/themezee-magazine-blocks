@@ -62,7 +62,7 @@ class MagazineGridEdit extends Component {
 				controls={
 					[ 2, 3, 4 ].map( column => ( {
 						icon: columnIcons[ column ],
-						title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
+						title: sprintf( __( '%s Columns', 'themezee-magazine-blocks' ), column ),
 						isActive: column === columns,
 						onClick: () => setAttributes( { columns: column } ),
 					} ) )
@@ -71,10 +71,10 @@ class MagazineGridEdit extends Component {
 		);
 
 		const layoutSettings = (
-			<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Layout Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 				<RangeControl
-					label={ __( 'Columns', 'themezee-blocks' ) }
+					label={ __( 'Columns', 'themezee-magazine-blocks' ) }
 					value={ columns }
 					onChange={ ( value ) => setAttributes( { columns: value } ) }
 					min={ 2 }
@@ -82,7 +82,7 @@ class MagazineGridEdit extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Image Size', 'themezee-blocks' ) }
+					label={ __( 'Image Size', 'themezee-magazine-blocks' ) }
 					value={ imageSize }
 					onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 					options={ map( availableImageSizes, ( size ) => ( {
@@ -96,7 +96,7 @@ class MagazineGridEdit extends Component {
 
 		return (
 			<MagazineBlock
-				placeholderLabel={ __( 'Magazine Grid', 'themezee-blocks' ) }
+				placeholderLabel={ __( 'Magazine Grid', 'themezee-magazine-blocks' ) }
 				placeholderIcon={ IconMagazineGrid }
 				blockControls={ blockControls }
 				layoutSettings={ layoutSettings }

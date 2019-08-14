@@ -2,7 +2,7 @@
 /**
  * Transient caching complex database queries for more performance.
  *
- * @package ThemeZee Blocks
+ * @package ThemeZee Magazine Blocks
  */
 
 // Exit if accessed directly.
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ThemeZee Blocks Magazine Grid Class
+ * ThemeZee Magazine Blocks Magazine Grid Class
  */
-class ThemeZee_Blocks_Magazine_Cache {
+class ThemeZee_Magazine_Blocks_Cache {
 	/**
 	 * Setup the class
 	 *
@@ -33,7 +33,7 @@ class ThemeZee_Blocks_Magazine_Cache {
 	 * @return void
 	 */
 	static function flush_cached_post_ids() {
-		delete_transient( 'themezee_blocks_cached_post_ids' );
+		delete_transient( 'themezee_magazine_blocks_cached_post_ids' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class ThemeZee_Blocks_Magazine_Cache {
 		$cache_id = self::get_cache_id( $attributes );
 
 		// Get cached post ids.
-		$cached_post_ids = get_transient( 'themezee_blocks_cached_post_ids' );
+		$cached_post_ids = get_transient( 'themezee_magazine_blocks_cached_post_ids' );
 
 		if ( ! isset( $cached_post_ids[ $cache_id ] ) || is_customize_preview() ) {
 
@@ -88,10 +88,10 @@ class ThemeZee_Blocks_Magazine_Cache {
 			$cached_post_ids[ $cache_id ] = $query->posts;
 
 			// Set Transient.
-			set_transient( 'themezee_blocks_cached_post_ids', $cached_post_ids );
+			set_transient( 'themezee_magazine_blocks_cached_post_ids', $cached_post_ids );
 		}
 
-		return apply_filters( 'themezee_blocks_cached_post_ids', $cached_post_ids[ $cache_id ], $cache_id );
+		return apply_filters( 'themezee_magazine_blocks_cached_post_ids', $cached_post_ids[ $cache_id ], $cache_id );
 	}
 
 	/**
@@ -165,4 +165,4 @@ class ThemeZee_Blocks_Magazine_Cache {
 }
 
 // Run Class.
-ThemeZee_Blocks_Magazine_Cache::setup();
+ThemeZee_Magazine_Blocks_Cache::setup();

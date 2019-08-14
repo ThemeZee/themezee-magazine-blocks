@@ -109,7 +109,7 @@ class MagazineBlock extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 
-				<PanelBody title={ __( 'Content Settings', 'themezee-blocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
 						selectedCategoryId={ categories }
@@ -117,7 +117,7 @@ class MagazineBlock extends Component {
 					/>
 
 					<TextControl
-						label={ __( 'Tags', 'themezee-blocks' ) }
+						label={ __( 'Tags', 'themezee-magazine-blocks' ) }
 						value={ tags }
 						onChange={ ( value ) => setAttributes( { tags: '' !== value ? value : undefined } ) }
 					/>
@@ -135,7 +135,7 @@ class MagazineBlock extends Component {
 
 					<RangeControl
 						key="tz-number-of-posts-control"
-						label={ __( 'Number of posts', 'themezee-blocks' ) }
+						label={ __( 'Number of posts', 'themezee-magazine-blocks' ) }
 						value={ numberOfPosts }
 						onChange={ ( value ) => setAttributes( { numberOfPosts: value } ) }
 						min={ 1 }
@@ -144,7 +144,7 @@ class MagazineBlock extends Component {
 
 					<RangeControl
 						key="tz-offset-control"
-						label={ __( 'Skip Posts', 'themezee-blocks' ) }
+						label={ __( 'Skip Posts', 'themezee-magazine-blocks' ) }
 						value={ offset }
 						onChange={ ( value ) => setAttributes( { offset: value } ) }
 						min={ 0 }
@@ -155,15 +155,15 @@ class MagazineBlock extends Component {
 
 				{ this.props.layoutSettings ? this.props.layoutSettings : null }
 
-				<PanelBody title={ __( 'Post Settings', 'themezee-blocks' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Post Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 					<SelectControl
-						label={ __( 'Post Details', 'themezee-blocks' ) }
+						label={ __( 'Post Details', 'themezee-magazine-blocks' ) }
 						value={ metaPosition }
 						onChange={ ( value ) => setAttributes( { metaPosition: value } ) }
 						options={ [
-							{ value: 'above-title', label: __( 'Show above post title', 'themezee-blocks' ) },
-							{ value: 'below-title', label: __( 'Show below post title', 'themezee-blocks' ) },
+							{ value: 'above-title', label: __( 'Show above post title', 'themezee-magazine-blocks' ) },
+							{ value: 'below-title', label: __( 'Show below post title', 'themezee-magazine-blocks' ) },
 						] }
 					/>
 
@@ -192,7 +192,7 @@ class MagazineBlock extends Component {
 					/>
 
 					<RangeControl
-						label={ __( 'Excerpt Length', 'themezee-blocks' ) }
+						label={ __( 'Excerpt Length', 'themezee-magazine-blocks' ) }
 						value={ excerptLength }
 						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 						min={ 0 }
@@ -201,7 +201,7 @@ class MagazineBlock extends Component {
 
 					{ excerptLength > 0 && (
 						<TextControl
-							label={ __( 'Read More Text', 'themezee-blocks' ) }
+							label={ __( 'Read More Text', 'themezee-magazine-blocks' ) }
 							value={ moreText }
 							onChange={ ( value ) => setAttributes( { moreText: value } ) }
 						/>
@@ -227,7 +227,7 @@ class MagazineBlock extends Component {
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( 'No posts found. You may have to reconfigure your content settings.', 'themezee-blocks' )
+							__( 'No posts found. You may have to reconfigure your content settings.', 'themezee-magazine-blocks' )
 						}
 					</Placeholder>
 

@@ -19,8 +19,8 @@ class AuthorSelect extends Component {
 			onAuthorChange && (
 				<TreeSelect
 					key="tz-author-select"
-					label={ __( 'Author', 'themezee-blocks' ) }
-					noOptionLabel={ __( 'All Authors', 'themezee-blocks' ) }
+					label={ __( 'Author', 'themezee-magazine-blocks' ) }
+					noOptionLabel={ __( 'All Authors', 'themezee-magazine-blocks' ) }
 					tree={ authorList }
 					selectedId={ selectedAuthorId }
 					onChange={ onAuthorChange }

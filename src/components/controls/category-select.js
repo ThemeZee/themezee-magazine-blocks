@@ -50,8 +50,8 @@ class CategorySelect extends Component {
 			onCategoryChange && (
 				<TreeSelect
 					key="tz-category-select"
-					label={ __( 'Category', 'themezee-blocks' ) }
-					noOptionLabel={ __( 'All Categories', 'themezee-blocks' ) }
+					label={ __( 'Category', 'themezee-magazine-blocks' ) }
+					noOptionLabel={ __( 'All Categories', 'themezee-magazine-blocks' ) }
 					tree={ termsTree }
 					selectedId={ selectedCategoryId }
 					onChange={ onCategoryChange }

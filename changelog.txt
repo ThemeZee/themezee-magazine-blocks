@@ -1,5 +1,5 @@
 ===================================
-ThemeZee Blocks Changelog
+ThemeZee Magazine Blocks Changelog
 ===================================
 
 Version 1.0

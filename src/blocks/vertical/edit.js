@@ -11,33 +11,22 @@ const {
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
-
-const {
-	__,
-	sprintf,
-} = wp.i18n;
-
+const { __ } = wp.i18n;
 const {
 	PanelBody,
-	RangeControl,
 	SelectControl,
-	Toolbar,
 } = wp.components;
 
 /**
  * Internal dependencies
  */
 import MagazineBlock from '../../components/magazine-block';
-import {
-	IconMagazineHorizontal,
-	IconNumberThree,
-	IconNumberFour,
-} from '../../components/data/icons';
+import { IconMagazineVertical } from '../../components/data/icons';
 
 /**
  * Block Edit Component
  */
-class MagazineHorizontalEdit extends Component {
+class MagazineVerticalEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -46,42 +35,15 @@ class MagazineHorizontalEdit extends Component {
 		} = this.props;
 
 		const {
-			columns,
 			imageSize,
 			thumbnailSize,
 		} = attributes;
 
-		const columnIcons = {
-			3: IconNumberThree,
-			4: IconNumberFour,
-		};
-
-		const blockControls = (
-			<Toolbar
-				controls={
-					[ 3, 4 ].map( column => ( {
-						icon: columnIcons[ column ],
-						title: sprintf( __( '%s Columns', 'themezee-blocks' ), column ),
-						isActive: column === columns,
-						onClick: () => setAttributes( { columns: column } ),
-					} ) )
-				}
-			/>
-		);
-
 		const layoutSettings = (
-			<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
-
-				<RangeControl
-					label={ __( 'Columns', 'themezee-blocks' ) }
-					value={ columns }
-					onChange={ ( value ) => setAttributes( { columns: value } ) }
-					min={ 3 }
-					max={ 4 }
-				/>
+			<PanelBody title={ __( 'Layout Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 				<SelectControl
-					label={ __( 'Image Size', 'themezee-blocks' ) }
+					label={ __( 'Image Size', 'themezee-magazine-blocks' ) }
 					value={ imageSize }
 					onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 					options={ map( availableImageSizes, ( size ) => ( {
@@ -91,7 +53,7 @@ class MagazineHorizontalEdit extends Component {
 				/>
 
 				<SelectControl
-					label={ __( 'Thumbnail Size', 'themezee-blocks' ) }
+					label={ __( 'Thumbnail Size', 'themezee-magazine-blocks' ) }
 					value={ thumbnailSize }
 					onChange={ ( value ) => setAttributes( { thumbnailSize: value } ) }
 					options={ map( availableImageSizes, ( size ) => ( {
@@ -105,11 +67,10 @@ class MagazineHorizontalEdit extends Component {
 
 		return (
 			<MagazineBlock
-				placeholderLabel={ __( 'Magazine Horizontal', 'themezee-blocks' ) }
-				placeholderIcon={ IconMagazineHorizontal }
-				blockControls={ blockControls }
+				placeholderLabel={ __( 'Magazine Vertical', 'themezee-magazine-blocks' ) }
+				placeholderIcon={ IconMagazineVertical }
 				layoutSettings={ layoutSettings }
-				magazineTemplate="magazine-horizontal"
+				magazineTemplate="magazine-vertical"
 				{ ...this.props }
 			/>
 		);
@@ -123,4 +84,4 @@ export default compose( [
 			availableImageSizes: settings.imageSizes,
 		};
 	} ),
-] )( MagazineHorizontalEdit );
+] )( MagazineVerticalEdit );

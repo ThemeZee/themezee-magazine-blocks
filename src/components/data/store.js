@@ -13,7 +13,7 @@ const actions = {
 	},
 };
 
-registerStore( 'themezee-blocks-store', {
+registerStore( 'themezee-magazine-blocks-store', {
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'SET_PLUGIN_URL':

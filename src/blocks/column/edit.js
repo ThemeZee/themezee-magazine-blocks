@@ -12,7 +12,6 @@ const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
 const { __ } = wp.i18n;
-
 const {
 	PanelBody,
 	SelectControl,
@@ -22,12 +21,12 @@ const {
  * Internal dependencies
  */
 import MagazineBlock from '../../components/magazine-block';
-import { IconMagazineList } from '../../components/data/icons';
+import { IconMagazineColumn } from '../../components/data/icons';
 
 /**
  * Block Edit Component
  */
-class MagazineListEdit extends Component {
+class MagazineColumnEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -36,28 +35,27 @@ class MagazineListEdit extends Component {
 		} = this.props;
 
 		const {
-			layout,
 			imageSize,
+			thumbnailSize,
 		} = attributes;
 
 		const layoutSettings = (
-			<PanelBody title={ __( 'Layout Settings', 'themezee-blocks' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Layout Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 				<SelectControl
-					label={ __( 'List Layout', 'themezee-blocks' ) }
-					value={ layout }
-					onChange={ ( value ) => setAttributes( { layout: value } ) }
-					options={ [
-						{ value: '50-50', label: __( '50% - 50%', 'themezee-blocks' ) },
-						{ value: '40-60', label: __( '40% - 60%', 'themezee-blocks' ) },
-						{ value: '30-70', label: __( '30% - 70%', 'themezee-blocks' ) },
-					] }
+					label={ __( 'Image Size', 'themezee-magazine-blocks' ) }
+					value={ imageSize }
+					onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+					options={ map( availableImageSizes, ( size ) => ( {
+						value: size.slug,
+						label: size.name,
+					} ) ) }
 				/>
 
 				<SelectControl
-					label={ __( 'Image Size', 'themezee-blocks' ) }
-					value={ imageSize }
-					onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+					label={ __( 'Thumbnail Size', 'themezee-magazine-blocks' ) }
+					value={ thumbnailSize }
+					onChange={ ( value ) => setAttributes( { thumbnailSize: value } ) }
 					options={ map( availableImageSizes, ( size ) => ( {
 						value: size.slug,
 						label: size.name,
@@ -69,10 +67,10 @@ class MagazineListEdit extends Component {
 
 		return (
 			<MagazineBlock
-				placeholderLabel={ __( 'Magazine List', 'themezee-blocks' ) }
-				placeholderIcon={ IconMagazineList }
+				placeholderLabel={ __( 'Magazine Column', 'themezee-magazine-blocks' ) }
+				placeholderIcon={ IconMagazineColumn }
 				layoutSettings={ layoutSettings }
-				magazineTemplate="magazine-list"
+				magazineTemplate="magazine-column"
 				{ ...this.props }
 			/>
 		);
@@ -86,4 +84,4 @@ export default compose( [
 			availableImageSizes: settings.imageSizes,
 		};
 	} ),
-] )( MagazineListEdit );
+] )( MagazineColumnEdit );

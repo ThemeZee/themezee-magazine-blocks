@@ -20,7 +20,7 @@ class EntryTitle extends Component {
 							{ titleTrimmed }
 						</RawHTML>
 					) :
-						__( '(Untitled)', 'themezee-blocks' )
+						__( '(Untitled)', 'themezee-magazine-blocks' )
 					}
 				</a>
 			</h2>

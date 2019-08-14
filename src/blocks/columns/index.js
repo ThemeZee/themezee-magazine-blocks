@@ -22,54 +22,54 @@ import { IconMagazineColumns } from '../../components/data/icons';
  * Register block
  */
 registerBlockType(
-	'themezee-blocks/magazine-columns',
+	'themezee-magazine-blocks/columns',
 	{
-		title: __( 'Magazine Columns', 'themezee-blocks' ),
+		title: __( 'Magazine Columns', 'themezee-magazine-blocks' ),
 
-		description: __( 'Displays your latest posts in two separate columns.', 'themezee-blocks' ),
+		description: __( 'Displays your latest posts in two separate columns.', 'themezee-magazine-blocks' ),
 
-		category: 'themezee-blocks',
+		category: 'themezee-magazine-blocks',
 
 		icon: IconMagazineColumns,
 
 		keywords: [
-			__( 'Posts', 'themezee-blocks' ),
-			__( 'Columns', 'themezee-blocks' ),
-			__( 'ThemeZee', 'themezee-blocks' ),
+			__( 'Posts', 'themezee-magazine-blocks' ),
+			__( 'Columns', 'themezee-magazine-blocks' ),
+			__( 'ThemeZee', 'themezee-magazine-blocks' ),
 		],
 
 		transforms: {
 			to: [
 				{
 					type: 'block',
-					blocks: [ 'themezee-blocks/magazine-grid' ],
+					blocks: [ 'themezee-magazine-blocks/magazine-grid' ],
 					transform: ( attributes, innerBlocks ) => {
 						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
-						return createBlock( 'themezee-blocks/magazine-grid', { ...childAttributes } );
+						return createBlock( 'themezee-magazine-blocks/magazine-grid', { ...childAttributes } );
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-blocks/magazine-horizontal' ],
+					blocks: [ 'themezee-magazine-blocks/magazine-horizontal' ],
 					transform: ( attributes, innerBlocks ) => {
 						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
-						return createBlock( 'themezee-blocks/magazine-horizontal', { ...childAttributes } );
+						return createBlock( 'themezee-magazine-blocks/magazine-horizontal', { ...childAttributes } );
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-blocks/magazine-list' ],
+					blocks: [ 'themezee-magazine-blocks/magazine-list' ],
 					transform: ( attributes, innerBlocks ) => {
 						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
-						return createBlock( 'themezee-blocks/magazine-list', { ...childAttributes } );
+						return createBlock( 'themezee-magazine-blocks/magazine-list', { ...childAttributes } );
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-blocks/magazine-vertical' ],
+					blocks: [ 'themezee-magazine-blocks/magazine-vertical' ],
 					transform: ( attributes, innerBlocks ) => {
 						const childAttributes = innerBlocks[ 0 ] ? innerBlocks[ 0 ].attributes : null;
-						return createBlock( 'themezee-blocks/magazine-vertical', { ...childAttributes } );
+						return createBlock( 'themezee-magazine-blocks/magazine-vertical', { ...childAttributes } );
 					},
 				},
 			],

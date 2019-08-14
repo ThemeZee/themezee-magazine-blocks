@@ -1,14 +1,14 @@
 /*
- * ThemeZee Blocks Settings CSS
+ * ThemeZee Magazine Blocks Settings CSS
  *
- * @package ThemeZee Blocks
+ * @package ThemeZee Magazine Blocks
  */
 
-.themezee-blocks-settings-form {
+.themezee-magazine-blocks-settings-form {
 	margin-top: 24px;
 }
 
-.themezee-blocks-settings .license-status {
+.themezee-magazine-blocks-settings .license-status {
 	display: inline-block;
 	margin: 0 12px 0 0;
 	padding: 4px 8px;
@@ -17,19 +17,19 @@
 	text-transform: uppercase;
 }
 
-.themezee-blocks-settings .license-active {
+.themezee-magazine-blocks-settings .license-active {
 	background: green;
 }
 
-.themezee-blocks-settings .license-invalid,
-.themezee-blocks-settings .license-expired {
+.themezee-magazine-blocks-settings .license-invalid,
+.themezee-magazine-blocks-settings .license-expired {
 	background: red;
 }
 
-.themezee-blocks-settings .license-description {
+.themezee-magazine-blocks-settings .license-description {
 	margin: 16px 0 0;
 }
 
-.themezee-blocks-settings .license-renewal {
+.themezee-magazine-blocks-settings .license-renewal {
 	margin: 16px 0 0;
 }

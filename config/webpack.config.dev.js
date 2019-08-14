@@ -27,12 +27,12 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 // Extract style.css for both editor and frontend styles.
 const blocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './assets/css/themezee-blocks.css',
+	filename: './assets/css/themezee-magazine-blocks.css',
 } );
 
 // Extract editor.css for editor styles.
 const editBlocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './assets/css/themezee-blocks-editor.css',
+	filename: './assets/css/themezee-magazine-blocks-editor.css',
 } );
 
 // Configuration for the ExtractTextPlugin — DRY rule.
@@ -72,7 +72,7 @@ const extractConfig = {
 // Export configuration.
 module.exports = {
 	entry: {
-		'./assets/js/themezee-blocks': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
+		'./assets/js/themezee-magazine-blocks': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
 	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.

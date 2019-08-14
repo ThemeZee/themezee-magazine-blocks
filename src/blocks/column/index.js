@@ -16,20 +16,20 @@ import { IconMagazineColumn } from '../../components/data/icons';
  * Register block
  */
 registerBlockType(
-	'themezee-blocks/magazine-column',
+	'themezee-magazine-blocks/column',
 	{
-		title: __( 'Magazine Column', 'themezee-blocks' ),
+		title: __( 'Magazine Column', 'themezee-magazine-blocks' ),
 
-		description: __( 'Displays your posts in a list with the first post highlighted.', 'themezee-blocks' ),
+		description: __( 'Displays your posts in a list with the first post highlighted.', 'themezee-magazine-blocks' ),
 
-		category: 'themezee-blocks',
+		category: 'themezee-magazine-blocks',
 
 		icon: IconMagazineColumn,
 
 		keywords: [
-			__( 'Posts', 'themezee-blocks' ),
-			__( 'Box', 'themezee-blocks' ),
-			__( 'ThemeZee', 'themezee-blocks' ),
+			__( 'Posts', 'themezee-magazine-blocks' ),
+			__( 'Box', 'themezee-magazine-blocks' ),
+			__( 'ThemeZee', 'themezee-magazine-blocks' ),
 		],
 
 		supports: {

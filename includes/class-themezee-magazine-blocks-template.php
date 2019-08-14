@@ -2,7 +2,7 @@
 /**
  * Display a single post.
  *
- * @package ThemeZee Blocks
+ * @package ThemeZee Magazine Blocks
  */
 
 // Exit if accessed directly.
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ThemeZee Blocks Magazine Grid Class
+ * ThemeZee Magazine Blocks Magazine Grid Class
  */
-class ThemeZee_Blocks_Magazine_Template {
+class ThemeZee_Magazine_Blocks_Template {
 	/**
 	 * Get Grid Post.
 	 *
@@ -105,7 +105,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		if ( has_post_thumbnail() ) {
 			$image = get_the_post_thumbnail( null, $image_size );
 		} else {
-			$image = '<img src="' . THEMEZEE_BLOCKS_PLUGIN_URL . 'assets/images/default-featured-image.png" class="attachment-full size-full wp-post-image" width="1600" height="1200" alt />';
+			$image = '<img src="' . THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/images/default-featured-image.png" class="attachment-full size-full wp-post-image" width="1600" height="1200" alt />';
 		}
 
 		$figure = sprintf(
@@ -236,7 +236,7 @@ class ThemeZee_Blocks_Magazine_Template {
 		// Create author string.
 		$author_string = sprintf( '<a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'themezee-blocks' ), get_the_author() ) ),
+			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'themezee-magazine-blocks' ), get_the_author() ) ),
 			esc_html( get_the_author() )
 		);
 
@@ -287,9 +287,9 @@ class ThemeZee_Blocks_Magazine_Template {
 
 		// Get Comment String.
 		comments_popup_link(
-			esc_html__( 'Leave a comment', 'themezee-blocks' ),
-			esc_html__( 'One comment', 'themezee-blocks' ),
-			esc_html__( '% comments', 'themezee-blocks' )
+			esc_html__( 'Leave a comment', 'themezee-magazine-blocks' ),
+			esc_html__( 'One comment', 'themezee-magazine-blocks' ),
+			esc_html__( '% comments', 'themezee-magazine-blocks' )
 		);
 		$comment_string = ob_get_contents();
 

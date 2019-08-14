@@ -1,11 +1,11 @@
 {
-  "name": "themezee-blocks-cgb-guten-block",
+  "name": "themezee-magazine-blocks-cgb-guten-block",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "export": "git archive HEAD -9 --prefix themezee-blocks/ --format=zip > ../../themezee-blocks.zip"
+    "export": "git archive HEAD -9 --prefix themezee-magazine-blocks/ --format=zip > ../../themezee-magazine-blocks.zip"
   },
   "dependencies": {
     "autoprefixer": "^7.2.4",

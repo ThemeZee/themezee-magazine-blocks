@@ -26,11 +26,11 @@ class MagazineColumnsEdit extends Component {
 
 					<InnerBlocks
 						template={ [
-							[ 'themezee-blocks/magazine-column', {} ],
-							[ 'themezee-blocks/magazine-column', {} ],
+							[ 'themezee-magazine-blocks/magazine-column', {} ],
+							[ 'themezee-magazine-blocks/magazine-column', {} ],
 						] }
 						templateLock={ true }
-						allowedBlocks={ [ 'themezee-blocks/magazine-column' ] }
+						allowedBlocks={ [ 'themezee-magazine-blocks/magazine-column' ] }
 					/>
 
 				</div>

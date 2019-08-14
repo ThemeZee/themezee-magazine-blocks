@@ -2,7 +2,7 @@
 /**
  * Registering the Magazine Columns Block
  *
- * @package ThemeZee Blocks
+ * @package ThemeZee Magazine Blocks
  */
 
 // Exit if accessed directly.
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ThemeZee Blocks Magazine Column Class
+ * ThemeZee Magazine Blocks Magazine Column Class
  */
-class ThemeZee_Blocks_Magazine_Columns {
+class ThemeZee_Magazine_Blocks_Columns {
 	/**
 	 * Setup the class
 	 *
@@ -31,9 +31,9 @@ class ThemeZee_Blocks_Magazine_Columns {
 	 * @return void
 	 */
 	static function register_block() {
-		register_block_type( 'themezee-blocks/magazine-columns' );
+		register_block_type( 'themezee-magazine-blocks/columns' );
 	}
 }
 
 // Run Class.
-ThemeZee_Blocks_Magazine_Columns::setup();
+ThemeZee_Magazine_Blocks_Columns::setup();

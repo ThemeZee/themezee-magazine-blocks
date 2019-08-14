@@ -1,8 +1,8 @@
 <?php
 /**
- * Server-side rendering of the Magazine Vertical Block
+ * Server-side rendering of the Magazine List Block
  *
- * @package ThemeZee Blocks
+ * @package ThemeZee Magazine Blocks
  */
 
 // Exit if accessed directly.
@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ThemeZee Blocks Magazine Vertical Class
+ * ThemeZee Magazine Blocks Magazine List Class
  */
-class ThemeZee_Blocks_Magazine_Vertical {
+class ThemeZee_Magazine_Blocks_List {
 	/**
 	 * Setup the class
 	 *
@@ -32,7 +32,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 	 */
 	static function register_block() {
 		register_block_type(
-			'themezee-blocks/magazine-vertical',
+			'themezee-magazine-blocks/list',
 			array(
 				'attributes' => array(
 					'className' => array(
@@ -49,7 +49,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 					),
 					'numberOfPosts' => array(
 						'type'    => 'number',
-						'default' => 5,
+						'default' => 3,
 					),
 					'offset' => array(
 						'type'    => 'number',
@@ -63,11 +63,11 @@ class ThemeZee_Blocks_Magazine_Vertical {
 						'type'    => 'string',
 						'default' => 'date',
 					),
-					'imageSize' => array(
+					'layout' => array(
 						'type'    => 'string',
-						'default' => 'full',
+						'default' => '50-50',
 					),
-					'thumbnailSize' => array(
+					'imageSize' => array(
 						'type'    => 'string',
 						'default' => 'full',
 					),
@@ -97,7 +97,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 					),
 					'moreText' => array(
 						'type'    => 'string',
-						'default' => esc_html__( 'Continue Reading', 'themezee-blocks' ),
+						'default' => esc_html__( 'Continue Reading', 'themezee-magazine-blocks' ),
 					),
 				),
 				'render_callback' => array( __CLASS__, 'render_block' ),
@@ -114,11 +114,10 @@ class ThemeZee_Blocks_Magazine_Vertical {
 	 */
 	static function render_block( $attributes ) {
 		// Fetch posts from cache or database.
-		$posts_query = ThemeZee_Blocks_Magazine_Cache::query_posts( $attributes );
+		$posts_query = ThemeZee_Magazine_Blocks_Cache::query_posts( $attributes );
 
-		// Set up markup variables.
-		$highlight_post = '';
-		$list_posts     = '';
+		// Set up markup variable.
+		$posts_markup = '';
 
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
@@ -127,16 +126,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 			while ( $posts_query->have_posts() ) :
 				$posts_query->the_post();
 
-				// Display first post differently.
-				if ( 0 === $posts_query->current_post ) :
-
-					$highlight_post .= ThemeZee_Blocks_Magazine_Template::get_grid_post( $attributes, $attributes['imageSize'] );
-
-				else :
-
-					$list_posts .= ThemeZee_Blocks_Magazine_Template::get_list_post( $attributes, $attributes['thumbnailSize'], false );
-
-				endif;
+				$posts_markup .= ThemeZee_Magazine_Blocks_Template::get_list_post( $attributes, $attributes['imageSize'] );
 
 			endwhile;
 
@@ -145,17 +135,11 @@ class ThemeZee_Blocks_Magazine_Vertical {
 		// Reset Postdata.
 		wp_reset_postdata();
 
-		// Wrap Highlight Posts.
-		$highlight_post = sprintf( '<div class="tz-magazine-highlight-post">%s</div>', $highlight_post );
-
-		// Wrap Thumbnail Posts.
-		$list_posts = sprintf( '<div class="tz-magazine-thumbnail-list">%s</div>', $list_posts );
-
-		// Set Posts Markup.
-		$posts_markup = $highlight_post . $list_posts;
+		// Set List class.
+		$list_class = sanitize_key( 'tz-magazine-list-' . $attributes['layout'] );
 
 		// Define Block Content.
-		$block_content = sprintf( '<div class="tz-magazine-vertical">%s</div>', $posts_markup );
+		$block_content = sprintf( '<div class="tz-magazine-list %1$s">%2$s</div>', $list_class, $posts_markup );
 
 		// Get Block Classes.
 		$block_classes = self::get_block_classes( $attributes );
@@ -178,7 +162,7 @@ class ThemeZee_Blocks_Magazine_Vertical {
 	 * @return string Returns the block classes.
 	 */
 	static function get_block_classes( $attributes ) {
-		$classes  = 'wp-block-themezee-blocks-magazine-vertical';
+		$classes  = 'wp-block-themezee-magazine-blocks-list';
 		$classes .= ' tz-magazine-block';
 
 		if ( isset( $attributes['className'] ) ) {
@@ -190,4 +174,4 @@ class ThemeZee_Blocks_Magazine_Vertical {
 }
 
 // Run Class.
-ThemeZee_Blocks_Magazine_Vertical::setup();
+ThemeZee_Magazine_Blocks_List::setup();

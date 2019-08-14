@@ -1,4 +1,4 @@
-=== ThemeZee Blocks ===
+=== ThemeZee Magazine Blocks ===
 Author URI: https://themezee.com
 Plugin URI: https://themezee.com/blocks/
 Contributors: ThemeZee
@@ -22,4 +22,4 @@ Flexible Magazine Blocks for the new WordPress Editor.
 
 = Dokumentation =
 
-https://themezee.com/docs/themezee-blocks-dokumentation/
+https://themezee.com/docs/themezee-magazine-blocks-dokumentation/
