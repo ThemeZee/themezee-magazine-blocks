@@ -39,7 +39,7 @@ class ThemeZee_Magazine_Blocks {
 		self::constants();
 
 		// Setup Translation.
-		add_action( 'init', array( __CLASS__, 'translation' ) );
+		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
 
 		// Include Files.
 		self::includes();
@@ -73,7 +73,7 @@ class ThemeZee_Magazine_Blocks {
 	 * @return void
 	 */
 	static function translation() {
-		load_plugin_textdomain( 'themezee-magazine-blocks', false, dirname( plugin_basename( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_FILE ) ) . '/languages/php/' );
+		load_plugin_textdomain( 'themezee-magazine-blocks', false, dirname( plugin_basename( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_FILE ) ) . '/languages/' );
 	}
 
 	/**
@@ -145,7 +145,7 @@ class ThemeZee_Magazine_Blocks {
 		wp_add_inline_script( 'themezee-magazine-blocks', self::get_dispatch_data(), 'after' );
 
 		// Load javascript translation files.
-		wp_set_script_translations( 'themezee-magazine-blocks-editor', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages/js' );
+		wp_set_script_translations( 'themezee-magazine-blocks-editor', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
 
 		// Register block editor styles for backend.
 		wp_register_style(

@@ -1,0 +1,287 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ThemeZee Magazine Blocks\n"
+"Report-Msgid-Bugs-To: https://themezee.com/\n"
+"POT-Creation-Date: 2019-08-14 17:24+0200\n"
+"PO-Revision-Date: 2015-12-29 14:54+0100\n"
+"Last-Translator: \n"
+"Language-Team: ThemeZee <support@themezee.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/blocks/class-themezee-magazine-blocks-column.php:100
+#: includes/blocks/class-themezee-magazine-blocks-grid.php:100
+#: includes/blocks/class-themezee-magazine-blocks-horizontal.php:104
+#: includes/blocks/class-themezee-magazine-blocks-list.php:100
+#: includes/blocks/class-themezee-magazine-blocks-vertical.php:100
+msgid "Continue Reading"
+msgstr ""
+
+#: includes/class-themezee-magazine-blocks-template.php:239
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: includes/class-themezee-magazine-blocks-template.php:290
+#: src/components/template/meta/meta-comments.js:48
+msgid "Leave a comment"
+msgstr ""
+
+#: includes/class-themezee-magazine-blocks-template.php:291
+#: src/components/template/meta/meta-comments.js:52
+msgid "One comment"
+msgstr ""
+
+#: includes/class-themezee-magazine-blocks-template.php:292
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: src/blocks/column/edit.js:43 src/blocks/grid/edit.js:74
+#: src/blocks/horizontal/edit.js:73 src/blocks/list/edit.js:44
+#: src/blocks/vertical/edit.js:43
+msgid "Layout Settings"
+msgstr ""
+
+#: src/blocks/column/edit.js:46 src/blocks/grid/edit.js:85
+#: src/blocks/horizontal/edit.js:84 src/blocks/list/edit.js:58
+#: src/blocks/vertical/edit.js:46
+msgid "Image Size"
+msgstr ""
+
+#: src/blocks/column/edit.js:56 src/blocks/horizontal/edit.js:94
+#: src/blocks/vertical/edit.js:56
+msgid "Thumbnail Size"
+msgstr ""
+
+#: src/blocks/column/edit.js:70 src/blocks/column/index.js:21
+msgid "Magazine Column"
+msgstr ""
+
+#: src/blocks/column/index.js:23
+msgid "Displays your posts in a list with the first post highlighted."
+msgstr ""
+
+#: src/blocks/column/index.js:30 src/blocks/columns/index.js:36
+#: src/blocks/grid/index.js:30 src/blocks/horizontal/index.js:30
+#: src/blocks/list/index.js:30 src/blocks/vertical/index.js:30
+msgid "Posts"
+msgstr ""
+
+#: src/blocks/column/index.js:31 src/blocks/horizontal/index.js:31
+#: src/blocks/vertical/index.js:31
+msgid "Box"
+msgstr ""
+
+#: src/blocks/column/index.js:32 src/blocks/columns/index.js:38
+#: src/blocks/grid/index.js:32 src/blocks/horizontal/index.js:32
+#: src/blocks/list/index.js:32 src/blocks/vertical/index.js:32
+msgid "ThemeZee"
+msgstr ""
+
+#: src/blocks/columns/index.js:27
+msgid "Magazine Columns"
+msgstr ""
+
+#: src/blocks/columns/index.js:29
+msgid "Displays your latest posts in two separate columns."
+msgstr ""
+
+#: src/blocks/columns/index.js:37 src/blocks/grid/edit.js:77
+#: src/blocks/horizontal/edit.js:76
+msgid "Columns"
+msgstr ""
+
+#: src/blocks/grid/edit.js:65 src/blocks/horizontal/edit.js:64
+#, javascript-format
+msgid "%s Columns"
+msgstr ""
+
+#: src/blocks/grid/edit.js:99 src/blocks/grid/index.js:21
+#: src/blocks/grid/index.js:31
+msgid "Magazine Grid"
+msgstr ""
+
+#: src/blocks/grid/index.js:23
+msgid "Displays your latest posts in a grid layout."
+msgstr ""
+
+#: src/blocks/horizontal/edit.js:108 src/blocks/horizontal/index.js:21
+msgid "Magazine Horizontal"
+msgstr ""
+
+#: src/blocks/horizontal/index.js:23
+msgid "Displays your latest posts in a horizontal box."
+msgstr ""
+
+#: src/blocks/list/edit.js:47
+msgid "List Layout"
+msgstr ""
+
+#: src/blocks/list/edit.js:51
+#, javascript-format
+msgid "50% - 50%"
+msgstr ""
+
+#: src/blocks/list/edit.js:52
+#, javascript-format
+msgid "40% - 60%"
+msgstr ""
+
+#: src/blocks/list/edit.js:53
+#, javascript-format
+msgid "30% - 70%"
+msgstr ""
+
+#: src/blocks/list/edit.js:72 src/blocks/list/index.js:21
+msgid "Magazine List"
+msgstr ""
+
+#: src/blocks/list/index.js:23
+msgid "Displays your latest posts in a list layout."
+msgstr ""
+
+#: src/blocks/list/index.js:31
+msgid "Magazine"
+msgstr ""
+
+#: src/blocks/vertical/edit.js:70 src/blocks/vertical/index.js:21
+msgid "Magazine Vertical"
+msgstr ""
+
+#: src/blocks/vertical/index.js:23
+msgid "Displays your latest posts in a vertical box."
+msgstr ""
+
+#: src/components/controls/author-select.js:22
+msgid "Author"
+msgstr ""
+
+#: src/components/controls/author-select.js:23
+msgid "All Authors"
+msgstr ""
+
+#: src/components/controls/category-select.js:53
+msgid "Category"
+msgstr ""
+
+#: src/components/controls/category-select.js:54
+msgid "All Categories"
+msgstr ""
+
+#: src/components/controls/order-select.js:17
+msgid "Order by"
+msgstr ""
+
+#: src/components/controls/order-select.js:21
+msgid "Newest to Oldest"
+msgstr ""
+
+#: src/components/controls/order-select.js:25
+msgid "Oldest to Newest"
+msgstr ""
+
+#: src/components/controls/order-select.js:30
+msgid "A → Z"
+msgstr ""
+
+#: src/components/controls/order-select.js:35
+msgid "Z → A"
+msgstr ""
+
+#: src/components/magazine-block.js:92
+msgid "Show one post more"
+msgstr ""
+
+#: src/components/magazine-block.js:97
+msgid "Show one post less"
+msgstr ""
+
+#: src/components/magazine-block.js:112
+msgid "Content Settings"
+msgstr ""
+
+#: src/components/magazine-block.js:120
+msgid "Tags"
+msgstr ""
+
+#: src/components/magazine-block.js:138
+msgid "Number of posts"
+msgstr ""
+
+#: src/components/magazine-block.js:147
+msgid "Skip Posts"
+msgstr ""
+
+#: src/components/magazine-block.js:158
+msgid "Post Settings"
+msgstr ""
+
+#: src/components/magazine-block.js:161
+msgid "Post Details"
+msgstr ""
+
+#: src/components/magazine-block.js:165
+msgid "Show above post title"
+msgstr ""
+
+#: src/components/magazine-block.js:166
+msgid "Show below post title"
+msgstr ""
+
+#: src/components/magazine-block.js:171
+msgid "Display Date"
+msgstr ""
+
+#: src/components/magazine-block.js:177
+msgid "Display Author"
+msgstr ""
+
+#: src/components/magazine-block.js:183
+msgid "Display Categories"
+msgstr ""
+
+#: src/components/magazine-block.js:189
+msgid "Display Comments"
+msgstr ""
+
+#: src/components/magazine-block.js:195
+msgid "Excerpt Length"
+msgstr ""
+
+#: src/components/magazine-block.js:204
+msgid "Read More Text"
+msgstr ""
+
+#: src/components/magazine-block.js:230
+msgid "No posts found. You may have to reconfigure your content settings."
+msgstr ""
+
+#: src/components/template/entry/entry-title.js:23
+msgid "(Untitled)"
+msgstr ""
+
+#: src/components/template/meta/meta-comments.js:50
+msgid "Comments off"
+msgstr ""
+
+#: src/components/template/meta/meta-comments.js:54
+#, javascript-format
+msgid "%s comments"
+msgstr ""
+
+#: themezee-magazine-blocks.php:194
+msgid "ThemeZee Magazine Blocks"
+msgstr ""
