@@ -40,37 +40,37 @@ registerBlockType(
 			to: [
 				{
 					type: 'block',
-					blocks: [ 'themezee-magazine-blocks/magazine-columns' ],
+					blocks: [ 'themezee-magazine-blocks/columns' ],
 					transform: ( attributes ) => {
 						return createBlock(
-							'themezee-magazine-blocks/magazine-columns',
+							'themezee-magazine-blocks/columns',
 							{},
 							[
-								createBlock( 'themezee-magazine-blocks/magazine-column', { ...attributes } ),
-								createBlock( 'themezee-magazine-blocks/magazine-column', { ...attributes } ),
+								createBlock( 'themezee-magazine-blocks/column', { ...attributes } ),
+								createBlock( 'themezee-magazine-blocks/column', { ...attributes } ),
 							],
 						);
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-magazine-blocks/magazine-grid' ],
+					blocks: [ 'themezee-magazine-blocks/grid' ],
 					transform: ( attributes ) => {
-						return createBlock( 'themezee-magazine-blocks/magazine-grid', { ...attributes } );
+						return createBlock( 'themezee-magazine-blocks/grid', { ...attributes } );
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-magazine-blocks/magazine-horizontal' ],
+					blocks: [ 'themezee-magazine-blocks/horizontal' ],
 					transform: ( attributes ) => {
-						return createBlock( 'themezee-magazine-blocks/magazine-horizontal', { ...attributes } );
+						return createBlock( 'themezee-magazine-blocks/horizontal', { ...attributes } );
 					},
 				},
 				{
 					type: 'block',
-					blocks: [ 'themezee-magazine-blocks/magazine-vertical' ],
+					blocks: [ 'themezee-magazine-blocks/vertical' ],
 					transform: ( attributes ) => {
-						return createBlock( 'themezee-magazine-blocks/magazine-vertical', { ...attributes } );
+						return createBlock( 'themezee-magazine-blocks/vertical', { ...attributes } );
 					},
 				},
 			],
