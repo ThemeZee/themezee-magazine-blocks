@@ -157,15 +157,6 @@ class ThemeZee_Magazine_Blocks {
 			),
 			THEMEZEE_MAGAZINE_BLOCKS_VERSION
 		);
-
-		// Register ThemeZee Magazine Blocks for Gutenberg Editor.
-		register_block_type(
-			'themezee-magazine-blocks/magazine', array(
-				'style'         => 'themezee-magazine-blocks',
-				'editor_script' => 'themezee-magazine-blocks',
-				'editor_style'  => 'themezee-magazine-blocks-editor',
-			)
-		);
 	}
 
 	/**

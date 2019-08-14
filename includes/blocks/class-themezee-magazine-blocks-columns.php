@@ -31,7 +31,13 @@ class ThemeZee_Magazine_Blocks_Columns {
 	 * @return void
 	 */
 	static function register_block() {
-		register_block_type( 'themezee-magazine-blocks/columns' );
+		register_block_type(
+			'themezee-magazine-blocks/columns', array(
+				'style'         => 'themezee-magazine-blocks',
+				'editor_script' => 'themezee-magazine-blocks',
+				'editor_style'  => 'themezee-magazine-blocks-editor',
+			)
+		);
 	}
 }
 

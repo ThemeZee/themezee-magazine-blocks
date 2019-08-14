@@ -105,6 +105,9 @@ class ThemeZee_Magazine_Blocks_Horizontal {
 					),
 				),
 				'render_callback' => array( __CLASS__, 'render_block' ),
+				'style'           => 'themezee-magazine-blocks',
+				'editor_script'   => 'themezee-magazine-blocks',
+				'editor_style'    => 'themezee-magazine-blocks-editor',
 			)
 		);
 	}
