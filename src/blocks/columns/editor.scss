@@ -6,6 +6,17 @@
 		padding-right: 0;
 		width: 100%;
 	}
+	
+	> .editor-inner-blocks {
+		> .editor-block-list__layout {
+			> [data-type="themezee-magazine-blocks/column"] {
+				> .editor-block-list__block-edit {
+					margin-top: 0;
+					margin-bottom: -12px;
+				}
+			}
+		}
+	}
 }
 
 @media only screen and (min-width: 480px) {
