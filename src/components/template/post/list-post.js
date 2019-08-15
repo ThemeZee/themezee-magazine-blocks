@@ -23,7 +23,7 @@ class ListPost extends Component {
 			'tz-magazine-post',
 			`post-${ post.id }`,
 			post.type,
-			`type-${ post.type }`,
+			`tz-type-${ post.type }`,
 		);
 
 		return postClasses;

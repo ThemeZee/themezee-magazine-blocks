@@ -80,11 +80,17 @@ class ThemeZee_Magazine_Blocks_Template {
 	 * @return string Returns the post wrap.
 	 */
 	static function get_post_wrap( $post_content ) {
+		// Get Post classes as string.
+		$post_classes = join( ' ', get_post_class( 'tz-magazine-post' ) );
+
+		// Prefix .type-post.
+		$post_classes = str_replace( 'type-', 'tz-type-', $post_classes );
+
 		// Wrap post content into <article> tag.
 		$post_article = sprintf(
 			'<article id="post-%1$s" class="%2$s">%3$s</article>',
 			get_the_ID(),
-			join( ' ', get_post_class( 'tz-magazine-post' ) ),
+			$post_classes,
 			$post_content
 		);
 
