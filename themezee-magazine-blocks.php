@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: ThemeZee Magazine Blocks
-Plugin URI: https://themezee.com/blocks/
-Description: Magazine Layout Blocks
+Plugin URI: https://themezee.com/plugins/magazine-blocks/
+Description: Flexible Magazine Blocks for the new WordPress Block Editor.
 Author: ThemeZee
 Author URI: https://themezee.com/
 Version: 1.0

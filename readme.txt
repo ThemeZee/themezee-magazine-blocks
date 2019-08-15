@@ -1,10 +1,10 @@
 === ThemeZee Magazine Blocks ===
-Author URI: https://themezee.com
-Plugin URI: https://themezee.com/blocks/
+Author URI: https://themezee.com/
+Plugin URI: https://themezee.com/plugins/magazine-blocks/
 Contributors: ThemeZee
-Tags: Gutenberg, Blocks, Editor
+Tags: magazine, magazine blocks, magazine layout, themezee, gutenberg, blocks, editor
 Requires at least: 5.0
-Tested up to: 5.1
+Tested up to: 5.2.3
 Stable tag: 1.0
 License: GPLv2 or later
 
@@ -12,14 +12,42 @@ Flexible Magazine Blocks for the new WordPress Editor.
 
 == Description ==
 
-Flexible Magazine Blocks for the new WordPress Editor.
+ThemeZee Magazine Blocks is a flexible collection of Latest Posts blocks for the new Gutenberg WordPress Block Editor.
 
-= Blocks =
+You can use this plugin to create a magazine-styled homepage with just a few clicks:
 
-* TZ Magazine Grid
-* TZ Magazine List
-* TZ Magazine Columns
+1. Add a new Magazine Block.
+2. Select blog posts by category, tags or authors.
+3. Configure display of post meta, excerpt and read more link.
 
-= Dokumentation =
+Right now you can choose from five different Magazine Layouts, each represented by its own Block.
 
-https://themezee.com/docs/themezee-magazine-blocks-dokumentation/
+= Included Blocks =
+
+* Magazine Grid
+* Magazine List
+* Magazine Columns
+* Magazine Horizontal
+* Magazine Vertical
+
+== Installation ==
+
+1. Activate the plugin.
+2. Create a new page.
+3. Add a new Magazine Block.
+4. Select blog posts by category, tags or authors.
+5. Configure display of post meta, excerpt and read more link.
+
+== Changelog ==
+
+= 1.0 =
+
+* First Release
+
+== Ressources ==
+
+ThemeZee Magazine Blocks uses the following third-party resources:
+
+1. Font Awesome - http://fontawesome.io/
+License: Distributed under the terms of the SIL OFL 1.1 (scripts.sil.org/OFL)
+Copyright: 2017 Dave Gandy, http://fontawesome.io/
