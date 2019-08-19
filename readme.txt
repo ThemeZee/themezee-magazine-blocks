@@ -38,6 +38,16 @@ Right now you can choose from five different Magazine Layouts, each represented 
 4. Select blog posts by category, tags or authors.
 5. Configure display of post meta, excerpt and read more link.
 
+== Screenshots ==
+
+1. Magazine Blocks
+2. Magazine Grid
+3. Magazine Vertical
+4. Magazine List
+5. Magazine Horizontal
+6. Content Settings
+7. Post Settings
+
 == Changelog ==
 
 = 1.0 =
