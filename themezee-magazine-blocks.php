@@ -121,7 +121,7 @@ class ThemeZee_Magazine_Blocks {
 		wp_register_style(
 			'themezee-magazine-blocks',
 			THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/css/themezee-magazine-blocks.css',
-			array( 'wp-editor' ),
+			array(),
 			THEMEZEE_MAGAZINE_BLOCKS_VERSION
 		);
 
