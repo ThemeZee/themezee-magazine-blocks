@@ -5,7 +5,7 @@ Contributors: ThemeZee
 Tags: magazine, magazine blocks, magazine layout, themezee, gutenberg, blocks, editor
 Requires at least: 5.0
 Tested up to: 5.2.3
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 
 Flexible Magazine Blocks for the new WordPress Editor.
@@ -49,6 +49,10 @@ Right now you can choose from five different Magazine Layouts, each represented 
 7. Post Settings
 
 == Changelog ==
+
+= 1.0.1 =
+
+* removed wp-editor dependency for loading block styles in frontend
 
 = 1.0 =
 
