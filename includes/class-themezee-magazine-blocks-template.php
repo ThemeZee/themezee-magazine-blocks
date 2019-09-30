@@ -340,7 +340,7 @@ class ThemeZee_Magazine_Blocks_Template {
 	 * @return string Returns the post excerpt.
 	 */
 	static function get_post_excerpt( $attributes ) {
-		$post = get_post( $post );
+		$post = get_post();
 
 		if ( empty( $post ) ) {
 			return '';
