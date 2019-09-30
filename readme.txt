@@ -53,6 +53,7 @@ Right now you can choose from five different Magazine Layouts, each represented 
 = 1.0.2 =
 
 * fixed PHP warning for undefined post variable
+* fixed order of posts for cached database queries
 
 = 1.0.1 =
 

@@ -51,6 +51,8 @@ class ThemeZee_Magazine_Blocks_Cache {
 		$query_arguments = array(
 			'post__in'            => $post_ids,
 			'posts_per_page'      => absint( $attributes['numberOfPosts'] ),
+			'order'               => esc_attr( $attributes['order'] ),
+			'orderby'             => esc_attr( $attributes['orderBy'] ),
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		);
