@@ -4,7 +4,7 @@ Plugin URI: https://themezee.com/plugins/magazine-blocks/
 Contributors: ThemeZee
 Tags: magazine, magazine blocks, magazine layout, themezee, gutenberg, blocks, editor
 Requires at least: 5.0
-Tested up to: 5.2.3
+Tested up to: 5.4
 Stable tag: 1.0.2
 License: GPLv2 or later
 
