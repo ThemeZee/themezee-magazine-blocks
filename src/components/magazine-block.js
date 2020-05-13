@@ -25,7 +25,7 @@ const {
 const {
 	BlockControls,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	PanelBody,
@@ -112,8 +112,8 @@ class MagazineBlock extends Component {
 				<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
-						selectedCategoryId={ categories }
-						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						selectedCategoryIds={ categories }
+						onCategoryChange={ ( value ) => setAttributes( { categories: [] !== value ? value : undefined } ) }
 					/>
 
 					<TextControl

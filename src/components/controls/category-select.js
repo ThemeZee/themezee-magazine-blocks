@@ -1,59 +1,46 @@
 /**
- * External dependencies
- */
-const { groupBy } = lodash;
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { TreeSelect } = wp.components;
+const { SelectControl } = wp.components;
 
 class CategorySelect extends Component {
 	/**
-	 * Returns terms in a tree form.
+	 * Returns terms in a simplified array.
 	 *
-	 * @param {Array} flatTerms  Array of terms in flat format.
+	 * @param {Array} categoryInput  Array of terms from getEntityRecords.
 	 *
-	 * @return {Array} Array of terms in tree format.
+	 * @return {Array} Array of terms in simplified array.
 	 */
-	buildTermsTree( flatTerms ) {
-		const termsByParent = groupBy( flatTerms, 'parent' );
-		const fillWithChildren = ( terms ) => {
-			return terms.map( ( term ) => {
-				const children = termsByParent[ term.id ];
-				return {
-					...term,
-					children: children && children.length ?
-						fillWithChildren( children ) :
-						[],
-				};
-			} );
-		};
+	createOptions( categoryInput ) {
+		// Return early if categoryList is empty.
+		if ( typeof categoryInput === 'undefined' || categoryInput.length < 1 ) {
+			return [];
+		}
 
-		return fillWithChildren( termsByParent[ '0' ] || [] );
+		// Return category options.
+		return categoryInput.map( cat => ( { label: cat.name, value: cat.id, disabled: false } ) );
 	}
 
 	render() {
 		const {
 			categoriesList,
-			selectedCategoryId,
+			selectedCategoryIds,
 			onCategoryChange,
 		} = this.props;
 
-		const termsTree = this.buildTermsTree( categoriesList );
+		const categoryOptions = this.createOptions( categoriesList );
 
 		return (
 			onCategoryChange && (
-				<TreeSelect
-					key="tz-category-select"
+				<SelectControl
+					multiple
 					label={ __( 'Category', 'themezee-magazine-blocks' ) }
-					noOptionLabel={ __( 'All Categories', 'themezee-magazine-blocks' ) }
-					tree={ termsTree }
-					selectedId={ selectedCategoryId }
+					value={ selectedCategoryIds }
+					options={ categoryOptions }
 					onChange={ onCategoryChange }
 				/>
 			)

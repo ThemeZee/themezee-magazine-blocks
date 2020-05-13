@@ -39,7 +39,7 @@ class ThemeZee_Magazine_Blocks_Column {
 						'type' => 'string',
 					),
 					'categories' => array(
-						'type' => 'string',
+						'type' => 'array',
 					),
 					'tags' => array(
 						'type' => 'string',

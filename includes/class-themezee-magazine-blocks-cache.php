@@ -77,6 +77,7 @@ class ThemeZee_Magazine_Blocks_Cache {
 
 		// Get cached post ids.
 		$cached_post_ids = get_transient( 'themezee_magazine_blocks_cached_post_ids' );
+		//$cached_post_ids = null; // Uncomment this to debug.
 
 		if ( ! isset( $cached_post_ids[ $cache_id ] ) || is_customize_preview() ) {
 
@@ -116,7 +117,7 @@ class ThemeZee_Magazine_Blocks_Cache {
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
-			$query_arguments['cat'] = intval( $attributes['categories'] );
+			$query_arguments['category__in'] = array_map( 'intval', $attributes['categories'] );
 		}
 
 		if ( isset( $attributes['tags'] ) ) {
@@ -147,7 +148,7 @@ class ThemeZee_Magazine_Blocks_Cache {
 		$cache_id = (string) intval( $attributes['numberOfPosts'] ) . esc_attr( $attributes['order'] ) . esc_attr( $attributes['orderBy'] );
 
 		if ( isset( $attributes['categories'] ) ) {
-			$cache_id .= (string) intval( $attributes['categories'] );
+			$cache_id .= implode( array_map( 'intval', $attributes['categories'] ) );
 		}
 
 		if ( isset( $attributes['tags'] ) ) {
