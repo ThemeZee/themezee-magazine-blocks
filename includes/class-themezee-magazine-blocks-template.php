@@ -266,7 +266,7 @@ class ThemeZee_Magazine_Blocks_Template {
 			return;
 		}
 
-		$category_list = get_the_category_list( ', ' );
+		$category_list = get_the_category_list( '<span class="tz-meta-categories-sep">, </span> ' );
 
 		// Wrap categories.
 		$categories = sprintf( '<span class="tz-meta-categories meta-categories tz-meta-field">%s</span>', $category_list );
