@@ -117,6 +117,10 @@ class ThemeZee_Magazine_Blocks_Cache {
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
+			if ( is_string( $attributes['categories'] ) ) {
+				$attributes['categories'] = (array) $attributes['categories'];
+			}
+
 			$query_arguments['category__in'] = array_map( 'intval', $attributes['categories'] );
 		}
 
