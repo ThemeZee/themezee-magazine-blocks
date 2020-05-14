@@ -9,6 +9,7 @@ const { createBlock, registerBlockType } = wp.blocks;
  */
 import './style.scss';
 import './editor.scss';
+import blockAttributes from './attributes';
 import edit from './edit';
 import { IconMagazineHorizontal } from '../../components/data/icons';
 
@@ -25,6 +26,8 @@ registerBlockType(
 		category: 'themezee-magazine-blocks',
 
 		icon: IconMagazineHorizontal,
+
+		attributes: blockAttributes,
 
 		keywords: [
 			__( 'Posts', 'themezee-magazine-blocks' ),
@@ -80,5 +83,33 @@ registerBlockType(
 
 		// Block is rendered server-side.
 		save: () => {},
+
+		deprecated: [
+			{
+				attributes: {
+					...blockAttributes,
+					categories: {
+						type: 'string',
+					},
+				},
+
+				supports: {
+					html: false,
+				},
+
+				migrate( oldAttributes ) {
+					return {
+						...oldAttributes,
+						categories: [ oldAttributes.categories ],
+					};
+				},
+
+				isEligible: ( { categories } ) => {
+					return categories && 'string' === typeof categories;
+				},
+
+				save: () => {},
+			},
+		],
 	},
 );
