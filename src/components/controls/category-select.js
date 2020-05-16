@@ -18,15 +18,16 @@ const { BaseControl, CheckboxControl } = wp.components;
 import './editor.scss';
 
 class CategorySelect extends Component {
+	updateSelectedCategories( categoryId ) {
+		let { selectedCategoryIds } = this.props;
 
-	updateSelectedCategories( categoryId, selectedCategoryIds ) {
 		// Initialize array if selectedCategories is undefined.
 		if ( typeof selectedCategoryIds === 'undefined' ) {
 			selectedCategoryIds = [];
 		}
 
 		// Check if category is selected or unselected.
-		if ( this.isSelected( categoryId ) ) {
+		if ( this.isSelected( categoryId, selectedCategoryIds ) ) {
 			// Remove category id.
 			remove( selectedCategoryIds, id => id === categoryId );
 		} else {
@@ -34,13 +35,15 @@ class CategorySelect extends Component {
 			selectedCategoryIds.push( categoryId );
 		}
 
-		return selectedCategoryIds;
+		this.props.onCategoryChange( selectedCategoryIds );
+		this.forceUpdate();
 	}
 
-	isSelected( id, selectedCategoryIds ) {
+	isSelected( id ) {
+		const { selectedCategoryIds } = this.props;
 
 		// Return early if categoryList is empty.
-		if ( typeof selectedCategoryIds === 'undefined' || selectedCategoryIds.length < 1 ) {
+		if ( ! selectedCategoryIds || typeof selectedCategoryIds === 'undefined' || selectedCategoryIds.length < 1 ) {
 			return false;
 		}
 
@@ -48,14 +51,10 @@ class CategorySelect extends Component {
 	}
 
 	render() {
-		const {
-			categoriesList,
-			onCategoryChange,
-			selectedCategoryIds,
-		} = this.props;
+		const { categoriesList } = this.props;
 
 		// Return early if categoryList is empty.
-		if ( typeof categoriesList === 'undefined' || categoriesList.length < 1 ) {
+		if ( ! categoriesList || typeof categoriesList === 'undefined' || categoriesList.length < 1 ) {
 			return null;
 		}
 
@@ -72,11 +71,8 @@ class CategorySelect extends Component {
 						<CheckboxControl
 							key={ category.id }
 							label={ category.name }
-							checked={ this.isSelected( category.id, selectedCategoryIds ) }
-							onChange={ () => {
-								const selectedCategories = this.updateSelectedCategories( category.id, selectedCategoryIds );
-								return onCategoryChange( selectedCategories );
-							} }
+							checked={ this.isSelected( category.id ) }
+							onChange={ () => this.updateSelectedCategories( category.id ) }
 						/>
 
 					) }
