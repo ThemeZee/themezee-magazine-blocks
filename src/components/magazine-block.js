@@ -50,16 +50,6 @@ import MagazineTemplate from './magazine-template';
  * Block Edit Component
  */
 class MagazineBlock extends Component {
-	constructor() {
-		super( ...arguments );
-		this.updateCategories = this.updateCategories.bind( this );
-	}
-
-	updateCategories( value ) {
-		this.props.setAttributes( { categories: value && value.length > 0 ? value : [] } );
-		this.forceUpdate();
-	}
-
 	render() {
 		const {
 			attributes,
@@ -89,8 +79,6 @@ class MagazineBlock extends Component {
 		} = attributes;
 
 		const blockClasses = classnames( className, 'tz-magazine-block' );
-
-		console.log( "Categories: ", categories );
 
 		const blockControls = (
 			<BlockControls key="controls">
@@ -125,7 +113,7 @@ class MagazineBlock extends Component {
 
 					<CategorySelect
 						selectedCategoryIds={ categories }
-						onCategoryChange={ this.updateCategories }
+						onCategoryChange={ ( value ) => setAttributes( { categories: value && value.length > 0 ? value : [] } ) }
 					/>
 
 					<TextControl
@@ -291,7 +279,7 @@ export default compose( [
 
 		// Query Posts.
 		const latestPostsQuery = pickBy( {
-			categories,
+			categories: categories && categories.length > 0 ? categories.join() : undefined,
 			...tagsQuery,
 			author,
 			order,

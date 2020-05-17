@@ -36,7 +36,6 @@ class CategorySelect extends Component {
 		}
 
 		this.props.onCategoryChange( selectedCategoryIds );
-		this.forceUpdate();
 	}
 
 	isSelected( id ) {
