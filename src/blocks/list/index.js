@@ -100,7 +100,7 @@ registerBlockType(
 				migrate( oldAttributes ) {
 					return {
 						...oldAttributes,
-						categories: [ oldAttributes.categories ],
+						categories: [ oldAttributes.categories ].map( ( cat ) => parseInt( cat ) ),
 					};
 				},
 
