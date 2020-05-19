@@ -152,7 +152,7 @@ class ThemeZee_Magazine_Blocks_Cache {
 		$cache_id = (string) intval( $attributes['numberOfPosts'] ) . esc_attr( $attributes['order'] ) . esc_attr( $attributes['orderBy'] );
 
 		if ( isset( $attributes['categories'] ) ) {
-			$cache_id .= implode( array_map( 'intval', $attributes['categories'] ) );
+			$cache_id .= implode( array_map( 'intval', (array) $attributes['categories'] ) );
 		}
 
 		if ( isset( $attributes['tags'] ) ) {

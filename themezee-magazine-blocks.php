@@ -5,14 +5,14 @@ Plugin URI: https://themezee.com/plugins/magazine-blocks/
 Description: Flexible Magazine Blocks for the new WordPress Block Editor.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.1.1
+Version: 1.1.2
 Text Domain: themezee-magazine-blocks
 Domain Path: /languages/
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ThemeZee Magazine Blocks
-Copyright(C) 2019, themezee.com - support@themezee.com
+Copyright(C) 2020, themezee.com - support@themezee.com
 */
 
 // Exit if accessed directly.
