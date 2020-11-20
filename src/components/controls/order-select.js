@@ -35,6 +35,14 @@ function OrderSelect( {
 						label: __( 'Z → A', 'themezee-magazine-blocks' ),
 						value: 'title/desc',
 					},
+					{
+						label: __( 'Hottest to Coldest', 'themezee-magazine-blocks' ),
+						value: 'modified/desc',
+					},
+					{
+						label: __( 'Coldest to Hottest', 'themezee-magazine-blocks' ),
+						value: 'modified/asc',
+					},
 				] }
 				onChange={ ( value ) => {
 					const [ newOrderBy, newOrder ] = value.split( '/' );
