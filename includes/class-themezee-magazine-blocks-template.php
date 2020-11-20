@@ -352,6 +352,10 @@ class ThemeZee_Magazine_Blocks_Template {
 			$post_excerpt = $post->post_content;
 		}
 
+		// Strip Shortcodes.
+		$post_excerpt = strip_shortcodes( $post_excerpt );
+
+		// Trim to excerpt length.
 		$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], '' ) );
 
 		// Wrap Excerpt.
