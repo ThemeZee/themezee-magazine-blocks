@@ -4,8 +4,8 @@ Plugin URI: https://themezee.com/plugins/magazine-blocks/
 Contributors: ThemeZee
 Tags: magazine, magazine blocks, magazine layout, themezee, gutenberg, blocks, editor
 Requires at least: 5.0
-Tested up to: 5.4
-Stable tag: 1.1.2
+Tested up to: 5.5
+Stable tag: 1.1.3
 License: GPLv2 or later
 
 Flexible Magazine Blocks for the new WordPress Editor.
@@ -49,6 +49,12 @@ Right now you can choose from five different Magazine Layouts, each represented 
 7. Post Settings
 
 == Changelog ==
+
+= 1.1.3 =
+
+* added Last modified option to OrderBy setting
+* removed shortcodes from excerpts in frontend
+* fixed non-updated categories issues in CategorySelect control
 
 = 1.1.2 =
 

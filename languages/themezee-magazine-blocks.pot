@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ThemeZee Magazine Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2019-08-14 17:24+0200\n"
+"POT-Creation-Date: 2020-11-20 12:33+0100\n"
 "PO-Revision-Date: 2015-12-29 14:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -26,25 +26,28 @@ msgstr ""
 #: includes/blocks/class-themezee-magazine-blocks-horizontal.php:104
 #: includes/blocks/class-themezee-magazine-blocks-list.php:100
 #: includes/blocks/class-themezee-magazine-blocks-vertical.php:100
+#: src/blocks/column/attributes.js:66 src/blocks/grid/attributes.js:66
+#: src/blocks/horizontal/attributes.js:70 src/blocks/list/attributes.js:66
+#: src/blocks/vertical/attributes.js:66
 msgid "Continue Reading"
 msgstr ""
 
-#: includes/class-themezee-magazine-blocks-template.php:239
+#: includes/class-themezee-magazine-blocks-template.php:245
 #, php-format
 msgid "View all posts by %s"
 msgstr ""
 
-#: includes/class-themezee-magazine-blocks-template.php:290
+#: includes/class-themezee-magazine-blocks-template.php:296
 #: src/components/template/meta/meta-comments.js:48
 msgid "Leave a comment"
 msgstr ""
 
-#: includes/class-themezee-magazine-blocks-template.php:291
+#: includes/class-themezee-magazine-blocks-template.php:297
 #: src/components/template/meta/meta-comments.js:52
 msgid "One comment"
 msgstr ""
 
-#: includes/class-themezee-magazine-blocks-template.php:292
+#: includes/class-themezee-magazine-blocks-template.php:298
 #, php-format
 msgid "% comments"
 msgstr ""
@@ -66,28 +69,28 @@ msgstr ""
 msgid "Thumbnail Size"
 msgstr ""
 
-#: src/blocks/column/edit.js:70 src/blocks/column/index.js:21
+#: src/blocks/column/edit.js:70 src/blocks/column/index.js:22
 msgid "Magazine Column"
 msgstr ""
 
-#: src/blocks/column/index.js:23
+#: src/blocks/column/index.js:24
 msgid "Displays your posts in a list with the first post highlighted."
 msgstr ""
 
-#: src/blocks/column/index.js:30 src/blocks/columns/index.js:36
-#: src/blocks/grid/index.js:30 src/blocks/horizontal/index.js:30
-#: src/blocks/list/index.js:30 src/blocks/vertical/index.js:30
+#: src/blocks/column/index.js:33 src/blocks/columns/index.js:36
+#: src/blocks/grid/index.js:33 src/blocks/horizontal/index.js:33
+#: src/blocks/list/index.js:33 src/blocks/vertical/index.js:33
 msgid "Posts"
 msgstr ""
 
-#: src/blocks/column/index.js:31 src/blocks/horizontal/index.js:31
-#: src/blocks/vertical/index.js:31
+#: src/blocks/column/index.js:34 src/blocks/horizontal/index.js:34
+#: src/blocks/vertical/index.js:34
 msgid "Box"
 msgstr ""
 
-#: src/blocks/column/index.js:32 src/blocks/columns/index.js:38
-#: src/blocks/grid/index.js:32 src/blocks/horizontal/index.js:32
-#: src/blocks/list/index.js:32 src/blocks/vertical/index.js:32
+#: src/blocks/column/index.js:35 src/blocks/columns/index.js:38
+#: src/blocks/grid/index.js:35 src/blocks/horizontal/index.js:35
+#: src/blocks/list/index.js:35 src/blocks/vertical/index.js:35
 msgid "ThemeZee"
 msgstr ""
 
@@ -109,20 +112,20 @@ msgstr ""
 msgid "%s Columns"
 msgstr ""
 
-#: src/blocks/grid/edit.js:99 src/blocks/grid/index.js:21
-#: src/blocks/grid/index.js:31
+#: src/blocks/grid/edit.js:99 src/blocks/grid/index.js:22
+#: src/blocks/grid/index.js:34
 msgid "Magazine Grid"
 msgstr ""
 
-#: src/blocks/grid/index.js:23
+#: src/blocks/grid/index.js:24
 msgid "Displays your latest posts in a grid layout."
 msgstr ""
 
-#: src/blocks/horizontal/edit.js:108 src/blocks/horizontal/index.js:21
+#: src/blocks/horizontal/edit.js:108 src/blocks/horizontal/index.js:22
 msgid "Magazine Horizontal"
 msgstr ""
 
-#: src/blocks/horizontal/index.js:23
+#: src/blocks/horizontal/index.js:24
 msgid "Displays your latest posts in a horizontal box."
 msgstr ""
 
@@ -145,23 +148,23 @@ msgstr ""
 msgid "30% - 70%"
 msgstr ""
 
-#: src/blocks/list/edit.js:72 src/blocks/list/index.js:21
+#: src/blocks/list/edit.js:72 src/blocks/list/index.js:22
 msgid "Magazine List"
 msgstr ""
 
-#: src/blocks/list/index.js:23
+#: src/blocks/list/index.js:24
 msgid "Displays your latest posts in a list layout."
 msgstr ""
 
-#: src/blocks/list/index.js:31
+#: src/blocks/list/index.js:34
 msgid "Magazine"
 msgstr ""
 
-#: src/blocks/vertical/edit.js:70 src/blocks/vertical/index.js:21
+#: src/blocks/vertical/edit.js:70 src/blocks/vertical/index.js:22
 msgid "Magazine Vertical"
 msgstr ""
 
-#: src/blocks/vertical/index.js:23
+#: src/blocks/vertical/index.js:24
 msgid "Displays your latest posts in a vertical box."
 msgstr ""
 
@@ -173,99 +176,79 @@ msgstr ""
 msgid "All Authors"
 msgstr ""
 
-#: src/components/controls/category-select.js:53
-msgid "Category"
-msgstr ""
-
-#: src/components/controls/category-select.js:54
-msgid "All Categories"
+#: src/components/controls/category-select.js:73
+msgid "Categories"
 msgstr ""
 
 #: src/components/controls/order-select.js:17
 msgid "Order by"
 msgstr ""
 
-#: src/components/controls/order-select.js:21
-msgid "Newest to Oldest"
-msgstr ""
-
-#: src/components/controls/order-select.js:25
-msgid "Oldest to Newest"
-msgstr ""
-
-#: src/components/controls/order-select.js:30
-msgid "A → Z"
-msgstr ""
-
-#: src/components/controls/order-select.js:35
-msgid "Z → A"
-msgstr ""
-
-#: src/components/magazine-block.js:92
+#: src/components/magazine-block.js:93
 msgid "Show one post more"
 msgstr ""
 
-#: src/components/magazine-block.js:97
+#: src/components/magazine-block.js:98
 msgid "Show one post less"
 msgstr ""
 
-#: src/components/magazine-block.js:112
+#: src/components/magazine-block.js:113
 msgid "Content Settings"
 msgstr ""
 
-#: src/components/magazine-block.js:120
+#: src/components/magazine-block.js:122
 msgid "Tags"
 msgstr ""
 
-#: src/components/magazine-block.js:138
+#: src/components/magazine-block.js:140
 msgid "Number of posts"
 msgstr ""
 
-#: src/components/magazine-block.js:147
+#: src/components/magazine-block.js:149
 msgid "Skip Posts"
 msgstr ""
 
-#: src/components/magazine-block.js:158
+#: src/components/magazine-block.js:160
 msgid "Post Settings"
 msgstr ""
 
-#: src/components/magazine-block.js:161
+#: src/components/magazine-block.js:163
 msgid "Post Details"
 msgstr ""
 
-#: src/components/magazine-block.js:165
+#: src/components/magazine-block.js:167
 msgid "Show above post title"
 msgstr ""
 
-#: src/components/magazine-block.js:166
+#: src/components/magazine-block.js:168
 msgid "Show below post title"
 msgstr ""
 
-#: src/components/magazine-block.js:171
+#: src/components/magazine-block.js:173
 msgid "Display Date"
 msgstr ""
 
-#: src/components/magazine-block.js:177
+#: src/components/magazine-block.js:179
 msgid "Display Author"
 msgstr ""
 
-#: src/components/magazine-block.js:183
+#: src/components/magazine-block.js:185
 msgid "Display Categories"
 msgstr ""
 
-#: src/components/magazine-block.js:189
+#: src/components/magazine-block.js:191
 msgid "Display Comments"
 msgstr ""
 
-#: src/components/magazine-block.js:195
+#: src/components/magazine-block.js:197
 msgid "Excerpt Length"
 msgstr ""
 
-#: src/components/magazine-block.js:204
+#: src/components/magazine-block.js:206
 msgid "Read More Text"
 msgstr ""
 
-#: src/components/magazine-block.js:230
+#: src/components/magazine-block.js:232
 msgid "No posts found. You may have to reconfigure your content settings."
 msgstr ""
 
@@ -282,6 +265,6 @@ msgstr ""
 msgid "%s comments"
 msgstr ""
 
-#: themezee-magazine-blocks.php:194
+#: themezee-magazine-blocks.php:185
 msgid "ThemeZee Magazine Blocks"
 msgstr ""
