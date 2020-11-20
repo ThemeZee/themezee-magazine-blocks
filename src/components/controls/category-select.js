@@ -19,23 +19,19 @@ import './editor.scss';
 
 class CategorySelect extends Component {
 	updateSelectedCategories( categoryId ) {
-		let { selectedCategoryIds } = this.props;
-
-		// Initialize array if selectedCategories is undefined.
-		if ( typeof selectedCategoryIds === 'undefined' ) {
-			selectedCategoryIds = [];
-		}
+		const { selectedCategoryIds } = this.props;
+		const newCategoryIds = [].concat( selectedCategoryIds );
 
 		// Check if category is selected or unselected.
-		if ( this.isSelected( categoryId, selectedCategoryIds ) ) {
+		if ( newCategoryIds.includes( categoryId ) ) {
 			// Remove category id.
-			remove( selectedCategoryIds, id => id === categoryId );
+			remove( newCategoryIds, id => id === categoryId );
 		} else {
 			// Add category id.
-			selectedCategoryIds.push( categoryId );
+			newCategoryIds.push( categoryId );
 		}
 
-		this.props.onCategoryChange( selectedCategoryIds );
+		this.props.onCategoryChange( newCategoryIds );
 	}
 
 	isSelected( id ) {
