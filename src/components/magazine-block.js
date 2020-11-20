@@ -55,6 +55,7 @@ class MagazineBlock extends Component {
 			attributes,
 			className,
 			setAttributes,
+			categoriesList,
 			latestPosts,
 			placeholderLabel,
 			placeholderIcon,
@@ -112,6 +113,7 @@ class MagazineBlock extends Component {
 				<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
 
 					<CategorySelect
+						categoriesList={ categoriesList }
 						selectedCategoryIds={ categories }
 						onCategoryChange={ ( value ) => setAttributes( { categories: value && value.length > 0 ? value : [] } ) }
 					/>
@@ -277,6 +279,9 @@ export default compose( [
 		}
 		const tagsQuery = '' !== tagsIDs ? { tags: tagsIDs } : undefined;
 
+		// Query Categories.
+		const categoriesQuery = { per_page: -1, hide_empty: true };
+
 		// Query Posts.
 		const latestPostsQuery = pickBy( {
 			categories: categories && categories.length > 0 ? categories.join() : undefined,
@@ -289,6 +294,7 @@ export default compose( [
 		}, ( value ) => ! isUndefined( value ) );
 
 		return {
+			categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesQuery ),
 			latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
 		};
 	} ),

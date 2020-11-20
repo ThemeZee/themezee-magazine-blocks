@@ -8,8 +8,6 @@ const { remove } = lodash;
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
 const { BaseControl, CheckboxControl } = wp.components;
 
 /**
@@ -18,6 +16,23 @@ const { BaseControl, CheckboxControl } = wp.components;
 import './editor.scss';
 
 class CategorySelect extends Component {
+	componentDidMount() {
+		const {
+			categoriesList,
+			onCategoryChange,
+			selectedCategoryIds,
+		} = this.props;
+
+		// Remove left-over category IDs which do not exist anymore.
+		if ( typeof categoriesList !== 'undefined' && typeof selectedCategoryIds !== 'undefined' ) {
+			const newCategoryIds = selectedCategoryIds.filter( cat => categoriesList.map( c => c.id ).includes( cat ) );
+
+			if ( newCategoryIds.length < selectedCategoryIds.length ) {
+				onCategoryChange( newCategoryIds );
+			}
+		}
+	}
+
 	updateSelectedCategories( categoryId ) {
 		const { selectedCategoryIds } = this.props;
 		const newCategoryIds = [].concat( selectedCategoryIds );
@@ -79,13 +94,4 @@ class CategorySelect extends Component {
 	}
 }
 
-export default compose( [
-	withSelect( ( select ) => {
-		const { getEntityRecords } = select( 'core' );
-		const query = { per_page: -1, hide_empty: true };
-
-		return {
-			categoriesList: getEntityRecords( 'taxonomy', 'category', query ),
-		};
-	} ),
-] )( CategorySelect );
+export default CategorySelect;
