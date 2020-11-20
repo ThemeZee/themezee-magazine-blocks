@@ -18,30 +18,30 @@ function OrderSelect( {
 				value={ `${ orderBy }/${ order }` }
 				options={ [
 					{
-						label: __( 'Newest to Oldest', 'themezee-magazine-blocks' ),
+						label: __( 'Publish date (descending)', 'themezee-magazine-blocks' ),
 						value: 'date/desc',
 					},
 					{
-						label: __( 'Oldest to Newest', 'themezee-magazine-blocks' ),
+						label: __( 'Publish date (ascending)', 'themezee-magazine-blocks' ),
 						value: 'date/asc',
 					},
 					{
+						label: __( 'Last modified (descending)', 'themezee-magazine-blocks' ),
+						value: 'modified/desc',
+					},
+					{
+						label: __( 'Last modified (ascending)', 'themezee-magazine-blocks' ),
+						value: 'modified/asc',
+					},
+					{
 						/* translators: label for ordering posts by title in ascending order */
-						label: __( 'A → Z', 'themezee-magazine-blocks' ),
+						label: __( 'Alphabetical (A → Z)', 'themezee-magazine-blocks' ),
 						value: 'title/asc',
 					},
 					{
 						/* translators: label for ordering posts by title in descending order */
-						label: __( 'Z → A', 'themezee-magazine-blocks' ),
+						label: __( 'Alphabetical (Z → A)', 'themezee-magazine-blocks' ),
 						value: 'title/desc',
-					},
-					{
-						label: __( 'Hottest to Coldest', 'themezee-magazine-blocks' ),
-						value: 'modified/desc',
-					},
-					{
-						label: __( 'Coldest to Hottest', 'themezee-magazine-blocks' ),
-						value: 'modified/asc',
 					},
 				] }
 				onChange={ ( value ) => {
