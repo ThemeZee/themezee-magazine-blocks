@@ -6,30 +6,25 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+const {
+	InnerBlocks,
+	useBlockProps,
+} = wp.blockEditor;
 
-/**
- * Block Save Component
- */
-class MagazineColumnsSave extends Component {
-	render() {
-		const {
-			className,
-		} = this.props;
+function MagazineColumnsSave( { className } ) {
+	const blockProps = useBlockProps.save( {
+		className: classnames( className, 'tz-magazine-block' ),
+	} );
 
-		const blockClasses = classnames( className, 'tz-magazine-block' );
+	return (
+		<div { ...blockProps }>
+			<div className="tz-magazine-columns">
 
-		return (
-			<div className={ blockClasses }>
-				<div className="tz-magazine-columns">
+				<InnerBlocks.Content />
 
-					<InnerBlocks.Content />
-
-				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 export default MagazineColumnsSave;
