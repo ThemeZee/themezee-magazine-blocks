@@ -108,7 +108,7 @@ class ThemeZee_Magazine_Blocks {
 		add_action( 'init', array( __CLASS__, 'enqueue_block_assets' ) );
 
 		// Add block category.
-		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
+		add_filter( 'block_categories_all', array( __CLASS__, 'block_categories' ), 10, 2 );
 	}
 
 	/**

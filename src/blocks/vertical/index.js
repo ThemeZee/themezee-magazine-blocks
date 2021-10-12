@@ -22,7 +22,4 @@ registerBlockType( metadata, {
 	deprecated,
 	transforms,
 	edit,
-
-	// Block is rendered server-side.
-	save: () => {},
 } );
