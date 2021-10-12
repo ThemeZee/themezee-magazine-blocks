@@ -12,19 +12,13 @@ const {
  */
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-
-const {
-	Component,
-	Fragment,
-} = wp.element;
-
-const {
-	__,
-} = wp.i18n;
+const { Fragment } = wp.element;
+const { __ } = wp.i18n;
 
 const {
 	BlockControls,
 	InspectorControls,
+	useBlockProps,
 } = wp.blockEditor;
 
 const {
@@ -46,181 +40,184 @@ import AuthorSelect from './controls/author-select';
 import OrderSelect from './controls/order-select';
 import MagazineTemplate from './magazine-template';
 
-/**
- * Block Edit Component
+/*
+ * Magazine Block Function
  */
-class MagazineBlock extends Component {
-	render() {
-		const {
-			attributes,
-			className,
-			setAttributes,
-			categoriesList,
-			latestPosts,
-			placeholderLabel,
-			placeholderIcon,
-			magazineTemplate,
-		} = this.props;
+function MagazineBlock( props ) {
+	const {
+		attributes,
+		className,
+		setAttributes,
+		categoriesList,
+		latestPosts,
+		placeholderLabel,
+		placeholderIcon,
+		magazineTemplate,
+	} = props;
 
-		const {
-			categories,
-			tags,
-			author,
-			order,
-			orderBy,
-			numberOfPosts,
-			offset,
-			metaPosition,
-			showDate,
-			showAuthor,
-			showCategories,
-			showComments,
-			excerptLength,
-			moreText,
-		} = attributes;
+	const {
+		categories,
+		tags,
+		author,
+		order,
+		orderBy,
+		numberOfPosts,
+		offset,
+		metaPosition,
+		showDate,
+		showAuthor,
+		showCategories,
+		showComments,
+		excerptLength,
+		moreText,
+	} = attributes;
 
-		const blockClasses = classnames( className, 'tz-magazine-block' );
+	const blockProps = useBlockProps( {
+		className: classnames( className, 'tz-magazine-block' ),
+	} );
 
-		const blockControls = (
-			<BlockControls key="controls">
+	const blockControls = (
+		<BlockControls key="controls">
 
-				{ this.props.blockControls ? this.props.blockControls : null }
+			{ props.blockControls ? props.blockControls : null }
 
-				<Toolbar
-					controls={ [ {
-						// Font Awesone Plus Solid
-						icon: 'plus',
-						title: __( 'Show one post more', 'gt-blocks' ),
-						onClick: () => setAttributes( { numberOfPosts: numberOfPosts + 1 } ),
-					}, {
-						// Font Awesone Minus Solid
-						icon: 'minus',
-						title: __( 'Show one post less', 'gt-blocks' ),
-						onClick: () => {
-							if ( numberOfPosts > 1 ) {
-								setAttributes( { numberOfPosts: numberOfPosts - 1 } );
-							}
-						},
-					} ] }
+			<Toolbar
+				controls={ [ {
+					// Font Awesone Plus Solid
+					icon: 'plus',
+					title: __( 'Show one post more', 'gt-blocks' ),
+					onClick: () => setAttributes( { numberOfPosts: numberOfPosts + 1 } ),
+				}, {
+					// Font Awesone Minus Solid
+					icon: 'minus',
+					title: __( 'Show one post less', 'gt-blocks' ),
+					onClick: () => {
+						if ( numberOfPosts > 1 ) {
+							setAttributes( { numberOfPosts: numberOfPosts - 1 } );
+						}
+					},
+				} ] }
+			/>
+
+		</BlockControls>
+	);
+
+	const inspectorControls = (
+		<InspectorControls>
+
+			<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
+
+				<CategorySelect
+					categoriesList={ categoriesList }
+					selectedCategoryIds={ categories }
+					onCategoryChange={ ( value ) => setAttributes( { categories: value && value.length > 0 ? value : [] } ) }
 				/>
 
-			</BlockControls>
-		);
+				<TextControl
+					label={ __( 'Tags', 'themezee-magazine-blocks' ) }
+					value={ tags }
+					onChange={ ( value ) => setAttributes( { tags: '' !== value ? value : undefined } ) }
+				/>
 
-		const inspectorControls = (
-			<InspectorControls>
+				<AuthorSelect
+					selectedAuthorId={ author }
+					onAuthorChange={ ( value ) => setAttributes( { author: '' !== value ? value : undefined } ) }
+				/>
 
-				<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
+				<OrderSelect
+					{ ...{ order, orderBy } }
+					onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+					onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+				/>
 
-					<CategorySelect
-						categoriesList={ categoriesList }
-						selectedCategoryIds={ categories }
-						onCategoryChange={ ( value ) => setAttributes( { categories: value && value.length > 0 ? value : [] } ) }
-					/>
+				<RangeControl
+					key="tz-number-of-posts-control"
+					label={ __( 'Number of posts', 'themezee-magazine-blocks' ) }
+					value={ numberOfPosts }
+					onChange={ ( value ) => setAttributes( { numberOfPosts: value } ) }
+					min={ 1 }
+					max={ 30 }
+				/>
 
+				<RangeControl
+					key="tz-offset-control"
+					label={ __( 'Skip Posts', 'themezee-magazine-blocks' ) }
+					value={ offset }
+					onChange={ ( value ) => setAttributes( { offset: value } ) }
+					min={ 0 }
+					max={ 30 }
+				/>
+
+			</PanelBody>
+
+			{ props.layoutSettings ? props.layoutSettings : null }
+
+			<PanelBody title={ __( 'Post Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
+
+				<SelectControl
+					label={ __( 'Post Details', 'themezee-magazine-blocks' ) }
+					value={ metaPosition }
+					onChange={ ( value ) => setAttributes( { metaPosition: value } ) }
+					options={ [
+						{ value: 'above-title', label: __( 'Show above post title', 'themezee-magazine-blocks' ) },
+						{ value: 'below-title', label: __( 'Show below post title', 'themezee-magazine-blocks' ) },
+					] }
+				/>
+
+				<ToggleControl
+					label={ __( 'Display Date', 'gt-blocks' ) }
+					checked={ !! showDate }
+					onChange={ () => setAttributes( { showDate: ! showDate } ) }
+				/>
+
+				<ToggleControl
+					label={ __( 'Display Author', 'gt-blocks' ) }
+					checked={ !! showAuthor }
+					onChange={ () => setAttributes( { showAuthor: ! showAuthor } ) }
+				/>
+
+				<ToggleControl
+					label={ __( 'Display Categories', 'gt-blocks' ) }
+					checked={ !! showCategories }
+					onChange={ () => setAttributes( { showCategories: ! showCategories } ) }
+				/>
+
+				<ToggleControl
+					label={ __( 'Display Comments', 'gt-blocks' ) }
+					checked={ !! showComments }
+					onChange={ () => setAttributes( { showComments: ! showComments } ) }
+				/>
+
+				<RangeControl
+					label={ __( 'Excerpt Length', 'themezee-magazine-blocks' ) }
+					value={ excerptLength }
+					onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+					min={ 0 }
+					max={ 100 }
+				/>
+
+				{ excerptLength > 0 && (
 					<TextControl
-						label={ __( 'Tags', 'themezee-magazine-blocks' ) }
-						value={ tags }
-						onChange={ ( value ) => setAttributes( { tags: '' !== value ? value : undefined } ) }
+						label={ __( 'Read More Text', 'themezee-magazine-blocks' ) }
+						value={ moreText }
+						onChange={ ( value ) => setAttributes( { moreText: value } ) }
 					/>
+				) }
 
-					<AuthorSelect
-						selectedAuthorId={ author }
-						onAuthorChange={ ( value ) => setAttributes( { author: '' !== value ? value : undefined } ) }
-					/>
+			</PanelBody>
 
-					<OrderSelect
-						{ ...{ order, orderBy } }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-					/>
+		</InspectorControls>
+	);
 
-					<RangeControl
-						key="tz-number-of-posts-control"
-						label={ __( 'Number of posts', 'themezee-magazine-blocks' ) }
-						value={ numberOfPosts }
-						onChange={ ( value ) => setAttributes( { numberOfPosts: value } ) }
-						min={ 1 }
-						max={ 30 }
-					/>
+	const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+	if ( ! hasPosts ) {
+		return (
+			<Fragment>
 
-					<RangeControl
-						key="tz-offset-control"
-						label={ __( 'Skip Posts', 'themezee-magazine-blocks' ) }
-						value={ offset }
-						onChange={ ( value ) => setAttributes( { offset: value } ) }
-						min={ 0 }
-						max={ 30 }
-					/>
+				{ blockControls }
+				{ inspectorControls }
 
-				</PanelBody>
-
-				{ this.props.layoutSettings ? this.props.layoutSettings : null }
-
-				<PanelBody title={ __( 'Post Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
-
-					<SelectControl
-						label={ __( 'Post Details', 'themezee-magazine-blocks' ) }
-						value={ metaPosition }
-						onChange={ ( value ) => setAttributes( { metaPosition: value } ) }
-						options={ [
-							{ value: 'above-title', label: __( 'Show above post title', 'themezee-magazine-blocks' ) },
-							{ value: 'below-title', label: __( 'Show below post title', 'themezee-magazine-blocks' ) },
-						] }
-					/>
-
-					<ToggleControl
-						label={ __( 'Display Date', 'gt-blocks' ) }
-						checked={ !! showDate }
-						onChange={ () => setAttributes( { showDate: ! showDate } ) }
-					/>
-
-					<ToggleControl
-						label={ __( 'Display Author', 'gt-blocks' ) }
-						checked={ !! showAuthor }
-						onChange={ () => setAttributes( { showAuthor: ! showAuthor } ) }
-					/>
-
-					<ToggleControl
-						label={ __( 'Display Categories', 'gt-blocks' ) }
-						checked={ !! showCategories }
-						onChange={ () => setAttributes( { showCategories: ! showCategories } ) }
-					/>
-
-					<ToggleControl
-						label={ __( 'Display Comments', 'gt-blocks' ) }
-						checked={ !! showComments }
-						onChange={ () => setAttributes( { showComments: ! showComments } ) }
-					/>
-
-					<RangeControl
-						label={ __( 'Excerpt Length', 'themezee-magazine-blocks' ) }
-						value={ excerptLength }
-						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-						min={ 0 }
-						max={ 100 }
-					/>
-
-					{ excerptLength > 0 && (
-						<TextControl
-							label={ __( 'Read More Text', 'themezee-magazine-blocks' ) }
-							value={ moreText }
-							onChange={ ( value ) => setAttributes( { moreText: value } ) }
-						/>
-					) }
-
-				</PanelBody>
-
-			</InspectorControls>
-		);
-
-		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
-		if ( ! hasPosts ) {
-			return (
-				<Fragment>
-
-					{ blockControls }
-					{ inspectorControls }
+				<div { ...blockProps }>
 
 					<Placeholder
 						icon={ placeholderIcon }
@@ -233,34 +230,35 @@ class MagazineBlock extends Component {
 						}
 					</Placeholder>
 
-				</Fragment>
-			);
-		}
-
-		// Removing posts from display should be instant.
-		const displayPosts = latestPosts.length > numberOfPosts ?
-			latestPosts.slice( 0, numberOfPosts ) :
-			latestPosts;
-
-		return (
-			<Fragment>
-
-				{ blockControls }
-				{ inspectorControls }
-
-				<div className={ blockClasses }>
-
-					<MagazineTemplate
-						posts={ displayPosts }
-						attributes={ attributes }
-						template={ magazineTemplate }
-					/>
-
 				</div>
 
 			</Fragment>
 		);
 	}
+
+	// Removing posts from display should be instant.
+	const displayPosts = latestPosts.length > numberOfPosts ?
+		latestPosts.slice( 0, numberOfPosts ) :
+		latestPosts;
+
+	return (
+		<Fragment>
+
+			{ blockControls }
+			{ inspectorControls }
+
+			<div { ...blockProps }>
+
+				<MagazineTemplate
+					posts={ displayPosts }
+					attributes={ attributes }
+					template={ magazineTemplate }
+				/>
+
+			</div>
+
+		</Fragment>
+	);
 }
 
 export default compose( [
