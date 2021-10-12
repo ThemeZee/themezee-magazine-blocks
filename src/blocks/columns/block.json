@@ -1,73 +1,11 @@
 {
 	"apiVersion": 1,
-	"name": "themezee-magazine-blocks/vertical",
-	"title": "Magazine Vertical",
+	"name": "themezee-magazine-blocks/columns",
+	"title": "Magazine Columns",
 	"category": "themezee-magazine-blocks",
-	"description": "Displays your latest posts in a vertical box.",
-	"keywords": [ "Posts", "Boxed", "ThemeZee" ],
-	"attributes": {
-		"categories": {
-			"type": "array"
-		},
-		"tags": {
-			"type": "string"
-		},
-		"author": {
-			"type": "string"
-		},
-		"numberOfPosts": {
-			"type": "number",
-			"default": 5
-		},
-		"offset": {
-			"type": "number",
-			"default": 0
-		},
-		"order": {
-			"type": "string",
-			"default": "desc"
-		},
-		"orderBy": {
-			"type": "string",
-			"default": "date"
-		},
-		"imageSize": {
-			"type": "string",
-			"default": "full"
-		},
-		"thumbnailSize": {
-			"type": "string",
-			"default": "full"
-		},
-		"metaPosition": {
-			"type": "string",
-			"default": "below-title"
-		},
-		"showDate": {
-			"type": "boolean",
-			"default": true
-		},
-		"showAuthor": {
-			"type": "boolean",
-			"default": true
-		},
-		"showCategories": {
-			"type": "boolean",
-			"default": false
-		},
-		"showComments": {
-			"type": "boolean",
-			"default": false
-		},
-		"excerptLength": {
-			"type": "number",
-			"default": 25
-		},
-		"moreText": {
-			"type": "string",
-			"default": "Continue Reading"
-		}
-	},
+	"description": "Displays your latest posts in two separate columns.",
+	"keywords": [ "Posts", "Columns", "ThemeZee" ],
+	"attributes": {},
 	"supports": {
 		"html": false
 	},

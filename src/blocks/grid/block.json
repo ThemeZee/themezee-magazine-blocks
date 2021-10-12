@@ -1,10 +1,10 @@
 {
 	"apiVersion": 1,
-	"name": "themezee-magazine-blocks/vertical",
-	"title": "Magazine Vertical",
+	"name": "themezee-magazine-blocks/grid",
+	"title": "Magazine Grid",
 	"category": "themezee-magazine-blocks",
-	"description": "Displays your latest posts in a vertical box.",
-	"keywords": [ "Posts", "Boxed", "ThemeZee" ],
+	"description": "Displays your latest posts in a grid layout.",
+	"keywords": [ "Posts", "Magazine Grid", "ThemeZee" ],
 	"attributes": {
 		"categories": {
 			"type": "array"
@@ -17,7 +17,7 @@
 		},
 		"numberOfPosts": {
 			"type": "number",
-			"default": 5
+			"default": 6
 		},
 		"offset": {
 			"type": "number",
@@ -31,11 +31,11 @@
 			"type": "string",
 			"default": "date"
 		},
-		"imageSize": {
-			"type": "string",
-			"default": "full"
+		"columns": {
+			"type": "number",
+			"default": 3
 		},
-		"thumbnailSize": {
+		"imageSize": {
 			"type": "string",
 			"default": "full"
 		},

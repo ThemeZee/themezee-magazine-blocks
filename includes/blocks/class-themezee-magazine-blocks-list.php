@@ -32,74 +32,8 @@ class ThemeZee_Magazine_Blocks_List {
 	 */
 	static function register_block() {
 		register_block_type(
-			'themezee-magazine-blocks/list',
+			THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/src/blocks/list/',
 			array(
-				'attributes' => array(
-					'className' => array(
-						'type' => 'string',
-					),
-					'categories' => array(
-						'type' => 'array',
-					),
-					'tags' => array(
-						'type' => 'string',
-					),
-					'author' => array(
-						'type' => 'string',
-					),
-					'numberOfPosts' => array(
-						'type'    => 'number',
-						'default' => 3,
-					),
-					'offset' => array(
-						'type'    => 'number',
-						'default' => 0,
-					),
-					'order' => array(
-						'type'    => 'string',
-						'default' => 'desc',
-					),
-					'orderBy' => array(
-						'type'    => 'string',
-						'default' => 'date',
-					),
-					'layout' => array(
-						'type'    => 'string',
-						'default' => '50-50',
-					),
-					'imageSize' => array(
-						'type'    => 'string',
-						'default' => 'full',
-					),
-					'metaPosition' => array(
-						'type'    => 'string',
-						'default' => 'below-title',
-					),
-					'showDate' => array(
-						'type'    => 'boolean',
-						'default' => true,
-					),
-					'showAuthor' => array(
-						'type'    => 'boolean',
-						'default' => true,
-					),
-					'showCategories' => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
-					'showComments' => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
-					'excerptLength' => array(
-						'type'    => 'number',
-						'default' => 25,
-					),
-					'moreText' => array(
-						'type'    => 'string',
-						'default' => esc_html__( 'Continue Reading', 'themezee-magazine-blocks' ),
-					),
-				),
 				'render_callback' => array( __CLASS__, 'render_block' ),
 				'style'           => 'themezee-magazine-blocks',
 				'editor_script'   => 'themezee-magazine-blocks',

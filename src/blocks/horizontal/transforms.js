@@ -28,16 +28,16 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'themezee-magazine-blocks/horizontal' ],
+			blocks: [ 'themezee-magazine-blocks/list' ],
 			transform: ( attributes ) => {
-				return createBlock( 'themezee-magazine-blocks/horizontal', { ...attributes } );
+				return createBlock( 'themezee-magazine-blocks/list', { ...attributes } );
 			},
 		},
 		{
 			type: 'block',
-			blocks: [ 'themezee-magazine-blocks/list' ],
+			blocks: [ 'themezee-magazine-blocks/vertical' ],
 			transform: ( attributes ) => {
-				return createBlock( 'themezee-magazine-blocks/list', { ...attributes } );
+				return createBlock( 'themezee-magazine-blocks/vertical', { ...attributes } );
 			},
 		},
 	],

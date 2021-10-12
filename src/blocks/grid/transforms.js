@@ -21,13 +21,6 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'themezee-magazine-blocks/grid' ],
-			transform: ( attributes ) => {
-				return createBlock( 'themezee-magazine-blocks/grid', { ...attributes } );
-			},
-		},
-		{
-			type: 'block',
 			blocks: [ 'themezee-magazine-blocks/horizontal' ],
 			transform: ( attributes ) => {
 				return createBlock( 'themezee-magazine-blocks/horizontal', { ...attributes } );
@@ -38,6 +31,13 @@ const transforms = {
 			blocks: [ 'themezee-magazine-blocks/list' ],
 			transform: ( attributes ) => {
 				return createBlock( 'themezee-magazine-blocks/list', { ...attributes } );
+			},
+		},
+		{
+			type: 'block',
+			blocks: [ 'themezee-magazine-blocks/vertical' ],
+			transform: ( attributes ) => {
+				return createBlock( 'themezee-magazine-blocks/vertical', { ...attributes } );
 			},
 		},
 	],

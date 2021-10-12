@@ -1,10 +1,10 @@
 {
 	"apiVersion": 1,
-	"name": "themezee-magazine-blocks/vertical",
-	"title": "Magazine Vertical",
+	"name": "themezee-magazine-blocks/horizontal",
+	"title": "Magazine Horizontal",
 	"category": "themezee-magazine-blocks",
-	"description": "Displays your latest posts in a vertical box.",
-	"keywords": [ "Posts", "Boxed", "ThemeZee" ],
+	"description": "Displays your latest posts in a horizontal box.",
+	"keywords": [ "Posts", "Box", "ThemeZee" ],
 	"attributes": {
 		"categories": {
 			"type": "array"
@@ -17,7 +17,7 @@
 		},
 		"numberOfPosts": {
 			"type": "number",
-			"default": 5
+			"default": 4
 		},
 		"offset": {
 			"type": "number",
@@ -30,6 +30,10 @@
 		"orderBy": {
 			"type": "string",
 			"default": "date"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
 		},
 		"imageSize": {
 			"type": "string",
