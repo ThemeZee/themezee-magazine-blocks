@@ -105,7 +105,7 @@ function MagazineBlock( props ) {
 	const inspectorControls = (
 		<InspectorControls>
 
-			<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Content Settings', 'themezee-magazine-blocks' ) } initialOpen={ true }>
 
 				<CategorySelect
 					categoriesList={ categoriesList }
