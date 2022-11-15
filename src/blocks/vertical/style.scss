@@ -7,12 +7,14 @@
 			padding-right: 0.75em;
 			padding-right: calc( var(--tz-column-gap) / 2 );
 			width: 50%;
+			box-sizing: border-box;
 		}
 
 		.tz-magazine-thumbnail-list {
 			padding-left: 0.75em;
 			padding-left: calc( var(--tz-column-gap) / 2 );
 			width: 50%;
+			box-sizing: border-box;
 		}
 	}
 }

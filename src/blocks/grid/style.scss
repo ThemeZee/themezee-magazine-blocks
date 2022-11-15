@@ -11,6 +11,7 @@
 			padding-right: 1.5em;
 			padding-right: var(--tz-column-gap);
 			width: 50%;
+			box-sizing: border-box;
 		}
 	}
 }
@@ -26,6 +27,7 @@
 			padding-right: 1.5em;
 			padding-right: var(--tz-column-gap);
 			width: 33.3333333333333%;
+			box-sizing: border-box;
 		}
 	}
 }
@@ -33,5 +35,6 @@
 @media only screen and (min-width: 640px) {
 	.tz-magazine-grid-columns-4 .tz-post-wrap {
 		width: 25%;
+		box-sizing: border-box;
 	}
 }

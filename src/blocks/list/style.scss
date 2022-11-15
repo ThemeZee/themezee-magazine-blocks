@@ -8,6 +8,7 @@
 				padding-right: 0.75em;
 				padding-right: calc( var(--tz-column-gap) / 2 );
 				width: 50%;
+				box-sizing: border-box;
 
 				.wp-post-image {
 					margin: 0;
@@ -18,6 +19,7 @@
 				padding-left: 0.75em;
 				padding-left: calc( var(--tz-column-gap) / 2 );
 				width: 50%;
+				box-sizing: border-box;
 			}
 		}
 	}
