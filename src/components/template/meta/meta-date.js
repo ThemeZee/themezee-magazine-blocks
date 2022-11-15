@@ -5,7 +5,7 @@ const { Component } = wp.element;
 const {
 	dateI18n,
 	format,
-	__experimentalGetSettings,
+	getSettings,
 } = wp.date;
 
 class MetaDate extends Component {
@@ -15,7 +15,7 @@ class MetaDate extends Component {
 		} = this.props;
 
 		// eslint-disable-next-line no-restricted-syntax
-		const dateFormat = __experimentalGetSettings().formats.date;
+		const dateFormat = getSettings().formats.date;
 
 		return (
 			<span className="tz-meta-date meta-date tz-meta-field">
