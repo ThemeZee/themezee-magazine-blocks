@@ -3,14 +3,16 @@ Author URI: https://themezee.com/
 Plugin URI: https://themezee.com/plugins/magazine-blocks/
 Contributors: ThemeZee
 Tags: magazine, magazine blocks, magazine layout, themezee, gutenberg, blocks, editor
-Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 1.1.3
+Requires at least: 6.1
+Tested up to: 6.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 Flexible Magazine Blocks for the new WordPress Editor.
 
 == Description ==
+
+> **Please note:** The Magazine Blocks are still maintained, but will not receive any new features. WordPress Core has released the Query Loop block in the meantime and we recommend to use the Core block for new projects. 
 
 ThemeZee Magazine Blocks is a flexible collection of Latest Posts blocks for the new Gutenberg WordPress Block Editor.
 
@@ -49,6 +51,11 @@ Right now you can choose from five different Magazine Layouts, each represented 
 7. Post Settings
 
 == Changelog ==
+
+= 1.2 =
+
+* updated to block.json and api version 2
+* fixed deprecated notices
 
 = 1.1.3 =
 
