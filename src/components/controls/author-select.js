@@ -32,9 +32,9 @@ class AuthorSelect extends Component {
 
 export default compose( [
 	withSelect( ( select ) => {
-		const { getAuthors } = select( 'core' );
+		const { getUsers } = select( 'core' );
 		return {
-			authorList: getAuthors(),
+			authorList: getUsers( { who: 'authors' } ),
 		};
 	} ),
 ] )( AuthorSelect );

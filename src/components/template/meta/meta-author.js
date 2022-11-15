@@ -12,6 +12,11 @@ class MetaAuthor extends Component {
 			post,
 		} = this.props;
 
+		// Return early if no authors are found.
+		if ( ! authors ) {
+			return null;
+		}
+
 		// Retrieve post author.
 		const postAuthor = authors.find( author => author.id === post.author );
 
@@ -32,9 +37,9 @@ class MetaAuthor extends Component {
 
 export default compose( [
 	withSelect( ( select ) => {
-		const { getAuthors } = select( 'core' );
+		const { getUsers } = select( 'core' );
 		return {
-			authors: getAuthors(),
+			authors: getUsers( { who: 'authors' } ),
 		};
 	} ),
 ] )( MetaAuthor );
