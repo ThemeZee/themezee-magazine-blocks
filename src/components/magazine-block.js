@@ -29,7 +29,7 @@ const {
 	Spinner,
 	TextControl,
 	ToggleControl,
-	Toolbar,
+	ToolbarGroup,
 } = wp.components;
 
 /**
@@ -81,16 +81,16 @@ function MagazineBlock( props ) {
 
 			{ props.blockControls ? props.blockControls : null }
 
-			<Toolbar
+			<ToolbarGroup
 				controls={ [ {
 					// Font Awesone Plus Solid
 					icon: 'plus',
-					title: __( 'Show one post more', 'gt-blocks' ),
+					title: __( 'Show one post more', 'themezee-magazine-blocks' ),
 					onClick: () => setAttributes( { numberOfPosts: numberOfPosts + 1 } ),
 				}, {
 					// Font Awesone Minus Solid
 					icon: 'minus',
-					title: __( 'Show one post less', 'gt-blocks' ),
+					title: __( 'Show one post less', 'themezee-magazine-blocks' ),
 					onClick: () => {
 						if ( numberOfPosts > 1 ) {
 							setAttributes( { numberOfPosts: numberOfPosts - 1 } );
@@ -165,25 +165,25 @@ function MagazineBlock( props ) {
 				/>
 
 				<ToggleControl
-					label={ __( 'Display Date', 'gt-blocks' ) }
+					label={ __( 'Display Date', 'themezee-magazine-blocks' ) }
 					checked={ !! showDate }
 					onChange={ () => setAttributes( { showDate: ! showDate } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Display Author', 'gt-blocks' ) }
+					label={ __( 'Display Author', 'themezee-magazine-blocks' ) }
 					checked={ !! showAuthor }
 					onChange={ () => setAttributes( { showAuthor: ! showAuthor } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Display Categories', 'gt-blocks' ) }
+					label={ __( 'Display Categories', 'themezee-magazine-blocks' ) }
 					checked={ !! showCategories }
 					onChange={ () => setAttributes( { showCategories: ! showCategories } ) }
 				/>
 
 				<ToggleControl
-					label={ __( 'Display Comments', 'gt-blocks' ) }
+					label={ __( 'Display Comments', 'themezee-magazine-blocks' ) }
 					checked={ !! showComments }
 					onChange={ () => setAttributes( { showComments: ! showComments } ) }
 				/>

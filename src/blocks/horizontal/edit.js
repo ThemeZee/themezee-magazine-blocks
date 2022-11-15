@@ -21,7 +21,7 @@ const {
 	PanelBody,
 	RangeControl,
 	SelectControl,
-	Toolbar,
+	ToolbarGroup,
 } = wp.components;
 
 /**
@@ -57,7 +57,7 @@ class MagazineHorizontalEdit extends Component {
 		};
 
 		const blockControls = (
-			<Toolbar
+			<ToolbarGroup
 				controls={
 					[ 3, 4 ].map( column => ( {
 						icon: columnIcons[ column ],
