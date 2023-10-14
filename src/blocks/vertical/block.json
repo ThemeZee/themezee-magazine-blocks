@@ -1,4 +1,5 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "themezee-magazine-blocks/vertical",
 	"title": "Magazine Vertical",
@@ -72,7 +73,8 @@
 		"html": false
 	},
 	"textdomain": "themezee-magazine-blocks",
-	"style": "themezee-magazine-blocks",
-	"editorScript": "themezee-magazine-blocks",
-	"editorStyle": "themezee-magazine-blocks-editor"
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
 }

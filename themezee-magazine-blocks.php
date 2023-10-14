@@ -1,22 +1,21 @@
 <?php
-/*
-Plugin Name: ThemeZee Magazine Blocks
-Plugin URI: https://themezee.com/plugins/magazine-blocks/
-Description: Flexible Magazine Blocks for the new WordPress Block Editor.
-Author: ThemeZee
-Author URI: https://themezee.com/
-Version: 1.2
-Requires PHP: 7.0
-Requires at least: 6.1
-Tested up to: 6.1
-Text Domain: themezee-magazine-blocks
-Domain Path: /languages/
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-ThemeZee Magazine Blocks
-Copyright(C) 2020, themezee.com - support@themezee.com
-*/
+/**
+ * Plugin Name:       Themezee Magazine Blocks
+ * Plugin URI:        https://themezee.com/plugins/magazine-blocks/
+ * Description:       Flexible Magazine Blocks for the new WordPress Block Editor.
+ * Requires at least: 6.3
+ * Requires PHP:      8.0
+ * Version:           1.2
+ * Author:            ThemeZee
+ * Author URI:        https://themezee.com/
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       themezee-magazine-blocks
+ *
+ * @package           ThemeZee Magazine Blocks
+ *
+ * Copyright(C) 2023, themezee.com - support@themezee.com
+ */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,7 +36,7 @@ class ThemeZee_Magazine_Blocks {
 	 * @uses ThemeZee_Magazine_Blocks::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
-	static function setup() {
+	public static function setup() {
 		// Setup Constants.
 		self::constants();
 
@@ -56,7 +55,7 @@ class ThemeZee_Magazine_Blocks {
 	 *
 	 * @return void
 	 */
-	static function constants() {
+	public static function constants() {
 		// Define Version Number.
 		define( 'THEMEZEE_MAGAZINE_BLOCKS_VERSION', '1.2' );
 
@@ -75,7 +74,7 @@ class ThemeZee_Magazine_Blocks {
 	 *
 	 * @return void
 	 */
-	static function translation() {
+	public static function translation() {
 		load_plugin_textdomain( 'themezee-magazine-blocks', false, dirname( plugin_basename( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_FILE ) ) . '/languages/' );
 	}
 
@@ -84,20 +83,12 @@ class ThemeZee_Magazine_Blocks {
 	 *
 	 * @return void
 	 */
-	static function includes() {
+	public static function includes() {
 		// Include Magazine Cache Class.
 		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/class-themezee-magazine-blocks-cache.php';
 
 		// Include Magazine Template Class.
 		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/class-themezee-magazine-blocks-template.php';
-
-		// Include Blocks for server-side.
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-column.php';
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-columns.php';
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-grid.php';
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-horizontal.php';
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-list.php';
-		require_once THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . '/includes/blocks/class-themezee-magazine-blocks-vertical.php';
 	}
 
 	/**
@@ -106,80 +97,34 @@ class ThemeZee_Magazine_Blocks {
 	 * @see https://codex.wordpress.org/Function_Reference/add_action WordPress Codex
 	 * @return void
 	 */
-	static function setup_actions() {
+	public static function setup_actions() {
 		// Enqueue Block Assets.
-		add_action( 'init', array( __CLASS__, 'enqueue_block_assets' ) );
+		add_action( 'init', array( __CLASS__, 'register_blocks' ) );
 
 		// Add block category.
 		add_filter( 'block_categories_all', array( __CLASS__, 'block_categories' ), 10, 2 );
 	}
 
 	/**
-	 * Enqueue Block Assets
+	 * Register blocks
 	 *
 	 * @return void
 	 */
-	static function enqueue_block_assets() {
-		// Register block styles for both frontend + backend.
-		wp_register_style(
-			'themezee-magazine-blocks',
-			THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/css/themezee-magazine-blocks.css',
-			array(),
-			THEMEZEE_MAGAZINE_BLOCKS_VERSION
-		);
-
-		// Register block editor script for backend.
-		wp_register_script(
-			'themezee-magazine-blocks',
-			THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/js/themezee-magazine-blocks.js',
-			array(
-				'wp-blocks',
-				'wp-i18n',
-				'wp-element',
-				'wp-components',
-				'wp-editor',
-				'wp-api-fetch',
-				'lodash',
-			),
-			THEMEZEE_MAGAZINE_BLOCKS_VERSION
-		);
-
-		// Transfer Data from PHP to ThemeZee Magazine Blocks Redux Store.
-		wp_add_inline_script( 'themezee-magazine-blocks', self::get_dispatch_data(), 'after' );
-
-		// Load javascript translation files.
-		wp_set_script_translations( 'themezee-magazine-blocks-editor', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
-
-		// Register block editor styles for backend.
-		wp_register_style(
-			'themezee-magazine-blocks-editor',
-			THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/css/themezee-magazine-blocks-editor.css',
-			array(
-				'wp-edit-blocks',
-				'themezee-magazine-blocks',
-			),
-			THEMEZEE_MAGAZINE_BLOCKS_VERSION
-		);
+	public static function register_blocks() {
+		register_block_type( __DIR__ . '/build/blocks/column' );
+		register_block_type( __DIR__ . '/build/blocks/columns' );
+		register_block_type( __DIR__ . '/build/blocks/grid' );
+		register_block_type( __DIR__ . '/build/blocks/horizontal' );
+		register_block_type( __DIR__ . '/build/blocks/list' );
+		register_block_type( __DIR__ . '/build/blocks/vertical' );
 	}
 
 	/**
-	 * Generate Code to dispatch data from PHP to Redux store.
+	 * Register block category
 	 *
-	 * @return $script Data Dispatch code.
+	 * @return array
 	 */
-	static function get_dispatch_data() {
-		// Add Plugin URL.
-		$script = sprintf( 'wp.data.dispatch( "themezee-magazine-blocks-store" ).setPluginURL( %s );', wp_json_encode( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL ) );
-
-		return $script;
-	}
-
-	/**
-	 * Define custom image sizes
-	 *
-	 * @return void
-	 */
-	static function block_categories( $categories, $post ) {
+	public static function block_categories( $categories, $post ) {
 		return array_merge(
 			$categories,
 			array(

@@ -35,6 +35,8 @@ const {
 /**
  * Internal dependencies
  */
+import './style.scss';
+import './editor.scss';
 import CategorySelect from './controls/category-select';
 import AuthorSelect from './controls/author-select';
 import OrderSelect from './controls/order-select';
