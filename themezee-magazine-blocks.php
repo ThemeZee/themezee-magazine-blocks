@@ -92,6 +92,9 @@ class ThemeZee_Magazine_Blocks {
 		// Setup Translation.
 		add_action( 'init', array( __CLASS__, 'translation' ) );
 
+		// Transfer Data from PHP to ThemeZee Magazine Blocks scripts.
+		add_action( 'init', array( __CLASS__, 'data' ) );
+
 		// Add block category.
 		add_filter( 'block_categories_all', array( __CLASS__, 'block_categories' ), 10, 2 );
 	}
@@ -166,6 +169,29 @@ class ThemeZee_Magazine_Blocks {
 		wp_set_script_translations( 'themezee-magazine-blocks-horizontal-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
 		wp_set_script_translations( 'themezee-magazine-blocks-list-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
 		wp_set_script_translations( 'themezee-magazine-blocks-vertical-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+	}
+
+	/**
+	 * Pass data to blocks
+	 *
+	 * @return void
+	 */
+	public static function data() {
+		$encoded_variables = wp_json_encode(
+			array(
+				'pluginUrl' => THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL,
+			)
+		);
+
+		$global_variable = 'var themezeeMagazineBlocks = ' . $encoded_variables;
+
+		// Pass data to all JS files.
+		wp_add_inline_script( 'themezee-magazine-blocks-column-editor-script', $global_variable, 'after' );
+		wp_add_inline_script( 'themezee-magazine-blocks-columns-editor-script', $global_variable, 'after' );
+		wp_add_inline_script( 'themezee-magazine-blocks-grid-editor-script', $global_variable, 'after' );
+		wp_add_inline_script( 'themezee-magazine-blocks-horizontal-editor-script', $global_variable, 'after' );
+		wp_add_inline_script( 'themezee-magazine-blocks-list-editor-script', $global_variable, 'after' );
+		wp_add_inline_script( 'themezee-magazine-blocks-vertical-editor-script', $global_variable, 'after' );
 	}
 
 	/**

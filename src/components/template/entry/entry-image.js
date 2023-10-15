@@ -47,10 +47,8 @@ export default compose( [
 		const availableSizes = get( image, [ 'media_details', 'sizes' ], {} );
 
 		if ( isEmpty( availableSizes ) ) {
-			const pluginURL = select( 'themezee-magazine-blocks-store' ).getPluginURL();
-
 			return {
-				image: pluginURL + 'assets/images/default-featured-image.png',
+				image: themezeeMagazineBlocks.pluginUrl + 'assets/images/default-featured-image.png',
 			};
 		}
 
