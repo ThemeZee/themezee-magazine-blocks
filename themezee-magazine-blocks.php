@@ -111,12 +111,61 @@ class ThemeZee_Magazine_Blocks {
 	 * @return void
 	 */
 	public static function register_blocks() {
-		register_block_type( __DIR__ . '/build/blocks/column' );
-		register_block_type( __DIR__ . '/build/blocks/columns' );
-		register_block_type( __DIR__ . '/build/blocks/grid' );
-		register_block_type( __DIR__ . '/build/blocks/horizontal' );
-		register_block_type( __DIR__ . '/build/blocks/list' );
-		register_block_type( __DIR__ . '/build/blocks/vertical' );
+		register_block_type(
+			__DIR__ . '/build/blocks/column',
+			array(
+				'title'       => _x( 'Magazine Column', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your posts in a list with the first post highlighted.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		register_block_type(
+			__DIR__ . '/build/blocks/columns',
+			array(
+				'title'       => _x( 'Magazine Columns', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your latest posts in two separate columns.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		register_block_type(
+			__DIR__ . '/build/blocks/grid',
+			array(
+				'title'       => _x( 'Magazine Grid', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your latest posts in a grid layout.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		register_block_type(
+			__DIR__ . '/build/blocks/horizontal',
+			array(
+				'title'       => _x( 'Magazine Horizontal', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your latest posts in a horizontal box.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		register_block_type(
+			__DIR__ . '/build/blocks/list',
+			array(
+				'title'       => _x( 'Magazine List', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your latest posts in a list layout.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		register_block_type(
+			__DIR__ . '/build/blocks/vertical',
+			array(
+				'title'       => _x( 'Magazine Vertical', 'block title', 'themezee-magazine-blocks' ),
+				'description' => _x( 'Displays your latest posts in a vertical box.', 'block description', 'themezee-magazine-blocks' ),
+			),
+		);
+
+		// Load translation for JS files.
+		wp_set_script_translations( 'themezee-magazine-blocks-column-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'themezee-magazine-blocks-columns-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'themezee-magazine-blocks-grid-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'themezee-magazine-blocks-horizontal-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'themezee-magazine-blocks-list-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'themezee-magazine-blocks-vertical-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
 	}
 
 	/**
