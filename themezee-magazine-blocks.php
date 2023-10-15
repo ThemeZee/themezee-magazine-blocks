@@ -40,9 +40,6 @@ class ThemeZee_Magazine_Blocks {
 		// Setup Constants.
 		self::constants();
 
-		// Setup Translation.
-		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
-
 		// Include Files.
 		self::includes();
 
@@ -70,15 +67,6 @@ class ThemeZee_Magazine_Blocks {
 	}
 
 	/**
-	 * Load Translation File
-	 *
-	 * @return void
-	 */
-	public static function translation() {
-		load_plugin_textdomain( 'themezee-magazine-blocks', false, dirname( plugin_basename( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_FILE ) ) . '/languages/' );
-	}
-
-	/**
 	 * Include required files
 	 *
 	 * @return void
@@ -100,6 +88,9 @@ class ThemeZee_Magazine_Blocks {
 	public static function setup_actions() {
 		// Enqueue Block Assets.
 		add_action( 'init', array( __CLASS__, 'register_blocks' ) );
+
+		// Setup Translation.
+		add_action( 'init', array( __CLASS__, 'translation' ) );
 
 		// Add block category.
 		add_filter( 'block_categories_all', array( __CLASS__, 'block_categories' ), 10, 2 );
@@ -158,6 +149,15 @@ class ThemeZee_Magazine_Blocks {
 				'description' => _x( 'Displays your latest posts in a vertical box.', 'block description', 'themezee-magazine-blocks' ),
 			),
 		);
+	}
+
+	/**
+	 * Load Translation File
+	 *
+	 * @return void
+	 */
+	public static function translation() {
+		load_plugin_textdomain( 'themezee-magazine-blocks', false, dirname( plugin_basename( THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_FILE ) ) . '/languages/' );
 
 		// Load translation for JS files.
 		wp_set_script_translations( 'themezee-magazine-blocks-column-editor-script', 'themezee-magazine-blocks', THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR . 'languages' );
