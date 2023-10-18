@@ -111,7 +111,7 @@ class ThemeZee_Magazine_Blocks_Template {
 		if ( has_post_thumbnail() ) {
 			$image = get_the_post_thumbnail( null, $image_size );
 		} else {
-			$image = '<img src="' . THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'assets/images/default-featured-image.png" class="attachment-full size-full wp-post-image" width="1600" height="1200" alt />';
+			$image = '<img src="' . THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_URL . 'public/images/default-featured-image.png" class="attachment-full size-full wp-post-image" width="1600" height="1200" alt />';
 		}
 
 		$figure = sprintf(

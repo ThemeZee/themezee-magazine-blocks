@@ -48,7 +48,7 @@ export default compose( [
 
 		if ( isEmpty( availableSizes ) ) {
 			return {
-				image: themezeeMagazineBlocks.pluginUrl + 'assets/images/default-featured-image.png',
+				image: themezeeMagazineBlocks.pluginUrl + 'public/images/default-featured-image.png',
 			};
 		}
 
