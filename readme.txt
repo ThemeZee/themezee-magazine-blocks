@@ -52,6 +52,11 @@ Right now you can choose from five different Magazine Layouts, each represented 
 
 == Changelog ==
 
+= 1.3 =
+
+* update tooling to wp-scripts
+* pass pluginUrl to blocks directly instead of using data store
+
 = 1.2 =
 
 * updated to block.json and api version 2
