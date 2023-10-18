@@ -52,6 +52,10 @@ Right now you can choose from five different Magazine Layouts, each represented 
 
 == Changelog ==
 
+= 1.3.1 =
+
+* fix Magazine Columns block
+
 = 1.3 =
 
 * update tooling to wp-scripts
