@@ -2,10 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import {
-	isUndefined,
-	pickBy,
-} from 'lodash';
+import isUndefined from 'lodash/isUndefined';
+import pickBy from 'lodash/pickBy';
 
 /**
  * WordPress dependencies

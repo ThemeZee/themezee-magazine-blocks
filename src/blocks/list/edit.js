@@ -1,9 +1,7 @@
 /**
  * External dependencies
  */
-import {
-	map,
-} from 'lodash';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
