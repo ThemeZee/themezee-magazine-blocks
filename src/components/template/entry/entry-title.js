@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, RawHTML } = wp.element;
+import { __ } from '@wordpress/i18n';
+import { Component, RawHTML } from '@wordpress/element';
 
 class EntryTitle extends Component {
 	render() {

@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 class MetaAuthor extends Component {
 	render() {

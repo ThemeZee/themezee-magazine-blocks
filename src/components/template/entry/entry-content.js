@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Component, RawHTML } = wp.element;
+import { Component, RawHTML } from '@wordpress/element';
 
 class EntryContent extends Component {
 	render() {

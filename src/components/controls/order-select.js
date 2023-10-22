@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { SelectControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { SelectControl } from '@wordpress/components';
 
 function OrderSelect( {
 	order,

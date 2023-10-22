@@ -1,17 +1,17 @@
 /**
  * External dependencies
  */
-const {
+import {
 	isEmpty,
 	get,
-} = lodash;
+} from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 class EntryImage extends Component {
 	render() {

@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+import { Component } from '@wordpress/element';
 
 /**
  * Internal dependencies

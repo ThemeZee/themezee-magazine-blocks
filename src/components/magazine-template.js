@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies
  */
-const {
+import {
 	Component,
 	Fragment,
-} = wp.element;
+} from '@wordpress/element';
 
 /**
  * Internal dependencies

@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { __, sprintf } = wp.i18n;
-const { apiFetch } = wp;
-const { addQueryArgs } = wp.url;
+import { Component } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
+import { apiFetch } from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
 
 class MetaComments extends Component {
 	constructor() {

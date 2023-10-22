@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 class MetaCategories extends Component {
 	render() {

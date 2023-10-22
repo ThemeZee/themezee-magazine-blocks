@@ -1,11 +1,11 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { Component } = wp.element;
-const { TreeSelect } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { Component } from '@wordpress/element';
+import { TreeSelect } from '@wordpress/components';
 
 class AuthorSelect extends Component {
 	render() {

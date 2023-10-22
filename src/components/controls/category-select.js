@@ -1,14 +1,14 @@
 /**
  * External dependencies
  */
-const { remove } = lodash;
+import remove from 'lodash/remove';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { BaseControl, CheckboxControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { BaseControl, CheckboxControl } from '@wordpress/components';
 
 /**
  * Internal dependencies

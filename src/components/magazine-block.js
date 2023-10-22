@@ -2,26 +2,26 @@
  * External dependencies
  */
 import classnames from 'classnames';
-const {
+import {
 	isUndefined,
 	pickBy,
-} = lodash;
+} from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { Fragment } = wp.element;
-const { __ } = wp.i18n;
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
-const {
+import {
 	BlockControls,
 	InspectorControls,
 	useBlockProps,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
-const {
+import {
 	PanelBody,
 	Placeholder,
 	RangeControl,
@@ -30,7 +30,7 @@ const {
 	TextControl,
 	ToggleControl,
 	ToolbarGroup,
-} = wp.components;
+} from '@wordpress/components';
 
 /**
  * Internal dependencies

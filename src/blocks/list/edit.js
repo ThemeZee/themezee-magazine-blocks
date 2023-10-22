@@ -1,22 +1,21 @@
 /**
  * External dependencies
  */
-const {
+import {
 	map,
-} = lodash;
+} from 'lodash';
 
 /**
  * WordPress dependencies
  */
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { Component } = wp.element;
-const { __ } = wp.i18n;
-
-const {
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { Component } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import {
 	PanelBody,
 	SelectControl,
-} = wp.components;
+} from '@wordpress/components';
 
 /**
  * Internal dependencies

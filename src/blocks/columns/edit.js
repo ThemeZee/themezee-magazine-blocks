@@ -6,10 +6,10 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const {
+import {
 	InnerBlocks,
 	useBlockProps,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
 function MagazineColumnsEdit( { className } ) {
 	const blockProps = useBlockProps( {

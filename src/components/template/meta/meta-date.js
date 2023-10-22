@@ -1,12 +1,12 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const {
+import { Component } from '@wordpress/element';
+import {
 	dateI18n,
 	format,
 	getSettings,
-} = wp.date;
+} from '@wordpress/date';
 
 class MetaDate extends Component {
 	render() {
