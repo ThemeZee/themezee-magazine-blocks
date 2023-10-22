@@ -5,7 +5,7 @@
  * Description:       Flexible Magazine Blocks for the new WordPress Block Editor.
  * Requires at least: 6.3
  * Requires PHP:      8.0
- * Version:           1.3.1
+ * Version:           1.3.2
  * Author:            ThemeZee
  * Author URI:        https://themezee.com/
  * License:           GPL-2.0-or-later
@@ -54,7 +54,7 @@ class ThemeZee_Magazine_Blocks {
 	 */
 	public static function constants() {
 		// Define Version Number.
-		define( 'THEMEZEE_MAGAZINE_BLOCKS_VERSION', '1.3.1' );
+		define( 'THEMEZEE_MAGAZINE_BLOCKS_VERSION', '1.3.2' );
 
 		// Plugin Folder Path.
 		define( 'THEMEZEE_MAGAZINE_BLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
