@@ -1,0 +1,17 @@
+{
+    "name": "themezee/themezee-magazine-blocks",
+    "type": "wordpress-plugin",
+    "description": "Flexible Magazine Blocks for the new WordPress Block Editor.",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "ThemeZee",
+            "email": "contact@themezee.com",
+            "homepage": "https://themezee.com/",
+            "role": "Company"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    }
+}
