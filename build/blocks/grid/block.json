@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "themezee-magazine-blocks/grid",
   "title": "Magazine Grid",
   "category": "themezee-magazine-blocks",
